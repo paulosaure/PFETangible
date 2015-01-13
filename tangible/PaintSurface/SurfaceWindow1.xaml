@@ -1,0 +1,237 @@
+﻿<s:SurfaceWindow x:Class="PaintSurface.SurfaceWindow1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    Title="PaintSurface"
+    >
+
+    <Grid x:Name="main" >
+        <Image Source="/Resources/backgroud.jpg"  Width="1920" Height="1080"/>
+        
+<!--Vue présentation roue-->
+        <!--Visible Hidden -->
+        <Grid  x:Name="myGrid" Visibility="Visible">
+            <Image Source="/Resources/rond.png"  Width="360" Height="360">
+            <Image.RenderTransform>
+                <RotateTransform CenterX="180" CenterY="180" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style>
+                    <Style.Triggers>
+                        <Trigger Property="Image.IsEnabled" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                    Storyboard.TargetProperty="RenderTransform.Angle"
+                                    From="0"
+                                    To="360"
+                                    Duration="0:0:10"
+                                    RepeatBehavior="Forever" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image Source="/Resources/roue.png"  Width="500" Height="560">
+            <Image.RenderTransform>
+                <RotateTransform CenterX="250" CenterY="250" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style>
+                    <Style.Triggers>
+                        <Trigger Property="Image.IsEnabled" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                    Storyboard.TargetProperty="RenderTransform.Angle"
+                                    From="360"
+                                    To="0"
+                                    Duration="0:0:5"
+                                    RepeatBehavior="Forever" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+
+        <Image Source="/Resources/textPosez.png"  Width="400" Height="400" Name="touchez">
+            <Image.RenderTransform>
+                <ScaleTransform x:Name="ImageScale" ScaleX="1" ScaleY="1" CenterX="200"  CenterY="150"/>
+            </Image.RenderTransform>
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Image.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleX)" To="1.5" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
+                            <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleY)" To="1.5" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+        </Image>
+
+            <s:TagVisualizer  Height="650" Width="1920" Name="tagItem"   VisualizationAdded="itemPutOnTable">
+                <s:TagVisualizer.Definitions>
+                    <s:TagVisualizationDefinition Value="0x1" 
+                                             OrientationOffsetFromTag="0" PhysicalCenterOffsetFromTag="0,0"
+                                                  UsesTagOrientation="True"
+                                              />
+                </s:TagVisualizer.Definitions>
+            </s:TagVisualizer>
+        </Grid>
+       
+
+<!--Vue objet à poser sur table-->
+        <!--Visible Hidden -->
+        <Grid Name="objet" Visibility="Hidden">
+            <StackPanel >
+<!-- Icones d'aide-->
+                <WrapPanel Name="aideTop" Height="200"  Orientation="Horizontal" Margin="0,0,0,0">
+                    <Border Name="borderVerre"  BorderThickness="4" >
+                        <Image Name="verre" Height="200" Width="200" RenderTransformOrigin="0.5, 0.5" >
+                            <Image.RenderTransform>
+                                <RotateTransform Angle="180"/>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Border>
+                    <Border Name="borderDentifrice"  BorderThickness="4" >
+                        <Image Name="dentifrice" Height="200" Width="200" RenderTransformOrigin="0.5, 0.5" >
+                            <Image.RenderTransform>
+                                <RotateTransform  Angle="180"/>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Border>
+                    <Border Name="borderAideBrosseDent"  BorderThickness="4" >
+                        <Image Name="brosseDent" Height="200" Width="200" RenderTransformOrigin="0.5, 0.5">
+                            <Image.RenderTransform>
+                                <RotateTransform  Angle="180"/>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Border>
+                    <TextBlock   Foreground="LightPink"  FontSize="50" Text="Aide :" Height="200" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5">                     
+                        <TextBlock.RenderTransform>
+                                <RotateTransform  Angle="180"/>
+                            </TextBlock.RenderTransform></TextBlock>
+                </WrapPanel>
+<!-- Carré noir + texte-->
+                <Border BorderBrush="Black" BorderThickness="5">
+                    <Grid Height="650" Width="1920">
+                        <TextBlock  Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Text="Placer les objets " >
+                            <TextBlock.RenderTransform>
+                                <RotateTransform  Angle="-90"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock    Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="50" Text="Placer les objets " >
+                            <TextBlock.RenderTransform>
+                                <RotateTransform  Angle="90"/>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+<!-- Tag à poser -->
+                        <Grid >
+                            <s:TagVisualizer  Height="650" Width="1920" Name="tagBrosseaDent"   VisualizationAdded="OnVisualizationObject">
+                                <s:TagVisualizer.Definitions>
+                                    <s:TagVisualizationDefinition Value="0x1" 
+                                             OrientationOffsetFromTag="0" PhysicalCenterOffsetFromTag="0,0"
+                                                  UsesTagOrientation="True"
+                                              />
+                                    <s:TagVisualizationDefinition Value="0x2"
+                                              OrientationOffsetFromTag="0"
+                                              PhysicalCenterOffsetFromTag="0,0" 
+                                              UsesTagOrientation="True"
+                                              />
+                                    <s:TagVisualizationDefinition Value="0x3"
+                                              OrientationOffsetFromTag="0"
+                                              PhysicalCenterOffsetFromTag="0,0" 
+                                              UsesTagOrientation="True"
+                                              />
+                                    <s:TagVisualizationDefinition Value="0xA"
+                                              OrientationOffsetFromTag="0"
+                                              PhysicalCenterOffsetFromTag="0,0" 
+                                              UsesTagOrientation="True"
+                                              />
+                                    <s:TagVisualizationDefinition Value="0xB"
+                                              OrientationOffsetFromTag="0"
+                                              PhysicalCenterOffsetFromTag="0,0" 
+                                              UsesTagOrientation="True"
+                                              />
+                                    <s:TagVisualizationDefinition Value="0xC"
+                                              OrientationOffsetFromTag="0"
+                                              PhysicalCenterOffsetFromTag="0,0" 
+                                              UsesTagOrientation="True"
+                                              />
+                                    <s:TagVisualizationDefinition Value="0xD"
+                                              OrientationOffsetFromTag="0"
+                                              PhysicalCenterOffsetFromTag="0,0" 
+                                              UsesTagOrientation="True"
+                                              />
+                                    <s:TagVisualizationDefinition Value="0xE"
+                                              OrientationOffsetFromTag="0"
+                                              PhysicalCenterOffsetFromTag="0,0" 
+                                              UsesTagOrientation="True"
+                                              />
+                                    <s:TagVisualizationDefinition Value="0xF"
+                                              OrientationOffsetFromTag="0"
+                                              PhysicalCenterOffsetFromTag="0,0" 
+                                              UsesTagOrientation="True"
+                                              />
+                                </s:TagVisualizer.Definitions>
+                            </s:TagVisualizer>
+                        </Grid>
+                    </Grid>
+                </Border>
+<!-- Icones d'aide-->
+                <WrapPanel Name="aideBot" Height="200" Orientation="Horizontal" Margin="0,0,0,0">
+                    <TextBlock   Foreground="LightPink"  FontSize="50" Height="200" HorizontalAlignment="Center" >Aide :</TextBlock>
+                    <Border Name="borderAideBrosseDent2"  BorderThickness="4" >
+                        <Image Name="brosseDent2" Height="200" Width="200" />
+                    </Border>
+                    <Border Name="borderDentifrice2"  BorderThickness="4" >
+                        <Image Name="dentifrice2" Height="200" Width="200" />
+                    </Border>
+                    <Border Name="borderVerre2"  BorderThickness="4" >
+                        <Image Name="verre2" Height="200" Width="200" />
+                    </Border>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Name="ordonnancement" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <WrapPanel Name="friseHaut" Grid.Column="0"  Grid.Row="0" >
+                <Image Name="fleche" Margin="10,0" Height="200" Width="300"  Source="/Resources/friseG.png"  />
+                <Image Name="bloc1" Margin="10,0" Height="200" Width="300"  Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True" />
+                <Image Name="bloc2" Margin="10,0" Height="200" Width="300"  Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True"/>
+                <Image Name="bloc3" Margin="10,0" Height="200" Width="300"  Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True" />
+                <Image Name="bloc4" Margin="10,0"  Height="200" Width="300" Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True"/>
+                <Image Name="bloc5" Margin="10,0"  Height="200" Width="300" Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True"/>
+            </WrapPanel>
+            <WrapPanel Name="friseBas" Grid.Column="0" Grid.Row="2" Margin="-10,646,10,-845" >
+
+                <Image Name="bloc1B" Margin="10,0" Height="200" Width="300"  Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True" />
+                <Image Name="bloc2B" Margin="10,0" Height="200" Width="300"  Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True"/>
+                <Image Name="bloc3B" Margin="10,0" Height="200" Width="300"  Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True" />
+                <Image Name="bloc4B" Margin="10,0"  Height="200" Width="300" Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True"/>
+                <Image Name="bloc5B" Margin="10,0"  Height="200" Width="300" Source="/Resources/elt.png" Drop="DropList_Drop"  AllowDrop="True"/>
+                <Image x:Name="flecheB" Margin="10,0" Height="200" Width="300"  Source="/Resources/friseD.png"  >
+
+                </Image>
+            </WrapPanel>
+        </Grid>
+    </Grid>
+</s:SurfaceWindow>

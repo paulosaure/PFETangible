@@ -1,0 +1,57 @@
+<html>
+<head>
+	<title>Test</title>
+	<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+</head>
+<body>
+    <h1 id="displayName"></h1>
+	<label for="event">Evenement : </label><input id="event" type="text" onkeydown="enter(event);"/><br/>
+	<label for="param1">Parametre : </label><input id="param1" type="text" onkeydown="enter(event);"/><br/>
+	<label for="tabletId">Destinataire : </label><input id="tabletId" type="text" onkeydown="enter(event);"/><br/>
+    <input type="button" value="Envoyer" onclick="send();"/><br/><br/>
+    <h2>Messages</h2>
+	<div id="messages" style="border: 1px solid black; overflow: scroll"></div>
+	<script type="text/javascript">
+		
+		var socket = io.connect("http://localhost:8080");
+		
+		var name;
+        var table;
+
+        socket.on('connect', function() {
+            name = prompt("Votre nom ?");
+            if (name == "Table" || name == "table") {
+                table = true;
+            }
+            if (table) {
+                socket.emit('isTable');
+                document.getElementById("displayName").innerHTML = "Table Surface";
+            } else {
+                socket.emit('addTablet', name);
+                document.getElementById("displayName").innerHTML = name;
+            }
+        });
+
+        function send() {
+            socket.emit("sendToTablet", {"event" : document.getElementById("event").value, "messageDescription." : document.getElementById("param1").value, "tabletId" : document.getElementById("tabletId").value});
+        }
+
+        function enter(event) {
+            if (event.keyCode == 13) {
+                send();
+            }
+        }
+
+        socket.on('test', function (data) {
+            alert(data);
+        });
+
+        socket.on('message', function(mess) {
+           document.getElementById("messages").innerHTML = "message : " + "<br/>"
+                   + JSON.stringify(mess)
+                   + "<br/>" + document.getElementById("messages").innerHTML + "<br/><br/>";
+        });
+		
+	</script>
+</body>
+</html>

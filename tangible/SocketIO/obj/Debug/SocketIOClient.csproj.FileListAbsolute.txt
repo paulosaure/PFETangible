@@ -1,0 +1,48 @@
+C:\Users\AtelierIHM\Desktop\Projets_Demos\Projets\Monopolytech\monopolytech-209060985bdb\Surface\Monopolytech\bin\debug\SocketIOClient.xml
+C:\Users\AtelierIHM\Desktop\Projets_Demos\Projets\Monopolytech\monopolytech-209060985bdb\Surface\Monopolytech\bin\debug\SocketIOClient.dll
+C:\Users\AtelierIHM\Desktop\Projets_Demos\Projets\Monopolytech\monopolytech-209060985bdb\Surface\Monopolytech\bin\debug\SocketIOClient.pdb
+C:\Users\AtelierIHM\Desktop\Projets_Demos\Projets\Monopolytech\monopolytech-209060985bdb\Surface\Monopolytech\bin\debug\SocketIOClient.dll.CodeAnalysisLog.xml
+C:\Users\AtelierIHM\Desktop\Projets_Demos\Projets\Monopolytech\monopolytech-209060985bdb\Surface\Monopolytech\bin\debug\SocketIOClient.dll.lastcodeanalysissucceeded
+C:\Users\AtelierIHM\Desktop\Projets_Demos\Projets\Monopolytech\monopolytech-209060985bdb\Surface\Monopolytech\SocketIO\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\AtelierIHM\Desktop\Projets_Demos\Projets\Monopolytech\monopolytech-209060985bdb\Surface\Monopolytech\SocketIO\obj\Debug\SocketIOClient.dll
+C:\Users\AtelierIHM\Desktop\Projets_Demos\Projets\Monopolytech\monopolytech-209060985bdb\Surface\Monopolytech\SocketIO\obj\Debug\SocketIOClient.pdb
+C:\Users\AtelierIHM\Desktop\2014_2015_TD_Surface\PaintSurface\bin\debug\SocketIOClient.xml
+C:\Users\AtelierIHM\Desktop\2014_2015_TD_Surface\PaintSurface\bin\debug\SocketIOClient.dll
+C:\Users\AtelierIHM\Desktop\2014_2015_TD_Surface\PaintSurface\bin\debug\SocketIOClient.pdb
+C:\Users\AtelierIHM\Desktop\2014_2015_TD_Surface\PaintSurface\bin\debug\SocketIOClient.dll.CodeAnalysisLog.xml
+C:\Users\AtelierIHM\Desktop\2014_2015_TD_Surface\PaintSurface\bin\debug\SocketIOClient.dll.lastcodeanalysissucceeded
+C:\Users\AtelierIHM\Desktop\2014_2015_TD_Surface\PaintSurface\SocketIO\obj\Debug\SocketIOClient.csprojResolveAssemblyReference.cache
+C:\Users\AtelierIHM\Desktop\2014_2015_TD_Surface\PaintSurface\SocketIO\obj\Debug\SocketIOClient.dll
+C:\Users\AtelierIHM\Desktop\2014_2015_TD_Surface\PaintSurface\SocketIO\obj\Debug\SocketIOClient.pdb
+D:\Cours2015\InterfaceTactiles\PaintSurface\PaintSurface\PaintSurface\bin\debug\SocketIOClient.xml
+D:\Cours2015\InterfaceTactiles\PaintSurface\PaintSurface\PaintSurface\bin\debug\SocketIOClient.dll
+D:\Cours2015\InterfaceTactiles\PaintSurface\PaintSurface\PaintSurface\bin\debug\SocketIOClient.pdb
+D:\Cours2015\InterfaceTactiles\PaintSurface\PaintSurface\PaintSurface\bin\debug\SocketIOClient.dll.CodeAnalysisLog.xml
+D:\Cours2015\InterfaceTactiles\PaintSurface\PaintSurface\PaintSurface\bin\debug\SocketIOClient.dll.lastcodeanalysissucceeded
+D:\Cours2015\InterfaceTactiles\PaintSurface\PaintSurface\PaintSurface\SocketIO\obj\Debug\SocketIOClient.csprojResolveAssemblyReference.cache
+D:\Cours2015\InterfaceTactiles\PaintSurface\PaintSurface\PaintSurface\SocketIO\obj\Debug\SocketIOClient.dll
+D:\Cours2015\InterfaceTactiles\PaintSurface\PaintSurface\PaintSurface\SocketIO\obj\Debug\SocketIOClient.pdb
+C:\Users\Val\Desktop\Interface\C#\bin\debug\SocketIOClient.xml
+C:\Users\Val\Desktop\Interface\C#\bin\debug\SocketIOClient.dll
+C:\Users\Val\Desktop\Interface\C#\bin\debug\SocketIOClient.pdb
+C:\Users\Val\Desktop\Interface\C#\bin\debug\SocketIOClient.dll.CodeAnalysisLog.xml
+C:\Users\Val\Desktop\Interface\C#\bin\debug\SocketIOClient.dll.lastcodeanalysissucceeded
+C:\Users\Val\Desktop\Interface\C#\SocketIO\obj\Debug\SocketIOClient.csprojResolveAssemblyReference.cache
+C:\Users\Val\Desktop\Interface\C#\SocketIO\obj\Debug\SocketIOClient.dll
+C:\Users\Val\Desktop\Interface\C#\SocketIO\obj\Debug\SocketIOClient.pdb
+C:\Users\vince\Desktop\Nouveau dossier\paw\C#\bin\debug\SocketIOClient.xml
+C:\Users\vince\Desktop\Nouveau dossier\paw\C#\bin\debug\SocketIOClient.dll
+C:\Users\vince\Desktop\Nouveau dossier\paw\C#\bin\debug\SocketIOClient.pdb
+C:\Users\vince\Desktop\Nouveau dossier\paw\C#\bin\debug\SocketIOClient.dll.CodeAnalysisLog.xml
+C:\Users\vince\Desktop\Nouveau dossier\paw\C#\bin\debug\SocketIOClient.dll.lastcodeanalysissucceeded
+C:\Users\vince\Desktop\Nouveau dossier\paw\C#\SocketIO\obj\Debug\SocketIOClient.csprojResolveAssemblyReference.cache
+C:\Users\vince\Desktop\Nouveau dossier\paw\C#\SocketIO\obj\Debug\SocketIOClient.dll
+C:\Users\vince\Desktop\Nouveau dossier\paw\C#\SocketIO\obj\Debug\SocketIOClient.pdb
+C:\Users\ILoveOL\Documents\paw\C#\bin\debug\SocketIOClient.xml
+C:\Users\ILoveOL\Documents\paw\C#\bin\debug\SocketIOClient.dll
+C:\Users\ILoveOL\Documents\paw\C#\bin\debug\SocketIOClient.pdb
+C:\Users\ILoveOL\Documents\paw\C#\bin\debug\SocketIOClient.dll.CodeAnalysisLog.xml
+C:\Users\ILoveOL\Documents\paw\C#\bin\debug\SocketIOClient.dll.lastcodeanalysissucceeded
+C:\Users\ILoveOL\Documents\paw\C#\SocketIO\obj\Debug\SocketIOClient.csprojResolveAssemblyReference.cache
+C:\Users\ILoveOL\Documents\paw\C#\SocketIO\obj\Debug\SocketIOClient.dll
+C:\Users\ILoveOL\Documents\paw\C#\SocketIO\obj\Debug\SocketIOClient.pdb
