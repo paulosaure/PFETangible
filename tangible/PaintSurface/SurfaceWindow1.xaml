@@ -81,7 +81,8 @@
             <s:TagVisualizer  Height="650" Width="1920" Name="tagItem"   VisualizationAdded="itemPutOnTable">
                 <s:TagVisualizer.Definitions>
                     <s:TagVisualizationDefinition Value="0x1" 
-                                             OrientationOffsetFromTag="0" PhysicalCenterOffsetFromTag="0,0"
+                                                  OrientationOffsetFromTag="0" 
+                                                  PhysicalCenterOffsetFromTag="0,0"
                                                   UsesTagOrientation="True"
                                               />
                 </s:TagVisualizer.Definitions>
@@ -136,11 +137,12 @@
                         </TextBlock>
 <!-- Tag à poser -->
                         <Grid >
-                            <s:TagVisualizer  Height="650" Width="1920" Name="tagBrosseaDent"   VisualizationAdded="OnVisualizationObject">
+                            <s:TagVisualizer  Height="650" Width="1920" VisualizationAdded="OnVisualizationObject">
                                 <s:TagVisualizer.Definitions>
                                     <s:TagVisualizationDefinition Value="0x1" 
-                                             OrientationOffsetFromTag="0" PhysicalCenterOffsetFromTag="0,0"
-                                                  UsesTagOrientation="True"
+                                              OrientationOffsetFromTag="0" 
+                                              PhysicalCenterOffsetFromTag="0,0"
+                                              UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition Value="0x2"
                                               OrientationOffsetFromTag="0"

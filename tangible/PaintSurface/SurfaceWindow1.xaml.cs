@@ -191,11 +191,8 @@ namespace PaintSurface
         private void OnVisualizationObject(object sender, TagVisualizerEventArgs e)
         {
             TagVisualizer visualizer = e.TagVisualization.Visualizer;
-            Point pt = visualizer.TouchesCaptured.ElementAt(cpt).GetCenterPosition(visualizer);
-           // Point pt = new Point(visualizer.ActualWidth / 2, visualizer.ActualHeight / 2);
-       //     pt.X /= InteractiveSurface.PrimarySurfaceDevice.LogicalDpiX;
-        //    pt.Y /= InteractiveSurface.PrimarySurfaceDevice.LogicalDpiY;
-            
+            Point pt = e.TagVisualization.Center;
+
             Trace.WriteLine("Test : " + pt.X + " - " + pt.Y);
             cpt++;
 
@@ -321,15 +318,6 @@ namespace PaintSurface
             }
         }
 
-        private void img_GiveFeedback(object sender, System.Windows.GiveFeedbackEventArgs e)
-        {
-
-        }
-
-        private void mouseUp(object sender, MouseButtonEventArgs e)
-        {
-          
-        }
         void Window1_Closing(object sender, CancelEventArgs e)
         {
 
