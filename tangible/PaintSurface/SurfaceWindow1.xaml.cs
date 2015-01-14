@@ -233,27 +233,27 @@ namespace PaintSurface
          //       {
                     case 0x0A:
                         action1 = true;
-                        valideActions(pt);
+                        valideActions(pt, brossePt);
                         break;
                     case 0x0B:
                         action2 = true;
-                        valideActions(pt);
+                        valideActions(pt, dentifricePt);
                         break;
                     case 0xC5:
                         action3 = true;
-                        valideActions(pt);
+                        valideActions(pt, brossePt);
                         break;
                     case 0x0D:
                         action4 = true;
-                        valideActions(pt);
+                        valideActions(pt, brossePt);
                         break;
                     case 0x0E:
                         action5 = true;
-                        valideActions(pt);
+                        valideActions(pt, verrePt);
                         break;
                     case 0x0F:
                         action6 = true;
-                        valideActions(pt);
+                        valideActions(pt, verrePt);
                         break;
                     default: break;
                 }
@@ -269,9 +269,9 @@ namespace PaintSurface
             }
         }
 
-        private void valideActions(Point a)
+        private void valideActions(Point a, Point b)
         {
-            drawLine(a, brossePt);
+            drawLine(a, b);
 
             if (action1 && action2 && action3 && action4 && action5 && action6)
             {
@@ -288,15 +288,14 @@ namespace PaintSurface
             myLine.Y1 = a.Y;
             myLine.Y2 = b.Y;
             // Create a red Brush
-            SolidColorBrush redBrush = new SolidColorBrush();
-            redBrush.Color = Colors.Red;
+            SolidColorBrush greenBrush = new SolidColorBrush();
+            greenBrush.Color = Colors.Green;
 
             // Set Line's width and color
-            myLine.StrokeThickness = 4;
-            myLine.Stroke = redBrush;
+            myLine.StrokeThickness = 2;
+            myLine.Stroke = greenBrush;
 
             objet.Children.Add(myLine);
-           
         }
 
         private void DropList_Drop(object sender, DragEventArgs e)
