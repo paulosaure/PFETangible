@@ -5,8 +5,10 @@
     Title="PaintSurface"
     >
 
-    <Grid x:Name="main" >
-        <Image Source="/Resources/backgroud.jpg"  Width="1920" Height="1080"/>
+    <Grid x:Name="main" Width="1920" Height="1080" >
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/backgroud.jpg" />
+        </Grid.Background>
         
 <!--Vue présentation roue-->
         <!--Visible Hidden -->
@@ -137,49 +139,58 @@
                         </TextBlock>
 <!-- Tag à poser -->
                         <Grid>
-                            <s:TagVisualizer Height="650" Width="1920" VisualizationMoved="OnVisualizationMoved" VisualizationAdded="OnVisualizationAdded" VisualizationRemoved="OnVisualizationRemoved">
+                            <s:TagVisualizer Height="650" Width="1920"  Name="tagAction" VisualizationMoved="OnVisualizationMoved" VisualizationAdded="OnVisualizationAdded" VisualizationRemoved="OnVisualizationRemoved">
                                 <s:TagVisualizer.Definitions>
-                                    <s:TagVisualizationDefinition Value="0x1" 
+                                    <s:TagVisualizationDefinition Value="0x1"
+                                              Source="empty.xaml"
                                               OrientationOffsetFromTag="0" 
                                               PhysicalCenterOffsetFromTag="0,0"
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition Value="0x2"
+                                              Source="empty.xaml"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition Value="0x3"
+                                              Source="empty.xaml"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition Value="0xA"
+                                              Source="empty.xaml"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition Value="0xB"
+                                              Source="empty.xaml"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition Value="0xC5"
+                                              Source="empty.xaml"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition Value="0xD"
+                                              Source="empty.xaml"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition Value="0xE"
+                                              Source="empty.xaml"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition Value="0xF"
+                                              Source="empty.xaml"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"

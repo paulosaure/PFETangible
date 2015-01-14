@@ -281,3 +281,5 @@ C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\PaintSurface_Marku
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\PaintSurface.g.resources
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\PaintSurface.Properties.Resources.resources
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\PaintSurface.csproj.GenerateResource.Cache
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\empty.baml
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\empty.g.cs
