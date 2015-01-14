@@ -30,6 +30,16 @@ namespace PaintSurface
     /// </summary>
     public partial class SurfaceWindow1 : SurfaceWindow
     {
+        const long valueBrosse = 0x1 ;
+        const long valueDenti = 0x2;
+        const long valueVerre = 0x3;
+        const long action1Value = 0xA;
+        const long action2Value = 0xB;
+        const long action3Value = 0xC5;
+        const long action4Value = 0xD;
+        const long action5Value = 0xE;
+        const long action6Value = 0xF;
+
         private bool brosseadentBool = false, verreBool = false, dentifriceBool = false;
         private Point brossePt, verrePt, dentifricePt;
         private bool action1, action2, action3, action4, action5, action6 = false;
@@ -72,13 +82,13 @@ namespace PaintSurface
             dentifriceSon.Open(new Uri(@"Resources\sonDentifrice.wav", UriKind.Relative));
             verreSon.Open(new Uri(@"Resources\sonVerre.wav", UriKind.Relative));
 
-            test.Add(new Tuple<long, long>(0xA, 0x1));
+         /*   test.Add(new Tuple<long, long>(0xA, 0x1));
             test.Add(new Tuple<long, long>(0xB, 0x2));
             test.Add(new Tuple<long, long>(0xC5, 0x1));
             test.Add(new Tuple<long, long>(0xD, 0x1));
             test.Add(new Tuple<long, long>(0xE, 0x3));
             test.Add(new Tuple<long, long>(0xF, 0x3));
-
+*/
             listObjectAction.Add(0xA, 0x1);
             listObjectAction.Add(0xB, 0x2);
             listObjectAction.Add(0xC5, 0x1);
@@ -221,14 +231,14 @@ namespace PaintSurface
         //    {
                 switch (valueObjectPut)
                 {
-                    case 1:
+                    case valueBrosse:
                         brossePt = pt;
                         borderAideBrosseDent.BorderBrush = Brushes.Green; 
                         borderAideBrosseDent2.BorderBrush = Brushes.Green; 
                         brosseadentBool = true; 
                         valideObjet(); 
                         break;
-                    case 2:
+                    case valueDenti:
                         verrePt = pt;
                         borderDentifrice.BorderBrush = Brushes.Green; 
                         borderDentifrice2.BorderBrush = Brushes.Green; 
@@ -236,7 +246,7 @@ namespace PaintSurface
                         dentifriceBool = true; 
                         valideObjet(); 
                         break;
-                    case 3:
+                    case valueVerre:
                         dentifricePt = pt;
                         borderVerre.BorderBrush = Brushes.Green; 
                         borderVerre2.BorderBrush = Brushes.Green; 
@@ -250,27 +260,27 @@ namespace PaintSurface
           //  else {
           //      switch (valueObjectPut)
          //       {
-                    case 0x0A:
+                    case action1Value:
                         action1 = true;
                         valideActions(pt, brossePt, 0x0A);
                         break;
-                    case 0x0B:
+                    case action2Value:
                         action2 = true;
                         valideActions(pt, dentifricePt, 0x0B);
                         break;
-                    case 0xC5:
+                    case action3Value:
                         action3 = true;
                         valideActions(pt, brossePt, 0xC5);
                         break;
-                    case 0x0D:
+                    case action4Value:
                         action4 = true;
                         valideActions(pt, brossePt, 0x0D);
                         break;
-                    case 0x0E:
+                    case action5Value:
                         action5 = true;
                         valideActions(pt, verrePt, 0x0E);
                         break;
-                    case 0x0F:
+                    case action6Value:
                         action6 = true;
                         valideActions(pt, verrePt, 0x0F);
                         break;
@@ -285,14 +295,14 @@ namespace PaintSurface
 
             switch (valueObjectPut)
             {
-                case 0x1:
+                case valueBrosse:
                     brossePt = new Point();
                     borderAideBrosseDent.BorderBrush = null;
                     borderAideBrosseDent2.BorderBrush = null;
                     brosseadentBool = false;
                     valideObjet();
                     break;
-                case 0x2:
+                case valueDenti:
                     verrePt = new Point();
                     borderDentifrice.BorderBrush = null;
                     borderDentifrice2.BorderBrush = null;
@@ -300,7 +310,7 @@ namespace PaintSurface
                     dentifriceBool = false;
                     valideObjet();
                     break;
-                case 0x3:
+                case valueVerre:
                     dentifricePt = new Point();
                     borderVerre.BorderBrush = null;
                     borderVerre2.BorderBrush = null ;
@@ -308,23 +318,28 @@ namespace PaintSurface
                     verreBool = false;
                     valideObjet();
                     break;
-                case 0xA:
-                    suppressLine(0xA);
+                case action1Value:
+                    suppressLine(action1Value);
                     action1 = false;
                     break;
-                case 0xB:
+                case action2Value:
+                    suppressLine(action2Value);
                     action2 = false;
                     break;
-                case 0xC5:
+                case action3Value:
+                    suppressLine(action3Value);
                     action3 = false;
                     break;
-                case 0xD:
+                case action4Value:
+                    suppressLine(action4Value);
                     action4 = false;
                     break;
-                case 0xE:
+                case action5Value:
+                    suppressLine(action5Value);
                     action5 = false;
                     break;
-                case 0xF:
+                case action6Value:
+                    suppressLine(action6Value);
                     action6 = false;
                     break;
                 default: break;
