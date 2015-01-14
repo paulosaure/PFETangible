@@ -192,12 +192,17 @@ namespace PaintSurface
         {
             TagVisualizer visualizer = e.TagVisualization.Visualizer;
             Point pt = visualizer.TouchesCaptured.ElementAt(cpt).GetCenterPosition(visualizer);
+           // Point pt = new Point(visualizer.ActualWidth / 2, visualizer.ActualHeight / 2);
+       //     pt.X /= InteractiveSurface.PrimarySurfaceDevice.LogicalDpiX;
+        //    pt.Y /= InteractiveSurface.PrimarySurfaceDevice.LogicalDpiY;
+            
+            Trace.WriteLine("Test : " + pt.X + " - " + pt.Y);
             cpt++;
 
             long valueObjectPut = e.TagVisualization.VisualizedTag.Value;
 
-            if (valueObjectPut == 1 || valueObjectPut == 2 || valueObjectPut == 3)
-            {
+         //   if (valueObjectPut == 1 || valueObjectPut == 2 || valueObjectPut == 3)
+        //    {
                 switch (valueObjectPut)
                 {
                     case 1:
@@ -223,12 +228,12 @@ namespace PaintSurface
                         verreBool = true; 
                         valideObjet(); 
                         break;
-                    default: break;
-                }
-            }
-            else {
-                switch (valueObjectPut)
-                {
+             //       default: break;
+             //   }
+        //    }
+          //  else {
+          //      switch (valueObjectPut)
+         //       {
                     case 0x0A:
                         action1 = true;
                         valideActions(pt);
@@ -255,7 +260,7 @@ namespace PaintSurface
                         break;
                     default: break;
                 }
-            }
+           // }
         }
 
         private void valideObjet()
