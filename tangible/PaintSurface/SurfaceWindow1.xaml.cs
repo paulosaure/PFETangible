@@ -30,6 +30,9 @@ namespace PaintSurface
     /// </summary>
     public partial class SurfaceWindow1 : SurfaceWindow
     {
+
+        bool allTagPut = true;
+
         const long valueBrosse = 0x1 ;
         const long valueDenti = 0x2;
         const long valueVerre = 0x3;
@@ -40,14 +43,14 @@ namespace PaintSurface
         const long action5Value = 0xE;
         const long action6Value = 0xF;
 
-        private bool brosseadentBool = false, verreBool = false, dentifriceBool = false;
         private Point brossePt, verrePt, dentifricePt;
         private Point action1Pt, action2Pt, action3Pt, action4Pt, action5Pt, action6Pt;
 
         Dictionary<long, long> listObjectAction = new Dictionary<long, long>();
-        Dictionary<long, bool> listActionsPut = new Dictionary<long, bool>();
-        Dictionary<long, bool> listObjetsPut = new Dictionary<long, bool>();
-        Dictionary<long, Point> listActionsValuePositions = new Dictionary<long, Point>();
+        Dictionary<long, bool> listTagPut = new Dictionary<long, bool>();
+
+        Dictionary<long, Point> listTagPositions = new Dictionary<long, Point>();
+
         Dictionary<Tuple<long, long>, Line> allLinks = new Dictionary<Tuple<long, long>, Line>();
 
         //Vue choix lieu
@@ -91,24 +94,25 @@ namespace PaintSurface
             listObjectAction.Add(action5Value, valueVerre);
             listObjectAction.Add(action6Value, valueVerre);
 
-            listActionsPut.Add(action1Value, false);
-            listActionsPut.Add(action2Value, false);
-            listActionsPut.Add(action3Value, false);
-            listActionsPut.Add(action4Value, false);
-            listActionsPut.Add(action5Value, false);
-            listActionsPut.Add(action6Value, false);
+            listTagPut.Add(valueBrosse, false);
+            listTagPut.Add(valueDenti, false);
+            listTagPut.Add(valueVerre, false);
+            listTagPut.Add(action1Value, false);
+            listTagPut.Add(action2Value, false);
+            listTagPut.Add(action3Value, false);
+            listTagPut.Add(action4Value, false);
+            listTagPut.Add(action5Value, false);
+            listTagPut.Add(action6Value, false);
 
-            listObjetsPut.Add(valueBrosse, false);
-            listObjetsPut.Add(valueDenti, false);
-            listObjetsPut.Add(valueVerre, false);
-
-
-            listActionsValuePositions.Add(action1Value, action1Pt);
-            listActionsValuePositions.Add(action2Value, action2Pt);
-            listActionsValuePositions.Add(action3Value, action3Pt);
-            listActionsValuePositions.Add(action4Value, action4Pt);
-            listActionsValuePositions.Add(action5Value, action5Pt);
-            listActionsValuePositions.Add(action6Value, action6Pt);
+            listTagPositions.Add(valueBrosse, brossePt);
+            listTagPositions.Add(valueDenti, dentifricePt);
+            listTagPositions.Add(valueVerre, verrePt);
+            listTagPositions.Add(action1Value, action1Pt);
+            listTagPositions.Add(action2Value, action2Pt);
+            listTagPositions.Add(action3Value, action3Pt);
+            listTagPositions.Add(action4Value, action4Pt);
+            listTagPositions.Add(action5Value, action5Pt);
+            listTagPositions.Add(action6Value, action6Pt);
 
             // Add handlers for window availability events
             AddWindowAvailabilityHandlers();
@@ -185,7 +189,11 @@ namespace PaintSurface
         {
             myGrid.Visibility = Visibility.Hidden;
             objet.Visibility = Visibility.Visible;
+
+            long valueObjectPut = e.TagVisualization.VisualizedTag.Value;
+            listTagPut[valueObjectPut] = true;
             foundObject();
+            OnVisualizationAdded(sender, e);
         }
 
         private async void foundObject()
@@ -236,7 +244,7 @@ namespace PaintSurface
             Point pt = e.TagVisualization.Center;
             pt.Y = pt.Y + 210;
             long valueObjectPut = e.TagVisualization.VisualizedTag.Value;
-
+            listTagPut[valueObjectPut] = true;
         //   if (valueObjectPut == valueBrosse || valueObjectPut == valueDenti || valueObjectPut == valueVerre)
         //    {
                 switch (valueObjectPut)
@@ -244,25 +252,25 @@ namespace PaintSurface
                     case valueBrosse:
                         brossePt = pt;
                         borderAideBrosseDent.BorderBrush = Brushes.Green; 
-                        borderAideBrosseDent2.BorderBrush = Brushes.Green; 
-                        listObjetsPut[valueBrosse] = true;
-                        valideObjet(brossePt, valueBrosse); 
+                        borderAideBrosseDent2.BorderBrush = Brushes.Green;
+                        addLineWithObjects(brossePt, valueBrosse);
+                        hideHelp(brossePt, valueBrosse); 
                         break;
                     case valueDenti:
                         verrePt = pt;
                         borderDentifrice.BorderBrush = Brushes.Green; 
                         borderDentifrice2.BorderBrush = Brushes.Green; 
                         borderDentifrice.Visibility = Visibility.Visible;
-                        listObjetsPut[valueDenti] = true;
-                        valideObjet(dentifricePt, valueDenti); 
+                        addLineWithObjects(dentifricePt, valueDenti);
+                        hideHelp(dentifricePt, valueDenti);
                         break;
                     case valueVerre:
                         dentifricePt = pt;
                         borderVerre.BorderBrush = Brushes.Green; 
                         borderVerre2.BorderBrush = Brushes.Green; 
                         borderVerre.Visibility = Visibility.Visible;
-                        listObjetsPut[valueVerre] = true;
-                        valideObjet(verrePt, valueVerre); 
+                        addLineWithObjects(verrePt, valueVerre);
+                        hideHelp(verrePt, valueVerre);
                         break;
              //       default: break;
              //   }
@@ -272,43 +280,38 @@ namespace PaintSurface
          //       {
                     case action1Value:
                         action1Pt = pt;
-                        listActionsPut[action1Value] = true;
-                        valideActions(pt, brossePt, action1Value);
+                        addLineWithActions(pt, brossePt, action1Value);
                         break;
                     case action2Value:
                         action2Pt = pt;
-                        listActionsPut[action2Value] = true;
-                        valideActions(pt, dentifricePt, action2Value);
+                        addLineWithActions(pt, dentifricePt, action2Value);
                         break;
                     case action3Value:
                         action3Pt = pt;
-                        listActionsPut[action3Value] = true;
-                        valideActions(pt, brossePt, action3Value);
+                        addLineWithActions(pt, brossePt, action3Value);
                         break;
                     case action4Value:
                         action4Pt = pt;
-                        listActionsPut[action4Value] = true;
-                        valideActions(pt, brossePt, action4Value);
+                        addLineWithActions(pt, brossePt, action4Value);
                         break;
                     case action5Value:
                         action5Pt = pt;
-                        listActionsPut[action5Value] = true;
-                        valideActions(pt, verrePt, action5Value);
+                        addLineWithActions(pt, verrePt, action5Value);
                         break;
                     case action6Value:
                         action6Pt = pt;
-                        listActionsPut[action6Value] = true;
-                        valideActions(pt, verrePt, action6Value);
+                        addLineWithActions(pt, verrePt, action6Value);
                         break;
                     default: break;
                 }
            // }
+                switchViewOrdonnancement();
         }
 
         public void OnVisualizationRemoved(object sender, TagVisualizerEventArgs e)
         {
             long valueObjectPut = e.TagVisualization.VisualizedTag.Value;
-
+            listTagPut[valueObjectPut] = false;
             switch (valueObjectPut)
             {
                 case valueBrosse:
@@ -316,7 +319,6 @@ namespace PaintSurface
                     brossePt = new Point();
                     borderAideBrosseDent.BorderBrush = null;
                     borderAideBrosseDent2.BorderBrush = null;
-                    listObjetsPut[valueBrosse] = false;
                     break;
                 case valueDenti:
                     removeObject(valueDenti);
@@ -324,7 +326,6 @@ namespace PaintSurface
                     borderDentifrice.BorderBrush = null;
                     borderDentifrice2.BorderBrush = null;
                     borderDentifrice.Visibility = Visibility.Hidden;
-                    listObjetsPut[valueDenti] = false;
                     break;
                 case valueVerre:
                     removeObject(valueVerre);
@@ -332,30 +333,23 @@ namespace PaintSurface
                     borderVerre.BorderBrush = null;
                     borderVerre2.BorderBrush = null ;
                     borderVerre.Visibility = Visibility.Hidden;
-                    listObjetsPut[valueVerre] = false;
                     break;
                 case action1Value:
-                    listActionsPut[action1Value] = false;
                     removeAction(action1Value);
                     break;
                 case action2Value:
-                    listActionsPut[action2Value] = false;
                     removeAction(action2Value);
                     break;
                 case action3Value:
-                    listActionsPut[action3Value] = false;
                     removeAction(action3Value);
                     break;
                 case action4Value:
-                    listActionsPut[action4Value] = false;
                     removeAction(action4Value);
                     break;
                 case action5Value:
-                    listActionsPut[action5Value] = false;
                     removeAction(action5Value);
                     break;
                 case action6Value:
-                    listActionsPut[action6Value] = false;
                     removeAction(action6Value);
                     break;
                 default: break;
@@ -367,34 +361,39 @@ namespace PaintSurface
 
         }
 
-        private void valideObjet(Point a, long valueA)
+        private void hideHelp(Point a, long valueA)
         {
-            drawLineWithObjects(a, valueA);
-
-            if ( brosseadentBool && verreBool && dentifriceBool)
+            if (listTagPut[valueBrosse] && listTagPut[valueDenti] && listTagPut[valueVerre])
             {
                 aideTop.Visibility = Visibility.Hidden;
                 aideBot.Visibility = Visibility.Hidden;
             }
         }
 
-        private void valideActions(Point a, Point b, long valueA)
+        private void addLineWithActions(Point a, Point b, long valueA)
         {
-            drawLineWithActions(a, b, valueA);
-            bool allActionPut = true;
-
-            //Allez à la prochaine vue
-            foreach (KeyValuePair<long, bool> pair in listActionsPut)
+            long valueB = listObjectAction[valueA];//On choppe l'objet
+            if (listTagPut[valueB])
             {
-                if (pair.Value == false)
+                Line myLine = createLine(a, b);
+                allLinks.Add(new Tuple<long, long>(valueA, valueB), myLine);
+                objet.Children.Add(myLine);
+            }
+        }
+
+        public void addLineWithObjects(Point a, long value)
+        {
+            foreach (KeyValuePair<long, long> pair in listObjectAction)
+            {
+                //Console.WriteLine("Test Remove : " + pair.Key + " et " + pair.Value);
+                if (pair.Value == value && listTagPut[pair.Key])
                 {
-                    allActionPut = false;
+                    Line myLine = createLine(listTagPositions[pair.Key], a); 
+                    Tuple<long, long> tmp = new Tuple<long, long>(pair.Key, pair.Value);
+                    objet.Children.Add(myLine);
+                    allLinks.Add(tmp, myLine);
                 }
             }
-            if (allActionPut)
-             {
-                 ordonnancement.Visibility = Visibility.Visible;
-             }
         }
 
         private Line createLine(Point a, Point b)
@@ -415,38 +414,12 @@ namespace PaintSurface
             return myLine;
         }
 
-        private void drawLineWithActions(Point a, Point b, long valueA)
-        {
-            long valueB = listObjectAction[valueA];
-            if (listObjetsPut[valueB])
-            {
-                Line myLine = createLine(a, b);
-                allLinks.Add(new Tuple<long, long>(valueA, valueB), myLine);
-                objet.Children.Add(myLine);
-            }
-        }
-
-        public void drawLineWithObjects(Point a, long value)
-        {
-            foreach (KeyValuePair<long, long> pair in listObjectAction)
-            {
-                //Console.WriteLine("Test Remove : " + pair.Key + " et " + pair.Value);
-                if (pair.Value == value && listActionsPut[pair.Key])
-                {
-                    Line myLine = createLine(listActionsValuePositions[pair.Key], a); 
-                    Tuple<long, long> tmp = new Tuple<long, long>(pair.Key, pair.Value);
-                    objet.Children.Add(myLine);
-                    allLinks.Add(tmp, myLine);
-                }
-            }
-        }
-
         private void removeObject(long value)
         {
             foreach (KeyValuePair<long, long> pair in listObjectAction)
             {
                 //Console.WriteLine("Test Remove : " + pair.Key + " et " + pair.Value);
-                if (pair.Value == value && listActionsPut[pair.Key])
+                if (pair.Value == value && listTagPut[pair.Key])
                 {
                     Tuple<long, long> tmp = new Tuple<long, long>(pair.Key, pair.Value);
                     objet.Children.Remove(allLinks[tmp]);
@@ -462,6 +435,22 @@ namespace PaintSurface
             {
                 objet.Children.Remove(allLinks[tmp]);
                 allLinks.Remove(tmp);
+            }
+        }
+
+        public void switchViewOrdonnancement()
+        {
+            //Allez à la prochaine vue
+            foreach (KeyValuePair<long, bool> pair in listTagPut)
+            {
+                if (pair.Value == false)
+                {
+                    allTagPut = false;
+                }
+            }
+            if (allTagPut)
+            {
+                ordonnancement.Visibility = Visibility.Visible;
             }
         }
 
