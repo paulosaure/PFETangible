@@ -239,7 +239,7 @@ namespace PaintSurface
                         action2 = true;
                         valideActions(pt);
                         break;
-                    case 0x0C:
+                    case 0xC5:
                         action3 = true;
                         valideActions(pt);
                         break;

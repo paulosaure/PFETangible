@@ -136,7 +136,7 @@
                             </TextBlock.RenderTransform>
                         </TextBlock>
 <!-- Tag à poser -->
-                        <Grid >
+                        <Grid>
                             <s:TagVisualizer  Height="650" Width="1920" VisualizationAdded="OnVisualizationObject">
                                 <s:TagVisualizer.Definitions>
                                     <s:TagVisualizationDefinition Value="0x1" 
@@ -164,7 +164,7 @@
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
                                               />
-                                    <s:TagVisualizationDefinition Value="0xC"
+                                    <s:TagVisualizationDefinition Value="0xC5"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
