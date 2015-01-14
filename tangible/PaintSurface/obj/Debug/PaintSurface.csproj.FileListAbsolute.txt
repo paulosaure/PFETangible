@@ -254,3 +254,6 @@ C:\Users\Paul\Git\PFE\tangible\PaintSurface\bin\Debug\brosseDents.xaml.cs
 C:\Users\Paul\Git\PFE\tangible\PaintSurface\bin\Debug\PaintSurface.exe
 C:\Users\Paul\Git\PFE\tangible\PaintSurface\bin\Debug\PaintSurface.pdb
 C:\Users\Paul\Git\PFE\tangible\PaintSurface\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\PaintSurface.exe.config
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\PaintSurface.exe
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\PaintSurface.pdb
