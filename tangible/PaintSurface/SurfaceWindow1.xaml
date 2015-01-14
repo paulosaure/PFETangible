@@ -82,8 +82,7 @@
 
             <s:TagVisualizer  Height="650" Width="1920" Name="tagItem"   VisualizationAdded="itemPutOnTable">
                 <s:TagVisualizer.Definitions>
-                    <s:TagVisualizationDefinition Value="0x1" 
-                                                  OrientationOffsetFromTag="0" 
+                    <s:TagVisualizationDefinition OrientationOffsetFromTag="0" 
                                                   PhysicalCenterOffsetFromTag="0,0"
                                                   UsesTagOrientation="True"
                                               />

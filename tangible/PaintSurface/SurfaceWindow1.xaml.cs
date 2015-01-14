@@ -42,9 +42,12 @@ namespace PaintSurface
 
         private bool brosseadentBool = false, verreBool = false, dentifriceBool = false;
         private Point brossePt, verrePt, dentifricePt;
+        private Point action1Pt, action2Pt, action3Pt, action4Pt, action5Pt, action6Pt;
 
         Dictionary<long, long> listObjectAction = new Dictionary<long, long>();
         Dictionary<long, bool> listActionsPut = new Dictionary<long, bool>();
+        Dictionary<long, bool> listObjetsPut = new Dictionary<long, bool>();
+        Dictionary<long, Point> listActionsValuePositions = new Dictionary<long, Point>();
         Dictionary<Tuple<long, long>, Line> allLinks = new Dictionary<Tuple<long, long>, Line>();
 
         //Vue choix lieu
@@ -81,20 +84,31 @@ namespace PaintSurface
             dentifriceSon.Open(new Uri(@"Resources\sonDentifrice.wav", UriKind.Relative));
             verreSon.Open(new Uri(@"Resources\sonVerre.wav", UriKind.Relative));
 
-            listObjectAction.Add(0xA, 0x1);
-            listObjectAction.Add(0xB, 0x2);
-            listObjectAction.Add(0xC5, 0x1);
-            listObjectAction.Add(0xD, 0x1);
-            listObjectAction.Add(0xE, 0x3);
-            listObjectAction.Add(0xF, 0x3);
+            listObjectAction.Add(action1Value, valueBrosse);
+            listObjectAction.Add(action2Value, valueDenti);
+            listObjectAction.Add(action3Value, valueBrosse);
+            listObjectAction.Add(action4Value, valueBrosse);
+            listObjectAction.Add(action5Value, valueVerre);
+            listObjectAction.Add(action6Value, valueVerre);
 
-            listActionsPut.Add(0xA, false);
-            listActionsPut.Add(0xB, false);
-            listActionsPut.Add(0xC5, false);
-            listActionsPut.Add(0xD, false);
-            listActionsPut.Add(0xE, false);
-            listActionsPut.Add(0xF, false);
+            listActionsPut.Add(action1Value, false);
+            listActionsPut.Add(action2Value, false);
+            listActionsPut.Add(action3Value, false);
+            listActionsPut.Add(action4Value, false);
+            listActionsPut.Add(action5Value, false);
+            listActionsPut.Add(action6Value, false);
 
+            listObjetsPut.Add(valueBrosse, false);
+            listObjetsPut.Add(valueDenti, false);
+            listObjetsPut.Add(valueVerre, false);
+
+
+            listActionsValuePositions.Add(action1Value, action1Pt);
+            listActionsValuePositions.Add(action2Value, action2Pt);
+            listActionsValuePositions.Add(action3Value, action3Pt);
+            listActionsValuePositions.Add(action4Value, action4Pt);
+            listActionsValuePositions.Add(action5Value, action5Pt);
+            listActionsValuePositions.Add(action6Value, action6Pt);
 
             // Add handlers for window availability events
             AddWindowAvailabilityHandlers();
@@ -231,23 +245,23 @@ namespace PaintSurface
                         brossePt = pt;
                         borderAideBrosseDent.BorderBrush = Brushes.Green; 
                         borderAideBrosseDent2.BorderBrush = Brushes.Green; 
-                        brosseadentBool = true;
+                        listObjetsPut[valueBrosse] = true;
                         valideObjet(brossePt, valueBrosse); 
                         break;
                     case valueDenti:
                         verrePt = pt;
                         borderDentifrice.BorderBrush = Brushes.Green; 
                         borderDentifrice2.BorderBrush = Brushes.Green; 
-                        borderDentifrice.Visibility = Visibility.Visible; 
-                        dentifriceBool = true;
+                        borderDentifrice.Visibility = Visibility.Visible;
+                        listObjetsPut[valueDenti] = true;
                         valideObjet(dentifricePt, valueDenti); 
                         break;
                     case valueVerre:
                         dentifricePt = pt;
                         borderVerre.BorderBrush = Brushes.Green; 
                         borderVerre2.BorderBrush = Brushes.Green; 
-                        borderVerre.Visibility = Visibility.Visible; 
-                        verreBool = true;
+                        borderVerre.Visibility = Visibility.Visible;
+                        listObjetsPut[valueVerre] = true;
                         valideObjet(verrePt, valueVerre); 
                         break;
              //       default: break;
@@ -257,26 +271,32 @@ namespace PaintSurface
           //      switch (valueObjectPut)
          //       {
                     case action1Value:
+                        action1Pt = pt;
                         listActionsPut[action1Value] = true;
                         valideActions(pt, brossePt, action1Value);
                         break;
                     case action2Value:
+                        action2Pt = pt;
                         listActionsPut[action2Value] = true;
                         valideActions(pt, dentifricePt, action2Value);
                         break;
                     case action3Value:
+                        action3Pt = pt;
                         listActionsPut[action3Value] = true;
                         valideActions(pt, brossePt, action3Value);
                         break;
                     case action4Value:
+                        action4Pt = pt;
                         listActionsPut[action4Value] = true;
                         valideActions(pt, brossePt, action4Value);
                         break;
                     case action5Value:
+                        action5Pt = pt;
                         listActionsPut[action5Value] = true;
                         valideActions(pt, verrePt, action5Value);
                         break;
                     case action6Value:
+                        action6Pt = pt;
                         listActionsPut[action6Value] = true;
                         valideActions(pt, verrePt, action6Value);
                         break;
@@ -296,7 +316,7 @@ namespace PaintSurface
                     brossePt = new Point();
                     borderAideBrosseDent.BorderBrush = null;
                     borderAideBrosseDent2.BorderBrush = null;
-                    brosseadentBool = false;
+                    listObjetsPut[valueBrosse] = false;
                     break;
                 case valueDenti:
                     removeObject(valueDenti);
@@ -304,7 +324,7 @@ namespace PaintSurface
                     borderDentifrice.BorderBrush = null;
                     borderDentifrice2.BorderBrush = null;
                     borderDentifrice.Visibility = Visibility.Hidden;
-                    dentifriceBool = false;
+                    listObjetsPut[valueDenti] = false;
                     break;
                 case valueVerre:
                     removeObject(valueVerre);
@@ -312,7 +332,7 @@ namespace PaintSurface
                     borderVerre.BorderBrush = null;
                     borderVerre2.BorderBrush = null ;
                     borderVerre.Visibility = Visibility.Hidden;
-                    verreBool = false;
+                    listObjetsPut[valueVerre] = false;
                     break;
                 case action1Value:
                     listActionsPut[action1Value] = false;
@@ -341,6 +361,7 @@ namespace PaintSurface
                 default: break;
             }
         }
+
         private void OnVisualizationMoved(object sender, TagVisualizerEventArgs e)
         {
 
@@ -361,6 +382,8 @@ namespace PaintSurface
         {
             drawLineWithActions(a, b, valueA);
             bool allActionPut = true;
+
+            //Allez à la prochaine vue
             foreach (KeyValuePair<long, bool> pair in listActionsPut)
             {
                 if (pair.Value == false)
@@ -374,7 +397,7 @@ namespace PaintSurface
              }
         }
 
-        private void drawLineWithActions(Point a, Point b, long valueA)
+        private Line createLine(Point a, Point b)
         {
             Line myLine = new Line();
             myLine.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
@@ -389,16 +412,33 @@ namespace PaintSurface
             // Set Line's width and color
             myLine.StrokeThickness = 2;
             myLine.Stroke = greenBrush;
-
-            //ajout de la ligne au dictionnaire
-            long valueB = listObjectAction[valueA];
-            Console.WriteLine("Test Add : " + valueA + " et " + valueB);
-            allLinks.Add(new Tuple<long,long>(valueA, valueB), myLine);
-            objet.Children.Add(myLine);
+            return myLine;
         }
 
-        public void drawLineWithObjects(Point a, long valueA){
+        private void drawLineWithActions(Point a, Point b, long valueA)
+        {
+            long valueB = listObjectAction[valueA];
+            if (listObjetsPut[valueB])
+            {
+                Line myLine = createLine(a, b);
+                allLinks.Add(new Tuple<long, long>(valueA, valueB), myLine);
+                objet.Children.Add(myLine);
+            }
+        }
 
+        public void drawLineWithObjects(Point a, long value)
+        {
+            foreach (KeyValuePair<long, long> pair in listObjectAction)
+            {
+                //Console.WriteLine("Test Remove : " + pair.Key + " et " + pair.Value);
+                if (pair.Value == value && listActionsPut[pair.Key])
+                {
+                    Line myLine = createLine(listActionsValuePositions[pair.Key], a); 
+                    Tuple<long, long> tmp = new Tuple<long, long>(pair.Key, pair.Value);
+                    objet.Children.Add(myLine);
+                    allLinks.Add(tmp, myLine);
+                }
+            }
         }
 
         private void removeObject(long value)
@@ -408,10 +448,9 @@ namespace PaintSurface
                 //Console.WriteLine("Test Remove : " + pair.Key + " et " + pair.Value);
                 if (pair.Value == value && listActionsPut[pair.Key])
                 {
-                    Console.WriteLine("Test Remove : " + pair.Key + " et " + pair.Value);
                     Tuple<long, long> tmp = new Tuple<long, long>(pair.Key, pair.Value);
                     objet.Children.Remove(allLinks[tmp]);
-                    allLinks.Remove(new Tuple<long, long>(pair.Key, pair.Value));
+                    allLinks.Remove(tmp);
                 }
             }
         }
