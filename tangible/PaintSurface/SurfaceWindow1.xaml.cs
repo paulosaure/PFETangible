@@ -22,6 +22,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
+
 namespace PaintSurface
 {
     /// <summary>
@@ -32,6 +33,9 @@ namespace PaintSurface
         private bool brosseadentBool = false, verreBool = false, dentifriceBool = false;
         private Point brossePt, verrePt, dentifricePt;
         private bool action1, action2, action3, action4, action5, action6 = false;
+        //List<Tuple<long, long>> test = new List <Tuple<long, long>>();
+        Dictionary<long, long> listObjectAction = new Dictionary<long, long>();
+        Dictionary<Tuple<long, long>, Line> allLinks = new Dictionary<Tuple<long, long>, Line>();
         int cpt = 0;
 
         //Vue choix lieu
@@ -67,6 +71,21 @@ namespace PaintSurface
             brosseadentSon.Open(new Uri(@"Resources\sonBrosseDent.wav", UriKind.Relative));
             dentifriceSon.Open(new Uri(@"Resources\sonDentifrice.wav", UriKind.Relative));
             verreSon.Open(new Uri(@"Resources\sonVerre.wav", UriKind.Relative));
+
+            test.Add(new Tuple<long, long>(0xA, 0x1));
+            test.Add(new Tuple<long, long>(0xB, 0x2));
+            test.Add(new Tuple<long, long>(0xC5, 0x1));
+            test.Add(new Tuple<long, long>(0xD, 0x1));
+            test.Add(new Tuple<long, long>(0xE, 0x3));
+            test.Add(new Tuple<long, long>(0xF, 0x3));
+
+            listObjectAction.Add(0xA, 0x1);
+            listObjectAction.Add(0xB, 0x2);
+            listObjectAction.Add(0xC5, 0x1);
+            listObjectAction.Add(0xD, 0x1);
+            listObjectAction.Add(0xE, 0x3);
+            listObjectAction.Add(0xF, 0x3);
+
 
             // Add handlers for window availability events
             AddWindowAvailabilityHandlers();
@@ -188,7 +207,7 @@ namespace PaintSurface
             catch (System.NullReferenceException) { }
         }
 
-        private void OnVisualizationObject(object sender, TagVisualizerEventArgs e)
+        private void OnVisualizationAdded(object sender, TagVisualizerEventArgs e)
         {
             TagVisualizer visualizer = e.TagVisualization.Visualizer;
             Point pt = e.TagVisualization.Center;
@@ -233,31 +252,87 @@ namespace PaintSurface
          //       {
                     case 0x0A:
                         action1 = true;
-                        valideActions(pt, brossePt);
+                        valideActions(pt, brossePt, 0x0A);
                         break;
                     case 0x0B:
                         action2 = true;
-                        valideActions(pt, dentifricePt);
+                        valideActions(pt, dentifricePt, 0x0B);
                         break;
                     case 0xC5:
                         action3 = true;
-                        valideActions(pt, brossePt);
+                        valideActions(pt, brossePt, 0xC5);
                         break;
                     case 0x0D:
                         action4 = true;
-                        valideActions(pt, brossePt);
+                        valideActions(pt, brossePt, 0x0D);
                         break;
                     case 0x0E:
                         action5 = true;
-                        valideActions(pt, verrePt);
+                        valideActions(pt, verrePt, 0x0E);
                         break;
                     case 0x0F:
                         action6 = true;
-                        valideActions(pt, verrePt);
+                        valideActions(pt, verrePt, 0x0F);
                         break;
                     default: break;
                 }
            // }
+        }
+
+        public void OnVisualizationRemoved(object sender, TagVisualizerEventArgs e)
+        {
+            long valueObjectPut = e.TagVisualization.VisualizedTag.Value;
+
+            switch (valueObjectPut)
+            {
+                case 0x1:
+                    brossePt = new Point();
+                    borderAideBrosseDent.BorderBrush = null;
+                    borderAideBrosseDent2.BorderBrush = null;
+                    brosseadentBool = false;
+                    valideObjet();
+                    break;
+                case 0x2:
+                    verrePt = new Point();
+                    borderDentifrice.BorderBrush = null;
+                    borderDentifrice2.BorderBrush = null;
+                    borderDentifrice.Visibility = Visibility.Hidden;
+                    dentifriceBool = false;
+                    valideObjet();
+                    break;
+                case 0x3:
+                    dentifricePt = new Point();
+                    borderVerre.BorderBrush = null;
+                    borderVerre2.BorderBrush = null ;
+                    borderVerre.Visibility = Visibility.Hidden;
+                    verreBool = false;
+                    valideObjet();
+                    break;
+                case 0xA:
+                    suppressLine(0xA);
+                    action1 = false;
+                    break;
+                case 0xB:
+                    action2 = false;
+                    break;
+                case 0xC5:
+                    action3 = false;
+                    break;
+                case 0xD:
+                    action4 = false;
+                    break;
+                case 0xE:
+                    action5 = false;
+                    break;
+                case 0xF:
+                    action6 = false;
+                    break;
+                default: break;
+            }
+        }
+        private void OnVisualizationMoved(object sender, TagVisualizerEventArgs e)
+        {
+
         }
 
         private void valideObjet()
@@ -269,9 +344,9 @@ namespace PaintSurface
             }
         }
 
-        private void valideActions(Point a, Point b)
+        private void valideActions(Point a, Point b, long valueA)
         {
-            drawLine(a, b);
+            drawLine(a, b, valueA);
 
             if (action1 && action2 && action3 && action4 && action5 && action6)
             {
@@ -279,7 +354,7 @@ namespace PaintSurface
             }
         }
 
-        private void drawLine(Point a, Point b)
+        private void drawLine(Point a, Point b, long valueA)
         {
             Line myLine = new Line();
             myLine.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
@@ -295,7 +370,56 @@ namespace PaintSurface
             myLine.StrokeThickness = 2;
             myLine.Stroke = greenBrush;
 
+            //ajout de la ligne au dictionnaire
+
+/*Avec une liste
+            long valueB = 0;
+
+            foreach(Tuple<long,long> list in test){
+                if (list.Item1 == valueA)
+                {
+                    valueB = list.Item2;
+                    allLinks.Add(list, myLine);
+                    objet.Children.Add(myLine);
+                    Console.WriteLine("Ajout ligne");
+                }
+            }
+ */
+            long valueB = listObjectAction[valueA];
+            allLinks.Add(new Tuple<long,long>(valueA, valueB), myLine);
             objet.Children.Add(myLine);
+            Console.WriteLine("Ajout ligne");
+
+        }
+
+        private void suppressLine(long value){
+            Console.WriteLine("Suppression ligne 1");
+            if (value == 0x1 || value == 0x2 || value == 0x3)
+            {
+
+            }
+            else{
+/* Avec un dictionnaire */
+                long objectValue = listObjectAction[value];
+                Tuple<long,long> tmp = new Tuple<long,long>(value, objectValue);
+                if (allLinks.ContainsKey(tmp))
+                {
+                    objet.Children.Remove(allLinks[tmp]);
+                    allLinks.Remove(tmp);
+                    Console.WriteLine("Suppression ligne 2");
+                }
+
+/* Avec une liste
+                foreach(Tuple<long,long> list in test){
+                    if (list.Item1 == value)
+                    {
+                        objet.Children.Remove(allLinks[list]);
+                        allLinks.Remove(list);
+                        Console.WriteLine("Suppression ligne 2");
+                    }
+                }
+ */
+            }
         }
 
         private void DropList_Drop(object sender, DragEventArgs e)
@@ -323,6 +447,7 @@ namespace PaintSurface
             Application.Current.Shutdown();
 
         }
+
 
 
     }

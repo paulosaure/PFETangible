@@ -137,7 +137,7 @@
                         </TextBlock>
 <!-- Tag à poser -->
                         <Grid>
-                            <s:TagVisualizer  Height="650" Width="1920" VisualizationAdded="OnVisualizationObject">
+                            <s:TagVisualizer Height="650" Width="1920" VisualizationMoved="OnVisualizationMoved" VisualizationAdded="OnVisualizationAdded" VisualizationRemoved="OnVisualizationRemoved">
                                 <s:TagVisualizer.Definitions>
                                     <s:TagVisualizationDefinition Value="0x1" 
                                               OrientationOffsetFromTag="0" 
@@ -186,6 +186,7 @@
                                               />
                                 </s:TagVisualizer.Definitions>
                             </s:TagVisualizer>
+                            
                         </Grid>
                     </Grid>
                 </Border>
