@@ -31,19 +31,6 @@ namespace PaintSurface
     public partial class SurfaceWindow1 : SurfaceWindow
     {
 
-        bool allTagPut = true;
-
-        const int nbTag = 9;
-        const long valueBrosse = 0x1 ;
-        const long valueDenti = 0x2;
-        const long valueVerre = 0x3;
-        const long valueAction1 = 0xA;
-        const long valueAction2 = 0xB;
-        const long valueAction3 = 0xC5;
-        const long valueAction4 = 0xD;
-        const long valueAction5 = 0xE;
-        const long valueAction6 = 0xF;
-
         Dictionary<long, Tag> tagList = new Dictionary<long, Tag>();
         Dictionary<Tuple<Action, Item>, Line> links = new Dictionary<Tuple<Action, Item>, Line>();
 
@@ -196,7 +183,7 @@ namespace PaintSurface
 
             if (!tagList.ContainsKey(value))
             {
-                if(value == valueBrosse || value== valueDenti || value == valueVerre )
+                if (value == Constants.valueBrosse || value == Constants.valueDenti || value == Constants.valueVerre)
                 {
                     tagList.Add(value, new Item(value, calculPoint(e)));
                 }
@@ -212,19 +199,19 @@ namespace PaintSurface
 
             switch (value)
             {
-                case valueBrosse:
+                case Constants.valueBrosse:
                     borderAideBrosseDent.BorderBrush = Brushes.Green; 
                     borderAideBrosseDent2.BorderBrush = Brushes.Green;
                     addLineWithObjects(value);
                     hideHelp();
                     break;
-                case valueDenti:
+                case Constants.valueDenti:
                         borderDentifrice.BorderBrush = Brushes.Green; 
                         borderDentifrice2.BorderBrush = Brushes.Green;   
                         addLineWithObjects(value);
                         hideHelp();
                         break;
-                    case valueVerre:
+                case Constants.valueVerre:
                         borderVerre.BorderBrush = Brushes.Green; 
                         borderVerre2.BorderBrush = Brushes.Green;
                         addLineWithObjects(value);
@@ -239,22 +226,21 @@ namespace PaintSurface
 
         public void OnVisualizationRemoved(object sender, TagVisualizerEventArgs e)
         {
-            Console.WriteLine("HEHE");
             long value = e.TagVisualization.VisualizedTag.Value;
             tagList[value].setPut(false);
             tagList[value].setPosition(new Point());
             switch (value){
-                case valueBrosse:
+                case Constants.valueBrosse:
                         borderAideBrosseDent.BorderBrush = Brushes.Transparent;
                         borderAideBrosseDent2.BorderBrush = Brushes.Transparent;
                         removeObject(value);
                         break;
-                case valueDenti:
+                case Constants.valueDenti:
                         borderDentifrice.BorderBrush = Brushes.Transparent;
                         borderDentifrice2.BorderBrush = Brushes.Transparent;
                         removeObject(value);
                         break;
-                case valueVerre:
+                case Constants.valueVerre:
                         borderVerre.BorderBrush = Brushes.Transparent;
                         borderVerre2.BorderBrush = Brushes.Transparent ;
                         removeObject(value);
@@ -273,9 +259,9 @@ namespace PaintSurface
 
         private void hideHelp()
         {
-            if (tagList.ContainsKey(valueBrosse) && tagList.ContainsKey(valueDenti) && tagList.ContainsKey(valueVerre))
+            if (tagList.ContainsKey(Constants.valueBrosse) && tagList.ContainsKey(Constants.valueDenti) && tagList.ContainsKey(Constants.valueVerre))
             {
-                if (tagList[valueBrosse].getPut() && tagList[valueDenti].getPut() && tagList[valueVerre].getPut())
+                if (tagList[Constants.valueBrosse].getPut() && tagList[Constants.valueDenti].getPut() && tagList[Constants.valueVerre].getPut())
                 {
                     aideTop.Visibility = Visibility.Hidden;
                     aideBot.Visibility = Visibility.Hidden;
@@ -369,10 +355,11 @@ namespace PaintSurface
             }
         }
 
-        public void switchViewOrdonnancement()
+        public void switchViewOrdonnancement()            //Allez à la prochaine vue
         {
             int cpt = 0;
-            //Allez à la prochaine vue
+            bool allTagPut = true;
+
             foreach (KeyValuePair<long, Tag> tag in tagList)
             {
                 cpt++;
@@ -380,9 +367,10 @@ namespace PaintSurface
                 if (tag.Value.getPut() == false)
                 {
                     allTagPut = false;
+                    break;
                 }
             }
-            if (allTagPut && cpt == nbTag)
+            if (allTagPut && cpt == Constants.nbTag)
             {
                 ordonnancement.Visibility = Visibility.Visible;
             }
@@ -392,44 +380,44 @@ namespace PaintSurface
         {
             switch (value)
             {
-                case valueBrosse:
+                case Constants.valueBrosse:
                     Item brosse = (Item)tagList[value];
-                    brosse.addAction(valueAction1);
-                    brosse.addAction(valueAction3);
-                    brosse.addAction(valueAction4);
+                    brosse.addAction(Constants.valueAction1);
+                    brosse.addAction(Constants.valueAction3);
+                    brosse.addAction(Constants.valueAction4);
                     break;
-                case valueDenti:
+                case Constants.valueDenti:
                     Item denti = (Item)tagList[value];
-                    denti.addAction(valueAction2);
+                    denti.addAction(Constants.valueAction2);
                     break;
-                case valueVerre:
+                case Constants.valueVerre:
                     Item verre = (Item)tagList[value];
-                    verre.addAction(valueAction5);
-                    verre.addAction(valueAction6);
+                    verre.addAction(Constants.valueAction5);
+                    verre.addAction(Constants.valueAction6);
                     break;
-                case valueAction1:
+                case Constants.valueAction1:
                     Action action1 = (Action)tagList[value];
-                    action1.setItem(valueBrosse);
+                    action1.setItem(Constants.valueBrosse);
                     break;
-                case valueAction2:
+                case Constants.valueAction2:
                     Action action2 = (Action)tagList[value];
-                    action2.setItem(valueDenti);
+                    action2.setItem(Constants.valueDenti);
                     break;
-                case valueAction3:
+                case Constants.valueAction3:
                     Action action3 = (Action)tagList[value];
-                    action3.setItem(valueBrosse);
+                    action3.setItem(Constants.valueBrosse);
                     break;
-                case valueAction4:
+                case Constants.valueAction4:
                     Action action4 = (Action)tagList[value];
-                    action4.setItem(valueBrosse);
+                    action4.setItem(Constants.valueBrosse);
                     break;
-                case valueAction5:
+                case Constants.valueAction5:
                     Action action5 = (Action)tagList[value];
-                    action5.setItem(valueVerre);
+                    action5.setItem(Constants.valueVerre);
                     break;
-                case valueAction6:
+                case Constants.valueAction6:
                     Action action6 = (Action)tagList[value];
-                    action6.setItem(valueVerre);
+                    action6.setItem(Constants.valueVerre);
                     break;
                 default: break;
             }

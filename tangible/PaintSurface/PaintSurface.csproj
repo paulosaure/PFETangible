@@ -80,6 +80,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Action.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="SurfaceWindow1.xaml.cs">
