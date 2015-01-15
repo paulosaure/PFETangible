@@ -31,6 +31,8 @@ namespace PaintSurface
     public partial class SurfaceWindow1 : SurfaceWindow
     {
 
+        private const int largueurTrait = 3;
+
         Dictionary<long, Tag> tagList = new Dictionary<long, Tag>();
         Dictionary<Tuple<Action, Item>, Line> links = new Dictionary<Tuple<Action, Item>, Line>();
 
@@ -254,7 +256,51 @@ namespace PaintSurface
 
         private void OnVisualizationMoved(object sender, TagVisualizerEventArgs e)
         {
+            long value = e.TagVisualization.VisualizedTag.Value;
+            Point p = calculPoint(e);
+            Tag tag = tagList[value];
+           
+            tag.setPosition(p);
 
+            if(tag.GetType() == typeof(Item))
+            {
+                Item item = (Item)tagList[value];//on choppe l'action
+
+                foreach (long action in item.getActions())
+                {
+                    if (tagList.ContainsKey(action)) //Si l'action existe
+                    {
+                        if (tagList[action].getPut()) //Si l'action est posé
+                        {
+                            Tuple<Action, Item> tmp = new Tuple<Action, Item>((Action)tagList[action], item);
+                            Line line = links[tmp];
+                            line.X1 = tagList[action].getPosition().X;
+                            line.Y1 = tagList[action].getPosition().Y;
+                            line.X2 = item.getPosition().X;
+                            line.Y2 = item.getPosition().Y;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Action action = (Action)tagList[value];//on choppe l'action
+
+                if (tagList.ContainsKey(action.getItem()))
+                {
+                    if (tagList[action.getItem()].getPut())
+                    {
+                        Item item = (Item)tagList[action.getItem()]; //on récupère l'objet dans la liste
+                        Tuple<Action, Item> tmp = new Tuple<Action, Item>(action, item);
+                        Line line = links[tmp];
+                        line.X1 = action.getPosition().X;
+                        line.Y1 = action.getPosition().Y;
+                        line.X2 = item.getPosition().X;
+                        line.Y2 = item.getPosition().Y;
+                    }
+                }
+            }
+            
         }
 
         private void hideHelp()
@@ -296,7 +342,7 @@ namespace PaintSurface
                 {
                     if (tagList[action].getPut())//Si l'action est posée
                     {
-                        Line myLine = createLine(item.getPosition(), tagList[action].getPosition());
+                        Line myLine = createLine(tagList[action].getPosition(), item.getPosition());
                         objet.Children.Add(myLine);
                         links.Add(new Tuple<Action, Item>((Action)tagList[action], item), myLine);
                     }
@@ -317,7 +363,7 @@ namespace PaintSurface
             greenBrush.Color = Colors.Green;
 
             // Set Line's width and color
-            myLine.StrokeThickness = 2;
+            myLine.StrokeThickness = largueurTrait;
             myLine.Stroke = greenBrush;
             return myLine;
         }
