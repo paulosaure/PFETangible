@@ -32,7 +32,8 @@ namespace PaintSurface
     {
 
         private const int largueurTrait = 3;
-        private const Color colorLink = Colors.LightGreen;
+        private Color colorLink = Colors.LightGreen;
+        private SolidColorBrush colorValidationObjects = Brushes.LightGreen;
 
         Dictionary<long, Tag> tagList = new Dictionary<long, Tag>();
         Dictionary<Tuple<Action, Item>, Line> links = new Dictionary<Tuple<Action, Item>, Line>();
@@ -121,7 +122,6 @@ namespace PaintSurface
         {
             Point pt = e.TagVisualization.Center;
             pt.Y = pt.Y + 210;
-
             return pt;
         }
 
@@ -203,23 +203,20 @@ namespace PaintSurface
             switch (value)
             {
                 case Constants.valueBrosse:
-                    borderAideBrosseDent.BorderBrush = Brushes.Green; 
-                    borderAideBrosseDent2.BorderBrush = Brushes.Green;
+                    borderAideBrosseDent.BorderBrush = borderAideBrosseDent2.BorderBrush = colorValidationObjects;
                     addLineWithObjects(value);
                     hideHelp();
                     break;
                 case Constants.valueDenti:
-                        borderDentifrice.BorderBrush = Brushes.Green; 
-                        borderDentifrice2.BorderBrush = Brushes.Green;   
-                        addLineWithObjects(value);
-                        hideHelp();
-                        break;
+                    borderDentifrice.BorderBrush = borderDentifrice2.BorderBrush = colorValidationObjects; 
+                    addLineWithObjects(value);
+                    hideHelp();
+                    break;
                 case Constants.valueVerre:
-                        borderVerre.BorderBrush = Brushes.Green; 
-                        borderVerre2.BorderBrush = Brushes.Green;
-                        addLineWithObjects(value);
-                        hideHelp();
-                        break;
+                    borderVerre.BorderBrush = borderVerre2.BorderBrush = colorValidationObjects;
+                    addLineWithObjects(value);
+                    hideHelp();
+                    break;
                     default: 
                         addLineWithActions(value);
                         break;
@@ -470,29 +467,172 @@ namespace PaintSurface
             }
         }
 
-        private void DropList_Drop(object sender, DragEventArgs e)
-        {
-            Image img = sender as Image;
-            if (img != null)
-            {
-                // Save the current Fill brush so that you can revert back to this value in DragLeave.
-   
-
-                // If the DataObject contains string data, extract it.
-                if (e.Data.GetData(typeof(ImageSource)) != null)
-                {
-                    //Trace.WriteLine("Entre DROP 2");
-                    ImageSource image = e.Data.GetData(typeof(ImageSource)) as ImageSource;
-
-                    img.Source = image;
-                }
-            }
-        }
-
         void Window1_Closing(object sender, CancelEventArgs e)
         {
             Application.Current.Shutdown();
         }
+
+        private void tagAddedFrieze(object sender, TagVisualizerEventArgs e)
+        {
+            long value = e.TagVisualization.VisualizedTag.Value;
+            Action action = (Action)tagList[value];//On choppe l'action
+            action.setPutInRightCase(true);
+
+            switch (value)
+            {
+                case Constants.valueAction1:
+                    borderbloc1.BorderBrush = colorValidationObjects;
+                    break;
+                case Constants.valueAction2:
+                    borderbloc2.BorderBrush = colorValidationObjects;
+                    break;
+                case Constants.valueAction3:
+                    borderbloc3.BorderBrush = colorValidationObjects;
+                    break;
+                case Constants.valueAction4:
+                    borderbloc4.BorderBrush = colorValidationObjects;
+                    break;
+                case Constants.valueAction5:
+                    borderbloc5.BorderBrush = colorValidationObjects;
+                    break;
+                case Constants.valueAction6:
+                    borderbloc6.BorderBrush = colorValidationObjects;
+                    break;
+                default: break;
+            }
+        }
+
+        private void tagRemovedFrieze(object sender, TagVisualizerEventArgs e)
+        {
+            long value = e.TagVisualization.VisualizedTag.Value;
+            Action action = (Action)tagList[value];//On choppe l'action
+            action.setPutInRightCase(false);
+
+            switch (value)
+            {
+                case Constants.valueAction1:
+                    borderbloc1.BorderBrush = Brushes.Transparent;
+                    break;
+                case Constants.valueAction2:
+                    borderbloc2.BorderBrush = Brushes.Transparent;
+                    break;
+                case Constants.valueAction3:
+                    borderbloc3.BorderBrush = Brushes.Transparent;
+                    break;
+                case Constants.valueAction4:
+                    borderbloc4.BorderBrush = Brushes.Transparent;
+                    break;
+                case Constants.valueAction5:
+                    borderbloc5.BorderBrush = Brushes.Transparent;
+                    break;
+                case Constants.valueAction6:
+                    borderbloc6.BorderBrush = Brushes.Transparent;
+                    break;
+                default: break;
+            }
+        }
+
+
+       private void friezesCompletes()
+        {
+            bool complete = true;
+
+           foreach(KeyValuePair<long, Tag> tag in tagList)
+           {
+               if(tag.GetType() == typeof(Action))// Si on a une action
+               {
+                   Action action = (Action) tag.Value;
+                   if (!action.getPutInRightCase())
+                   {
+                       complete = false;
+                       break;
+                   }
+               }
+           }
+           if(complete)
+           {
+               ordonnancement.Visibility = Visibility.Hidden;
+               video.Visibility = Visibility.Visible;
+           }
+        }
+
+       // Play the media.
+       void OnMouseDownPlayMedia(object sender, MouseButtonEventArgs args)
+       {
+
+           // The Play method will begin the media if it is not currently active or 
+           // resume media if it is paused. This has no effect if the media is
+           // already running.
+           videoTop.Play();
+
+           // Initialize the MediaElement property values.
+           InitializePropertyValues();
+
+       }
+
+       // Pause the media.
+       void OnMouseDownPauseMedia(object sender, MouseButtonEventArgs args)
+       {
+
+           // The Pause method pauses the media if it is currently running.
+           // The Play method can be used to resume.
+           videoTop.Pause();
+
+       }
+
+       // Stop the media.
+       void OnMouseDownStopMedia(object sender, MouseButtonEventArgs args)
+       {
+
+           // The Stop method stops and resets the media to be played from
+           // the beginning.
+           videoTop.Stop();
+
+       }
+
+       // Change the volume of the media.
+       private void ChangeMediaVolume(object sender, RoutedPropertyChangedEventArgs<double> args)
+       {
+           videoTop.Volume = (double)volumeSlider.Value;
+       }
+
+       // Change the speed of the media.
+       private void ChangeMediaSpeedRatio(object sender, RoutedPropertyChangedEventArgs<double> args)
+       {
+           videoTop.SpeedRatio = (double)speedRatioSlider.Value;
+       }
+
+       // When the media opens, initialize the "Seek To" slider maximum value
+       // to the total number of miliseconds in the length of the media clip.
+       private void Element_MediaOpened(object sender, EventArgs e)
+       {
+           timelineSlider.Maximum = videoTop.NaturalDuration.TimeSpan.TotalMilliseconds;
+       }
+
+       // When the media playback is finished. Stop() the media to seek to media start.
+       private void Element_MediaEnded(object sender, EventArgs e)
+       {
+           videoTop.Stop();
+       }
+
+       // Jump to different parts of the media (seek to). 
+       private void SeekToMediaPosition(object sender, RoutedPropertyChangedEventArgs<double> args)
+       {
+           int SliderValue = (int)timelineSlider.Value;
+
+           // Overloaded constructor takes the arguments days, hours, minutes, seconds, miniseconds.
+           // Create a TimeSpan with miliseconds equal to the slider value.
+           TimeSpan ts = new TimeSpan(0, 0, 0, 0, SliderValue);
+           videoTop.Position = ts;
+       }
+
+       void InitializePropertyValues()
+       {
+           // Set the media's starting Volume and SpeedRatio to the current value of the
+           // their respective slider controls.
+           videoTop.Volume = (double)volumeSlider.Value;
+           videoTop.SpeedRatio = (double)speedRatioSlider.Value;
+       }
     }
 }
 

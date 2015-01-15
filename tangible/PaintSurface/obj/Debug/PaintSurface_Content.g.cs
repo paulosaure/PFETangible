@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("paintsurface.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/videobrossage.mp4")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/sonbrossedent.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/sondentifrice.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/sonverre.wav")]
