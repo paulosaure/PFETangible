@@ -83,9 +83,10 @@
 
         <s:TagVisualizer  Height="650" Width="1920" Name="tagItem"   VisualizationAdded="itemPutOnTable" VisualizationRemoved="OnVisualizationRemoved" VisualizationMoved="OnVisualizationMoved" >
             <s:TagVisualizer.Definitions>
-                <s:TagVisualizationDefinition OrientationOffsetFromTag="0" 
-                                                  PhysicalCenterOffsetFromTag="0,0"
-                                                  UsesTagOrientation="True"
+                <s:TagVisualizationDefinition   Source="empty.xaml"
+                                                OrientationOffsetFromTag="0" 
+                                                PhysicalCenterOffsetFromTag="0,0"
+                                                UsesTagOrientation="True"
                                               />
             </s:TagVisualizer.Definitions>
         </s:TagVisualizer>
