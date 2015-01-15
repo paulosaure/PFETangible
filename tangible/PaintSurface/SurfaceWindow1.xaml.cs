@@ -204,11 +204,12 @@ namespace PaintSurface
                 {
                     tagList.Add(value, new Action(value, calculPoint(e)));
                 }
+                association(value);
             }
-
+            
+            tagList[value].setPosition(pt);
             tagList[value].setPut(true);
-            association(value);
-    
+
             switch (value)
             {
                 case valueBrosse:
@@ -304,11 +305,11 @@ namespace PaintSurface
         {
             Item item = (Item)tagList[value]; //on choppe l'objet
 
-            foreach (long action in item.getActions() )
+            foreach (long action in item.getActions() )// Pour chaque actions associées à l'objet
             {
-                if (tagList.ContainsKey(action))
+                if (tagList.ContainsKey(action))// Si l'action existe
                 {
-                    if (tagList[action].getValue() == value && tagList[action].getPut())
+                    if (tagList[action].getPut())//Si l'action est posée
                     {
                         Line myLine = createLine(item.getPosition(), tagList[action].getPosition());
                         Console.WriteLine("HEHEH");
@@ -341,11 +342,11 @@ namespace PaintSurface
         {
             Item item = (Item)tagList[value]; //on choppe l'objet
 
-            foreach (long action in item.getActions())
+            foreach (long action in item.getActions()) // Pour chaque actions associées à l'objet
             {
-                if(tagList.ContainsKey(action))
+                if(tagList.ContainsKey(action)) //Si l'action existe
                 { 
-                    if (tagList[action].getValue() == value && tagList[action].getPut())
+                    if (tagList[action].getPut()) //Si l'action est posé
                     {
                         Tuple<Action, Item> tmp = new Tuple<Action, Item>((Action)tagList[action], item);
                         objet.Children.Remove(links[tmp]);
@@ -358,11 +359,11 @@ namespace PaintSurface
         private void removeAction(long value){
             Action action = (Action)tagList[value];//on choppe l'action
 
-            if (tagList.ContainsKey(action.getItem()))
+            if (tagList.ContainsKey(action.getItem())) // Si l'objet associé existe
             {
-                if (tagList[action.getItem()].getPut())
+                if (tagList[action.getItem()].getPut()) // Si l'objet associé est posé sur la table
                 {
-                    Item item = (Item)tagList[action.getItem()];
+                    Item item = (Item)tagList[action.getItem()]; //on récupère l'objet dans la liste
                     Tuple<Action, Item> tmp = new Tuple<Action, Item>(action, item);
                     objet.Children.Remove(links[tmp]);
                     links.Remove(tmp);
