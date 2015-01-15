@@ -239,10 +239,10 @@ namespace PaintSurface
 
         public void OnVisualizationRemoved(object sender, TagVisualizerEventArgs e)
         {
+            Console.WriteLine("HEHE");
             long value = e.TagVisualization.VisualizedTag.Value;
             tagList[value].setPut(false);
             tagList[value].setPosition(new Point());
-
             switch (value){
                 case valueBrosse:
                         borderAideBrosseDent.BorderBrush = Brushes.Transparent;
@@ -294,7 +294,6 @@ namespace PaintSurface
                     Item item = (Item)tagList[action.getItem()];
                     Line myLine = createLine(action.getPosition(), item.getPosition());
                     links.Add(new Tuple<Action, Item>(action, item), myLine);
-                    //allLinks.Add(new Tuple<long, long>(valueA, valueB), myLine);
                     objet.Children.Add(myLine);
                 }
             }
@@ -312,7 +311,6 @@ namespace PaintSurface
                     if (tagList[action].getPut())//Si l'action est posée
                     {
                         Line myLine = createLine(item.getPosition(), tagList[action].getPosition());
-                        Console.WriteLine("HEHEH");
                         objet.Children.Add(myLine);
                         links.Add(new Tuple<Action, Item>((Action)tagList[action], item), myLine);
                     }

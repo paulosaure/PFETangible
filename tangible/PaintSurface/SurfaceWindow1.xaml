@@ -64,34 +64,33 @@
             </Image.Style>
         </Image>
 
-        <Image Source="/Resources/textPosez.png"  Width="400" Height="400" Name="touchez">
-            <Image.RenderTransform>
-                <ScaleTransform x:Name="ImageScale" ScaleX="1" ScaleY="1" CenterX="200"  CenterY="150"/>
-            </Image.RenderTransform>
-            <Image.Triggers>
-                <EventTrigger RoutedEvent="Image.Loaded">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleX)" To="1.5" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
-                            <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleY)" To="1.5" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Image.Triggers>
-        </Image>
+            <Image Source="/Resources/textPosez.png"  Width="400" Height="400" Name="touchez">
+                <Image.RenderTransform>
+                    <ScaleTransform x:Name="ImageScale" ScaleX="1" ScaleY="1" CenterX="200"  CenterY="150"/>
+                </Image.RenderTransform>
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="Image.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleX)" To="1.5" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
+                                <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleY)" To="1.5" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Image.Triggers>
+            </Image>
+        </Grid>
 
-            <s:TagVisualizer  Height="650" Width="1920" Name="tagItem"   VisualizationAdded="itemPutOnTable">
-                <s:TagVisualizer.Definitions>
-                    <s:TagVisualizationDefinition OrientationOffsetFromTag="0" 
+        <s:TagVisualizer  Height="650" Width="1920" Name="tagItem"   VisualizationAdded="itemPutOnTable" VisualizationRemoved="OnVisualizationRemoved" VisualizationMoved="OnVisualizationMoved" >
+            <s:TagVisualizer.Definitions>
+                <s:TagVisualizationDefinition OrientationOffsetFromTag="0" 
                                                   PhysicalCenterOffsetFromTag="0,0"
                                                   UsesTagOrientation="True"
                                               />
-                </s:TagVisualizer.Definitions>
-            </s:TagVisualizer>
-        </Grid>
-       
-
-<!--Vue objet à poser sur table-->
+            </s:TagVisualizer.Definitions>
+        </s:TagVisualizer>
+        
+        <!--Vue objet à poser sur table-->
         <!--Visible Hidden -->
         <Grid Name="objet" Visibility="Hidden">
             <StackPanel >
