@@ -32,6 +32,7 @@ namespace PaintSurface
     {
 
         private const int largueurTrait = 3;
+        private const Color colorLink = Colors.LightGreen;
 
         Dictionary<long, Tag> tagList = new Dictionary<long, Tag>();
         Dictionary<Tuple<Action, Item>, Line> links = new Dictionary<Tuple<Action, Item>, Line>();
@@ -360,7 +361,7 @@ namespace PaintSurface
             myLine.Y2 = b.Y;
             // Create a red Brush
             SolidColorBrush greenBrush = new SolidColorBrush();
-            greenBrush.Color = Colors.Green;
+            greenBrush.Color = colorLink;
 
             // Set Line's width and color
             myLine.StrokeThickness = largueurTrait;
