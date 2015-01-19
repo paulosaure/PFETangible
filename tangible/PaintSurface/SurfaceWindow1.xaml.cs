@@ -458,15 +458,21 @@ namespace PaintSurface
                     brosse.addAction(MyResources.valueAction1);
                     brosse.addAction(MyResources.valueAction3);
                     brosse.addAction(MyResources.valueAction4);
+                    brosse.addAction(MyResources.valueAction1b);
+                    brosse.addAction(MyResources.valueAction3b);
+                    brosse.addAction(MyResources.valueAction4b);
                     break;
                 case MyResources.valueDenti:
                     Item denti = (Item)tagList[value];
                     denti.addAction(MyResources.valueAction2);
+                    denti.addAction(MyResources.valueAction2b);
                     break;
                 case MyResources.valueVerre:
                     Item verre = (Item)tagList[value];
                     verre.addAction(MyResources.valueAction5);
                     verre.addAction(MyResources.valueAction6);
+                    verre.addAction(MyResources.valueAction5b);
+                    verre.addAction(MyResources.valueAction6b);
                     break;
                 case MyResources.valueAction1:
                     Action action1 = (Action)tagList[value];
@@ -491,6 +497,30 @@ namespace PaintSurface
                 case MyResources.valueAction6:
                     Action action6 = (Action)tagList[value];
                     action6.setItem(MyResources.valueVerre);
+                    break;
+                case MyResources.valueAction1b:
+                    Action action7 = (Action)tagList[value];
+                    action7.setItem(MyResources.valueBrosse);
+                    break;
+                case MyResources.valueAction2b:
+                    Action action8 = (Action)tagList[value];
+                    action8.setItem(MyResources.valueDenti);
+                    break;
+                case MyResources.valueAction3b:
+                    Action action9 = (Action)tagList[value];
+                    action9.setItem(MyResources.valueBrosse);
+                    break;
+                case MyResources.valueAction4b:
+                    Action action10 = (Action)tagList[value];
+                    action10.setItem(MyResources.valueBrosse);
+                    break;
+                case MyResources.valueAction5b:
+                    Action action11 = (Action)tagList[value];
+                    action11.setItem(MyResources.valueVerre);
+                    break;
+                case MyResources.valueAction6b:
+                    Action action12 = (Action)tagList[value];
+                    action12.setItem(MyResources.valueVerre);
                     break;
                 default: break;
             }

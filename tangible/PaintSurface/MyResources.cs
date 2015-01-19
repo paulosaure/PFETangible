@@ -18,9 +18,16 @@ namespace PaintSurface
                 public const long valueAction1 = 0xA6;
                 public const long valueAction2 = 0xC2;
                 public const long valueAction3 = 0xC5;
-                public const long valueAction4 = 0xD;
-                public const long valueAction5 = 0xE;
-                public const long valueAction6 = 0xF;
+                public const long valueAction4 = 0x8;
+                public const long valueAction5 = 0x9;
+                public const long valueAction6 = 0x17;
+          
+        public const long valueAction1b = 0x18;
+        public const long valueAction2b = 0x19;
+        public const long valueAction3b = 0x27;
+        public const long valueAction4b = 0x28;
+        public const long valueAction5b = 0x29;
+        public const long valueAction6b = 0x37; 
         */
         public const long valueBrosse = 0x1;
         public const long valueDenti = 0x2;

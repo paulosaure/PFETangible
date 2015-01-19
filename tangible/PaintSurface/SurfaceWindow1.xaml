@@ -16,7 +16,7 @@
 
         <!--Vue présentation roue-->
         <!--Visible Hidden -->
-        <Grid  x:Name="myGrid" Visibility="Hidden">
+        <Grid  x:Name="myGrid" Visibility="Visible">
             <Image Source="/Resources/rond.png"  Width="360" Height="360">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="180" CenterY="180" />
@@ -457,7 +457,7 @@
         </Grid>
 
         <!--Visible Hidden -->
-        <Grid Name="video" Visibility="Visible">
+        <Grid Name="video" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
