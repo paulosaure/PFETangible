@@ -285,22 +285,22 @@
 
             <WrapPanel Name="friseHaut" Grid.Column="0"  Grid.Row="0" >
                 <Image Name="fleche" Margin="1,0" Height="200" Width="100"  Source="/Resources/friseG.png"/>
-                <Border x:Name="borderbloc1" BorderBrush="Transparent" BorderThickness="5" Margin="77,0,50,0">
+                <Border x:Name="borderbloc6" BorderBrush="Transparent" BorderThickness="5" Margin="77,0,50,0">
                     <Image x:Name="bloc1" Margin="0,0,0,0" Height="200" Width="200"  Source="/Resources/elt.png" HorizontalAlignment="Left" />
                 </Border>
-                <Border x:Name="borderbloc2"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
+                <Border x:Name="borderbloc5"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
                     <Image Name="bloc2" Margin="10,0" Height="200" Width="200"  Source="/Resources/elt.png" HorizontalAlignment="Left"/>
                 </Border>
-                <Border x:Name="borderbloc3"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
+                <Border x:Name="borderbloc4"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
                     <Image Name="bloc3" Margin="10,0" Height="200" Width="200"  Source="/Resources/elt.png" HorizontalAlignment="Left"/>
                 </Border>
-                <Border x:Name="borderbloc4"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
+                <Border x:Name="borderbloc3"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
                     <Image Name="bloc4" Margin="10,0" Height="200" Width="200" Source="/Resources/elt.png" HorizontalAlignment="Left"/>
                 </Border>
-                <Border x:Name="borderbloc5"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
+                <Border x:Name="borderbloc2"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
                     <Image Name="bloc5" Margin="10,0" Height="200" Width="200" Source="/Resources/elt.png" HorizontalAlignment="Left"/>
                 </Border>
-                <Border x:Name="borderbloc6"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
+                <Border x:Name="borderbloc1"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
                     <Image Name="bloc6" Margin="10,0" Height="200" Width="200" Source="/Resources/elt.png" HorizontalAlignment="Left"/>
                 </Border>
             </WrapPanel>

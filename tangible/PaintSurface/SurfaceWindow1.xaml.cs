@@ -89,7 +89,7 @@ namespace PaintSurface
             linksFrieze.Add(MyResources.valueAction4b, new Tuple<string, string>(MyResources.friseTag4, MyResources.friseTag4b));
             linksFrieze.Add(MyResources.valueAction5b, new Tuple<string, string>(MyResources.friseTag5, MyResources.friseTag5b));
             linksFrieze.Add(MyResources.valueAction6b, new Tuple<string, string>(MyResources.friseTag6, MyResources.friseTag6b));
-/*
+
             linksBorder.Add(MyResources.friseTag1, borderbloc1);
             linksBorder.Add(MyResources.friseTag2, borderbloc2);
             linksBorder.Add(MyResources.friseTag3, borderbloc3);
@@ -103,8 +103,6 @@ namespace PaintSurface
             linksBorder.Add(MyResources.friseTag4b, borderbloc4Bot);
             linksBorder.Add(MyResources.friseTag5b, borderbloc5Bot);
             linksBorder.Add(MyResources.friseTag6b, borderbloc6Bot);
-            */
-
         }
 
         protected override void OnClosed(EventArgs e)
@@ -506,13 +504,14 @@ namespace PaintSurface
         private void tagAddedFrieze(object sender, TagVisualizerEventArgs e)
         {
             string tagChoose = ((TagVisualizer)sender).Name; //Choper le name de la frieze
-
-            Console.WriteLine("On veut le nom : " + tagChoose);
+//            Console.WriteLine("AddFrieze");
+ //           Console.WriteLine("On veut le nom : " + tagChoose);
             Action action = (Action)tagList[e.TagVisualization.VisualizedTag.Value];//On choppe l'action 
 
             if (linksFrieze[action.getValue()].Item1 == tagChoose || linksFrieze[action.getValue()].Item2 == tagChoose )
             {
                 action.setPutInRightCase(true);
+ //               Console.WriteLine("Color line");
                 linksBorder[tagChoose].BorderBrush = colorValidationObjects;
             }
             else
