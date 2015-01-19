@@ -16,6 +16,7 @@ namespace PaintSurface
             this.actions = new List<long>();
             this.value = v;
             this.position = p;
+            Tag.id++;
         }
 
         public List<long> getActions()
@@ -26,11 +27,6 @@ namespace PaintSurface
         public void addAction(long v)
         {
             actions.Add(v);
-        }
-
-        public void removeAction(long v)
-        {
-            actions.Remove(v);
         }
     }
 }

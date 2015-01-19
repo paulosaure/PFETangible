@@ -34,49 +34,78 @@ namespace PaintSurface
         private const int largueurTrait = 3;
         private Color colorLink = Colors.LightGreen;
         private SolidColorBrush colorValidationObjects = Brushes.LightGreen;
+        private SolidColorBrush colorInValidationObjects = Brushes.Red;
 
-        Dictionary<long, Tag> tagList = new Dictionary<long, Tag>();
+        Dictionary<long, Tag> tagList = new Dictionary<long, Tag>(); //Objet + action
         Dictionary<Tuple<Action, Item>, Line> links = new Dictionary<Tuple<Action, Item>, Line>();
+        Dictionary<long, Tuple<string, string>> linksFrieze = new Dictionary<long, Tuple<string, string>>();
+        Dictionary<string, Border> linksBorder = new Dictionary<string, Border>();
 
-        //Vue choix lieu
-        private MediaPlayer cuisine = new MediaPlayer();
-        private MediaPlayer salon = new MediaPlayer();
-        private MediaPlayer salledebain = new MediaPlayer();
+        private MediaPlayer son = new MediaPlayer();
 
-        //Vue actions
-        private MediaPlayer coiffez = new MediaPlayer();
-        private MediaPlayer rasez = new MediaPlayer();
-        private MediaPlayer brossezdent = new MediaPlayer();
-        private MediaPlayer douchez = new MediaPlayer();
-
-        //Vue objets
-        private MediaPlayer brosseadentSon = new MediaPlayer();
-        private MediaPlayer dentifriceSon = new MediaPlayer();
-        private MediaPlayer verreSon = new MediaPlayer();
-        /// <summary>
-        /// Default constructor.
-        /// </summary>
         public SurfaceWindow1()
         {
             InitializeComponent();
             this.Closing += new CancelEventHandler(Window1_Closing);
-            //les sons
-            cuisine.Open(new Uri(@"Resources\cuisine.wav", UriKind.Relative));
-            salon.Open(new Uri(@"Resources\salon.wav", UriKind.Relative));
-            salledebain.Open(new Uri(@"Resources\salledebain.wav", UriKind.Relative));
-            coiffez.Open(new Uri(@"Resources\coiffez.wav", UriKind.Relative));
-            rasez.Open(new Uri(@"Resources\rasez.wav", UriKind.Relative));
-            douchez.Open(new Uri(@"Resources\douchez.wav", UriKind.Relative));
-            brossezdent.Open(new Uri(@"Resources\brossezlesdents.wav", UriKind.Relative));
-            brosseadentSon.Open(new Uri(@"Resources\sonBrosseDent.wav", UriKind.Relative));
-            dentifriceSon.Open(new Uri(@"Resources\sonDentifrice.wav", UriKind.Relative));
-            verreSon.Open(new Uri(@"Resources\sonVerre.wav", UriKind.Relative));
 
             // Add handlers for window availability events
             AddWindowAvailabilityHandlers();
 
+            //Modifie les valeurs des TAG dans le XAML
+            giveTagValueToXaml();
+
         }
 
+        public void giveTagValueToXaml()
+        {
+            tagObj1.Value = MyResources.valueBrosse;
+            tagObj2.Value = MyResources.valueDenti;
+            tagObj3.Value = MyResources.valueVerre;
+
+            tagAct1.Value = MyResources.valueAction1;
+            tagAct2.Value = MyResources.valueAction2;
+            tagAct3.Value = MyResources.valueAction3;
+            tagAct4.Value = MyResources.valueAction4;
+            tagAct5.Value = MyResources.valueAction5;
+            tagAct6.Value = MyResources.valueAction6;
+
+            tagAct1b.Value = MyResources.valueAction1b;
+            tagAct2b.Value = MyResources.valueAction2b;
+            tagAct3b.Value = MyResources.valueAction3b;
+            tagAct4b.Value = MyResources.valueAction4b;
+            tagAct5b.Value = MyResources.valueAction5b;
+            tagAct6b.Value = MyResources.valueAction6b;
+
+            linksFrieze.Add(MyResources.valueAction1, new Tuple<string, string>(MyResources.friseTag1, MyResources.friseTag1b));
+            linksFrieze.Add(MyResources.valueAction2, new Tuple<string, string>(MyResources.friseTag2, MyResources.friseTag2b));
+            linksFrieze.Add(MyResources.valueAction3, new Tuple<string, string>(MyResources.friseTag3, MyResources.friseTag3b));
+            linksFrieze.Add(MyResources.valueAction4, new Tuple<string, string>(MyResources.friseTag4, MyResources.friseTag4b));
+            linksFrieze.Add(MyResources.valueAction5, new Tuple<string, string>(MyResources.friseTag5, MyResources.friseTag5b));
+            linksFrieze.Add(MyResources.valueAction6, new Tuple<string, string>(MyResources.friseTag6, MyResources.friseTag6b));
+
+            linksFrieze.Add(MyResources.valueAction1b, new Tuple<string, string>(MyResources.friseTag1, MyResources.friseTag1b));
+            linksFrieze.Add(MyResources.valueAction2b, new Tuple<string, string>(MyResources.friseTag2, MyResources.friseTag2b));
+            linksFrieze.Add(MyResources.valueAction3b, new Tuple<string, string>(MyResources.friseTag3, MyResources.friseTag3b));
+            linksFrieze.Add(MyResources.valueAction4b, new Tuple<string, string>(MyResources.friseTag4, MyResources.friseTag4b));
+            linksFrieze.Add(MyResources.valueAction5b, new Tuple<string, string>(MyResources.friseTag5, MyResources.friseTag5b));
+            linksFrieze.Add(MyResources.valueAction6b, new Tuple<string, string>(MyResources.friseTag6, MyResources.friseTag6b));
+/*
+            linksBorder.Add(MyResources.friseTag1, borderbloc1);
+            linksBorder.Add(MyResources.friseTag2, borderbloc2);
+            linksBorder.Add(MyResources.friseTag3, borderbloc3);
+            linksBorder.Add(MyResources.friseTag4, borderbloc4);
+            linksBorder.Add(MyResources.friseTag5, borderbloc5);
+            linksBorder.Add(MyResources.friseTag6, borderbloc6);
+
+            linksBorder.Add(MyResources.friseTag1b, borderbloc1Bot);
+            linksBorder.Add(MyResources.friseTag2b, borderbloc2Bot);
+            linksBorder.Add(MyResources.friseTag3b, borderbloc3Bot);
+            linksBorder.Add(MyResources.friseTag4b, borderbloc4Bot);
+            linksBorder.Add(MyResources.friseTag5b, borderbloc5Bot);
+            linksBorder.Add(MyResources.friseTag6b, borderbloc6Bot);
+            */
+
+        }
 
         protected override void OnClosed(EventArgs e)
         {
@@ -156,27 +185,20 @@ namespace PaintSurface
             brosseDent2.Source = new BitmapImage(new Uri("/Resources/brosse_grandT.png", UriKind.Relative));
             dentifrice2.Source = new BitmapImage(new Uri("/Resources/dentifrice_grand.png", UriKind.Relative));
             verre2.Source = new BitmapImage(new Uri("/Resources/verre_grand.png", UriKind.Relative));
+           
             //Objet Son
-            await Task.Delay(3000);
-            try
-            {
-                brosseadentSon.Play();
-            }
-            catch (System.NullReferenceException) { }
+            await Task.Delay(1000);
+            son.Open(new Uri(@"Resources\sonBrosseDent.wav", UriKind.Relative));
+            son.Play();
 
             await Task.Delay(2000);
-            try
-            {
-                dentifriceSon.Play();
-            }
-            catch (System.NullReferenceException) { }
+            son.Open(new Uri(@"Resources\sonDentifrice.wav", UriKind.Relative));
+            son.Play();
 
             await Task.Delay(2000);
-            try
-            {
-                verreSon.Play();
-            }
-            catch (System.NullReferenceException) { }
+            son.Open(new Uri(@"Resources\sonVerre.wav", UriKind.Relative));
+            son.Play();
+            await Task.Delay(1000);
         }
 
         private void OnVisualizationAdded(object sender, TagVisualizerEventArgs e)
@@ -186,7 +208,7 @@ namespace PaintSurface
 
             if (!tagList.ContainsKey(value))
             {
-                if (value == Constants.valueBrosse || value == Constants.valueDenti || value == Constants.valueVerre)
+                if (value == MyResources.valueBrosse || value == MyResources.valueDenti || value == MyResources.valueVerre)
                 {
                     tagList.Add(value, new Item(value, calculPoint(e)));
                 }
@@ -199,20 +221,21 @@ namespace PaintSurface
             
             tagList[value].setPosition(pt);
             tagList[value].setPut(true);
+            Console.WriteLine("Res : " + tagList[value].getId());
 
             switch (value)
             {
-                case Constants.valueBrosse:
+                case MyResources.valueBrosse:
                     borderAideBrosseDent.BorderBrush = borderAideBrosseDent2.BorderBrush = colorValidationObjects;
                     addLineWithObjects(value);
                     hideHelp();
                     break;
-                case Constants.valueDenti:
+                case MyResources.valueDenti:
                     borderDentifrice.BorderBrush = borderDentifrice2.BorderBrush = colorValidationObjects; 
                     addLineWithObjects(value);
                     hideHelp();
                     break;
-                case Constants.valueVerre:
+                case MyResources.valueVerre:
                     borderVerre.BorderBrush = borderVerre2.BorderBrush = colorValidationObjects;
                     addLineWithObjects(value);
                     hideHelp();
@@ -230,17 +253,17 @@ namespace PaintSurface
             tagList[value].setPut(false);
             tagList[value].setPosition(new Point());
             switch (value){
-                case Constants.valueBrosse:
+                case MyResources.valueBrosse:
                         borderAideBrosseDent.BorderBrush = Brushes.Transparent;
                         borderAideBrosseDent2.BorderBrush = Brushes.Transparent;
                         removeObject(value);
                         break;
-                case Constants.valueDenti:
+                case MyResources.valueDenti:
                         borderDentifrice.BorderBrush = Brushes.Transparent;
                         borderDentifrice2.BorderBrush = Brushes.Transparent;
                         removeObject(value);
                         break;
-                case Constants.valueVerre:
+                case MyResources.valueVerre:
                         borderVerre.BorderBrush = Brushes.Transparent;
                         borderVerre2.BorderBrush = Brushes.Transparent ;
                         removeObject(value);
@@ -303,9 +326,9 @@ namespace PaintSurface
 
         private void hideHelp()
         {
-            if (tagList.ContainsKey(Constants.valueBrosse) && tagList.ContainsKey(Constants.valueDenti) && tagList.ContainsKey(Constants.valueVerre))
+            if (tagList.ContainsKey(MyResources.valueBrosse) && tagList.ContainsKey(MyResources.valueDenti) && tagList.ContainsKey(MyResources.valueVerre))
             {
-                if (tagList[Constants.valueBrosse].getPut() && tagList[Constants.valueDenti].getPut() && tagList[Constants.valueVerre].getPut())
+                if (tagList[MyResources.valueBrosse].getPut() && tagList[MyResources.valueDenti].getPut() && tagList[MyResources.valueVerre].getPut())
                 {
                     aideTop.Visibility = Visibility.Hidden;
                     aideBot.Visibility = Visibility.Hidden;
@@ -322,9 +345,13 @@ namespace PaintSurface
                 if (tagList[action.getItem()].getPut())
                 {
                     Item item = (Item)tagList[action.getItem()];
-                    Line myLine = createLine(action.getPosition(), item.getPosition());
-                    links.Add(new Tuple<Action, Item>(action, item), myLine);
-                    objet.Children.Add(myLine);
+                    Tuple<Action, Item> pair = new Tuple<Action, Item>(action, item);
+                    if (!links.ContainsKey(pair)) 
+                    {
+                        Line myLine = createLine(action.getPosition(), item.getPosition());
+                        links.Add(pair, myLine); 
+                        objet.Children.Add(myLine); 
+                    }
                 }
             }
             
@@ -339,10 +366,14 @@ namespace PaintSurface
                 if (tagList.ContainsKey(action))// Si l'action existe
                 {
                     if (tagList[action].getPut())//Si l'action est posée
-                    {
-                        Line myLine = createLine(tagList[action].getPosition(), item.getPosition());
-                        objet.Children.Add(myLine);
-                        links.Add(new Tuple<Action, Item>((Action)tagList[action], item), myLine);
+                    {                       
+                        Tuple<Action, Item> pair = new Tuple<Action, Item>((Action)tagList[action], item);
+                        if (!links.ContainsKey(pair)) 
+                        {
+                            Line myLine = createLine(tagList[action].getPosition(), item.getPosition());
+                            links.Add(pair, myLine); 
+                            objet.Children.Add(myLine); 
+                        }
                     }
                 }
             }
@@ -414,7 +445,7 @@ namespace PaintSurface
                     break;
                 }
             }
-            if (allTagPut && cpt == Constants.nbTag)
+            if (allTagPut && cpt == MyResources.nbTag)
             {
                 ordonnancement.Visibility = Visibility.Visible;
             }
@@ -424,44 +455,44 @@ namespace PaintSurface
         {
             switch (value)
             {
-                case Constants.valueBrosse:
+                case MyResources.valueBrosse:
                     Item brosse = (Item)tagList[value];
-                    brosse.addAction(Constants.valueAction1);
-                    brosse.addAction(Constants.valueAction3);
-                    brosse.addAction(Constants.valueAction4);
+                    brosse.addAction(MyResources.valueAction1);
+                    brosse.addAction(MyResources.valueAction3);
+                    brosse.addAction(MyResources.valueAction4);
                     break;
-                case Constants.valueDenti:
+                case MyResources.valueDenti:
                     Item denti = (Item)tagList[value];
-                    denti.addAction(Constants.valueAction2);
+                    denti.addAction(MyResources.valueAction2);
                     break;
-                case Constants.valueVerre:
+                case MyResources.valueVerre:
                     Item verre = (Item)tagList[value];
-                    verre.addAction(Constants.valueAction5);
-                    verre.addAction(Constants.valueAction6);
+                    verre.addAction(MyResources.valueAction5);
+                    verre.addAction(MyResources.valueAction6);
                     break;
-                case Constants.valueAction1:
+                case MyResources.valueAction1:
                     Action action1 = (Action)tagList[value];
-                    action1.setItem(Constants.valueBrosse);
+                    action1.setItem(MyResources.valueBrosse);
                     break;
-                case Constants.valueAction2:
+                case MyResources.valueAction2:
                     Action action2 = (Action)tagList[value];
-                    action2.setItem(Constants.valueDenti);
+                    action2.setItem(MyResources.valueDenti);
                     break;
-                case Constants.valueAction3:
+                case MyResources.valueAction3:
                     Action action3 = (Action)tagList[value];
-                    action3.setItem(Constants.valueBrosse);
+                    action3.setItem(MyResources.valueBrosse);
                     break;
-                case Constants.valueAction4:
+                case MyResources.valueAction4:
                     Action action4 = (Action)tagList[value];
-                    action4.setItem(Constants.valueBrosse);
+                    action4.setItem(MyResources.valueBrosse);
                     break;
-                case Constants.valueAction5:
+                case MyResources.valueAction5:
                     Action action5 = (Action)tagList[value];
-                    action5.setItem(Constants.valueVerre);
+                    action5.setItem(MyResources.valueVerre);
                     break;
-                case Constants.valueAction6:
+                case MyResources.valueAction6:
                     Action action6 = (Action)tagList[value];
-                    action6.setItem(Constants.valueVerre);
+                    action6.setItem(MyResources.valueVerre);
                     break;
                 default: break;
             }
@@ -474,74 +505,45 @@ namespace PaintSurface
 
         private void tagAddedFrieze(object sender, TagVisualizerEventArgs e)
         {
-            long value = e.TagVisualization.VisualizedTag.Value;
-            Action action = (Action)tagList[value];//On choppe l'action
-            action.setPutInRightCase(true);
+            string tagChoose = ((TagVisualizer)sender).Name; //Choper le name de la frieze
 
-            switch (value)
+            Console.WriteLine("On veut le nom : " + tagChoose);
+            Action action = (Action)tagList[e.TagVisualization.VisualizedTag.Value];//On choppe l'action 
+
+            if (linksFrieze[action.getValue()].Item1 == tagChoose || linksFrieze[action.getValue()].Item2 == tagChoose )
             {
-                case Constants.valueAction1:
-                    borderbloc1.BorderBrush = colorValidationObjects;
-                    break;
-                case Constants.valueAction2:
-                    borderbloc2.BorderBrush = colorValidationObjects;
-                    break;
-                case Constants.valueAction3:
-                    borderbloc3.BorderBrush = colorValidationObjects;
-                    break;
-                case Constants.valueAction4:
-                    borderbloc4.BorderBrush = colorValidationObjects;
-                    break;
-                case Constants.valueAction5:
-                    borderbloc5.BorderBrush = colorValidationObjects;
-                    break;
-                case Constants.valueAction6:
-                    borderbloc6.BorderBrush = colorValidationObjects;
-                    break;
-                default: break;
+                action.setPutInRightCase(true);
+                linksBorder[tagChoose].BorderBrush = colorValidationObjects;
             }
+            else
+            {
+                action.setPutInRightCase(false);
+                linksBorder[tagChoose].BorderBrush = colorInValidationObjects;
+            }
+
+            friezesCompletes();
         }
 
         private void tagRemovedFrieze(object sender, TagVisualizerEventArgs e)
         {
-            long value = e.TagVisualization.VisualizedTag.Value;
-            Action action = (Action)tagList[value];//On choppe l'action
+            Action action = (Action)tagList[e.TagVisualization.VisualizedTag.Value];//On choppe l'action
             action.setPutInRightCase(false);
 
-            switch (value)
-            {
-                case Constants.valueAction1:
-                    borderbloc1.BorderBrush = Brushes.Transparent;
-                    break;
-                case Constants.valueAction2:
-                    borderbloc2.BorderBrush = Brushes.Transparent;
-                    break;
-                case Constants.valueAction3:
-                    borderbloc3.BorderBrush = Brushes.Transparent;
-                    break;
-                case Constants.valueAction4:
-                    borderbloc4.BorderBrush = Brushes.Transparent;
-                    break;
-                case Constants.valueAction5:
-                    borderbloc5.BorderBrush = Brushes.Transparent;
-                    break;
-                case Constants.valueAction6:
-                    borderbloc6.BorderBrush = Brushes.Transparent;
-                    break;
-                default: break;
-            }
+            string tagChoose = ((TagVisualizer)sender).Name; //Choper le name de la frieze
+            linksBorder[tagChoose].BorderBrush = Brushes.Transparent;
         }
-
 
        private void friezesCompletes()
         {
-            bool complete = true;
-
+           bool complete = true;
+           int allActions = 0;
+ 
            foreach(KeyValuePair<long, Tag> tag in tagList)
            {
                if(tag.GetType() == typeof(Action))// Si on a une action
                {
                    Action action = (Action) tag.Value;
+                   allActions ++;
                    if (!action.getPutInRightCase())
                    {
                        complete = false;
@@ -549,7 +551,7 @@ namespace PaintSurface
                    }
                }
            }
-           if(complete)
+           if(complete && allActions == MyResources.nbActions)
            {
                ordonnancement.Visibility = Visibility.Hidden;
                video.Visibility = Visibility.Visible;

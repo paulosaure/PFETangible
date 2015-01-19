@@ -18,6 +18,7 @@ namespace PaintSurface
             this.value = v;
             this.position = p;
             this.putOnRightCase = false;
+            Tag.id++;
         }
 
         public long getItem()

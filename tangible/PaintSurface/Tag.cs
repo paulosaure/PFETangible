@@ -13,17 +13,18 @@ namespace PaintSurface
         protected bool put;
         protected Point position;
         protected long value;
+        protected static int id = 0;
 
         public Tag()
         {
-
+          
         }
         
         public Tag(long v, Point p)
         {
-            put = true;
-            position = p;
-            value = v;
+            this.put = true;
+            this.position = p;
+            this.value = v;
         }
 
 
@@ -40,6 +41,10 @@ namespace PaintSurface
             return put;
         }
 
+        public int getId()
+        {
+            return id;
+        }
 
         public void setPosition(Point p)
         {
@@ -49,10 +54,5 @@ namespace PaintSurface
         {
             put = p;
         }
-        public void setValue(long v)
-        {
-            value = v;
-        }
-
     }
 }
