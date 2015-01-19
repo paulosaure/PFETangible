@@ -55,11 +55,11 @@ namespace PaintSurface
         public const string friseTag5 = "tagActFrieze5";
         public const string friseTag6 = "tagActFrieze6";
 
-        public const string friseTag1b = "tagActFrieze1b";
-        public const string friseTag2b = "tagActFrieze2b";
-        public const string friseTag3b = "tagActFrieze3b";
-        public const string friseTag4b = "tagActFrieze4b";
-        public const string friseTag5b = "tagActFrieze5b";
-        public const string friseTag6b = "tagActFrieze6b";
+        public const string friseTag1b = "tagActFrieze1bot";
+        public const string friseTag2b = "tagActFrieze2bot";
+        public const string friseTag3b = "tagActFrieze3bot";
+        public const string friseTag4b = "tagActFrieze4bot";
+        public const string friseTag5b = "tagActFrieze5bot";
+        public const string friseTag6b = "tagActFrieze6bot";
     }
 }
