@@ -16,7 +16,7 @@
 
         <!--Vue présentation roue-->
         <!--Visible Hidden -->
-        <Grid  x:Name="myGrid" Visibility="Visible">
+        <Grid  x:Name="myGrid" Visibility="Hidden">
             <Image Source="/Resources/rond.png"  Width="360" Height="360">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="180" CenterY="180" />
@@ -103,28 +103,28 @@
             <StackPanel >
                 <!-- Icones d'aide-->
                 <WrapPanel Name="aideTop" Height="200"  Orientation="Horizontal" Margin="0,0,0,0">
-                    <Border Name="borderVerre"  BorderThickness="4" Margin="200,0,100,0" >
+                    <Border Name="borderVerre"  BorderThickness="4" Margin="200,0,100,0">
                         <Image Name="verre" Height="200" Width="200" RenderTransformOrigin="0.5, 0.5" >
                             <Image.RenderTransform>
                                 <RotateTransform Angle="180"/>
                             </Image.RenderTransform>
                         </Image>
                     </Border>
-                    <Border Name="borderDentifrice"  BorderThickness="4" >
+                    <Border Name="borderDentifrice"  BorderThickness="4" Margin="100,0,100,0" >
                         <Image Name="dentifrice" Height="200" Width="200" RenderTransformOrigin="0.5, 0.5" >
                             <Image.RenderTransform>
                                 <RotateTransform  Angle="180"/>
                             </Image.RenderTransform>
                         </Image>
                     </Border>
-                    <Border Name="borderAideBrosseDent"  BorderThickness="4" >
+                    <Border Name="borderAideBrosseDent"  BorderThickness="4" Margin="100,0,100,0" >
                         <Image Name="brosseDent" Height="200" Width="200" RenderTransformOrigin="0.5, 0.5">
                             <Image.RenderTransform>
                                 <RotateTransform  Angle="180"/>
                             </Image.RenderTransform>
                         </Image>
                     </Border>
-                    <TextBlock   Foreground="LightPink"  FontSize="50" Text="Aide :" Height="200" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5">
+                    <TextBlock  Margin="100,0,100,0" Foreground="LightPink"  FontSize="50" Text="Aide :" Height="200" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5">
                         <TextBlock.RenderTransform>
                             <RotateTransform  Angle="180"/>
                         </TextBlock.RenderTransform></TextBlock>
@@ -132,14 +132,12 @@
                 <!-- Carré noir + texte-->
                 <Border BorderBrush="Black" BorderThickness="5">
                     <Grid Height="650" Width="1920">
-                        <TextBlock  Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Text="Placer les objets " >
-                            <TextBlock.RenderTransform>
-                                <RotateTransform  Angle="-90"/>
-                            </TextBlock.RenderTransform>
+                        <TextBlock Name="consigneTop" Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Text="Placer les objets" Margin="24,23,0,560" >
                         </TextBlock>
-                        <TextBlock    Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="50" Text="Placer les objets " >
+
+                        <TextBlock Name="consigneBot" Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="50" Text="Placer les objets" Margin="0,546,150,37" >
                             <TextBlock.RenderTransform>
-                                <RotateTransform  Angle="90"/>
+                                <RotateTransform  Angle="180"/>
                             </TextBlock.RenderTransform>
                         </TextBlock>
                         <!-- Tag à poser -->
@@ -258,19 +256,20 @@
                 </Border>
                 <!-- Icones d'aide-->
                 <WrapPanel Name="aideBot" Height="200" Orientation="Horizontal" Margin="0,0,0,0">
-                    <TextBlock   Foreground="LightPink"  FontSize="50" Height="200" HorizontalAlignment="Center" >Aide :</TextBlock>
-                    <Border Name="borderAideBrosseDent2"  BorderThickness="4" Margin="200,0,100,0">
-                        <Image Name="brosseDent2" Height="200" Width="200" />
+                    <TextBlock   Foreground="LightPink"  FontSize="50" Height="200" HorizontalAlignment="Center" Margin="200,0,100,0"><Run Text="Aide :"/></TextBlock>
+                    <Border x:Name="borderAideBrosseDent2"  BorderThickness="4" Margin="100,0,100,0" >
+                        <Image x:Name="brosseDent2" Height="200" Width="200" />
                     </Border>
-                    <Border Name="borderDentifrice2"  BorderThickness="4" >
-                        <Image Name="dentifrice2" Height="200" Width="200" />
+                    <Border x:Name="borderDentifrice2"  BorderThickness="4" Margin="100,0,100,0">
+                        <Image x:Name="dentifrice2" Height="200" Width="200" />
                     </Border>
-                    <Border Name="borderVerre2"  BorderThickness="4" >
-                        <Image Name="verre2" Height="200" Width="200" />
+                    <Border x:Name="borderVerre2"  BorderThickness="4" Margin="100,0,100,0" >
+                        <Image x:Name="verre2" Height="200" Width="200" />
                     </Border>
                 </WrapPanel>
             </StackPanel>
         </Grid>
+        
         <!--Visible Hidden -->
         <Grid Name="ordonnancement" Visibility="Hidden">
             <Grid.RowDefinitions>
@@ -455,9 +454,10 @@
                 <Image x:Name="flecheVerteBas" Margin="10,0" Height="200" Width="130"  Source="/Resources/friseD.png" Visibility="Visible"/>
             </WrapPanel>
         </Grid>
-
+        
+<!--Vidéo -->
         <!--Visible Hidden -->
-        <Grid Name="video" Visibility="Hidden">
+        <Grid Name="video" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -466,90 +466,80 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            
-            
+<!-- Ligne Top -->
             <Grid Grid.Column="0" Grid.Row="0">
-                <StackPanel Background="Black">
-                    <MediaElement Source="/Resources/videoBrossage.mp4" Name="videoTop" Width="380" 
-                              Margin="770,10,-770,0" 
+                <!-- Video -->
+                
+                <MediaElement Source="/Resources/videoBrossage.mp4" Name="videoTop" Width="380" 
+                              Margin="767,7,-85,3" 
                               RenderTransformOrigin="0.5,0.5" 
                               LoadedBehavior="Manual" 
-                              UnloadedBehavior="Stop"
-                              MediaOpened="Element_MediaOpened" 
-                              MediaEnded="Element_MediaEnded">
-                        <MediaElement.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="180"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </MediaElement.RenderTransform>
-                    </MediaElement>
-                    <StackPanel HorizontalAlignment="Center" Width="450" Orientation="Horizontal">
-                        <!-- Play button. -->
-                        <Image Source="/Resources/play.png" MouseDown="OnMouseDownPlayMedia" Margin="5" />
-
-                        <!-- Pause button. -->
-                        <Image Source="/Resources/pause.png" MouseDown="OnMouseDownPauseMedia" Margin="5" />
-
-                        <!-- Stop button. -->
-                        <Image Source="/Resources/stop.png" MouseDown="OnMouseDownStopMedia" Margin="5" />
-
-                        <!-- Volume slider. This slider allows a Volume range between 0 and 1. -->
-                        <TextBlock Foreground="White" VerticalAlignment="Center" Margin="5"  >Volume</TextBlock>
-                        <Slider Name="volumeSlider" 
-                            VerticalAlignment="Center" 
-                            ValueChanged="ChangeMediaVolume" 
-                            Minimum="0" Maximum="1" Value="0.5" Width="70"/>
-
-                        <!-- Volume slider. This slider allows you to change the speed of the media playback. -->
-                        <TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center">Speed</TextBlock>
-                        <Slider Name="speedRatioSlider" 
-                            VerticalAlignment="Center" 
-                            ValueChanged="ChangeMediaSpeedRatio" 
-                            Value="1" Width="70" />
-
-                        <!-- Seek to slider. Ths slider allows you to jump to different parts of the media playback. -->
-                        <TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center">Seek To</TextBlock>
-                        <Slider Name="timelineSlider" Margin="5" ValueChanged="SeekToMediaPosition" Width="70"/>
-                    </StackPanel>
-                </StackPanel>
+                              UnloadedBehavior="Stop">
+                    <MediaElement.RenderTransform>
+                        <RotateTransform Angle="180"/>
+                    </MediaElement.RenderTransform>
+                </MediaElement>
+                
+                <!-- Bordure -->
+                <Border x:Name="borderVideoTop" 
+                        Width="650"
+                        Height="350" 
+                        BorderBrush="White" 
+                        BorderThickness="5" 
+                        Margin="1255,10,-847,161">
+                    <s:TagVisualizer  x:Name="tagVideoTop" Margin="1256,-670,-1246,680" Height="Auto" Width="Auto" VisualizationAdded="putActionOn" VisualizationRemoved="putActionOff"  >
+                        <s:TagVisualizer.Definitions>
+                            <s:TagVisualizationDefinition
+                				    Source="empty.xaml"
+                				    OrientationOffsetFromTag="0" 
+                				    PhysicalCenterOffsetFromTag="0,0"
+                				    UsesTagOrientation="True"
+                                                  />
+                        </s:TagVisualizer.Definitions>
+                    </s:TagVisualizer>
+                </Border>
+                
+                <!-- Texte -->
+                <TextBlock  Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Margin="1263,378,-839,9" >
+                    <TextBlock.RenderTransform>
+                        <RotateTransform  Angle="-180"/>
+                    </TextBlock.RenderTransform><Run Text="Placer une action "/><Run Language="fr-fr"/><LineBreak/><Run Language="fr-fr" Text="p"/><Run Text="our lancer la vidéo associée"/></TextBlock>
             </Grid>
-         
-                   
+            
+<!-- Ligne Bot -->
             <Grid Grid.Column="0" Grid.Row="1">
-                <StackPanel Background="Black">
-                    <MediaElement Source="/Resources/videoBrossage.mp4" Name="videoBot" Width="380" Margin="770,20,-770,0" />
-                    <StackPanel HorizontalAlignment="Center" Width="450" Orientation="Horizontal">
-                        <!-- Play button. -->
-                        <Image Source="/Resources/play.png" MouseDown="OnMouseDownPlayMedia" Margin="5" />
-
-                        <!-- Pause button. -->
-                        <Image Source="/Resources/pause.png" MouseDown="OnMouseDownPauseMedia" Margin="5" />
-
-                        <!-- Stop button. -->
-                        <Image Source="/Resources/stop.png" MouseDown="OnMouseDownStopMedia" Margin="5" />
-
-                        <!-- Volume slider. This slider allows a Volume range between 0 and 1. -->
-                        <TextBlock Foreground="White" VerticalAlignment="Center" Margin="5"  >Volume</TextBlock>
-                        <Slider Name="volumeSlider2" 
-                                VerticalAlignment="Center" 
-                                ValueChanged="ChangeMediaVolume" 
-                                Minimum="0" Maximum="1" Value="0.5" Width="70"/>
-
-                        <!-- Volume slider. This slider allows you to change the speed of the media playback. -->
-                        <TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center">Speed</TextBlock>
-                        <Slider Name="speedRatioSlider2" 
-                                VerticalAlignment="Center" 
-                                ValueChanged="ChangeMediaSpeedRatio" 
-                                Value="1" Width="70" />
-
-                        <!-- Seek to slider. Ths slider allows you to jump to different parts of the media playback. -->
-                        <TextBlock Foreground="White" Margin="5"  VerticalAlignment="Center">Seek To</TextBlock>
-                        <Slider Name="timelineSlider2" Margin="5" ValueChanged="SeekToMediaPosition" Width="70"/>
-                    </StackPanel>
-                </StackPanel>
+                <!-- Vidéo -->
+                <MediaElement Source="/Resources/videoBrossage.mp4" Name="videoBot" Width="380" 
+                              Margin="769,10,-86,64" 
+                              RenderTransformOrigin="0.5,0.5" 
+                              LoadedBehavior="Manual" 
+                              UnloadedBehavior="Stop"/>
+                
+                <!-- Texte -->
+                <TextBlock  Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Margin="11,9,0,431" Height="150" >
+                    <Run Text="Placer une action "/><LineBreak/>
+                    <Run Text="pour lancer la vidéo associée"/>
+                </TextBlock>
+                
+                <!-- Bordure -->
+                <Border x:Name="borderVideoBot" 
+                    Width="650" 
+                    Height="350" 
+                    BorderBrush="White" 
+                    BorderThickness="5" 
+                    Margin="10,162,397,78" 
+                    Grid.Row="1">
+                    <s:TagVisualizer  x:Name="tagVideoBot" Margin="1256,-673,-1246,683" Height="Auto" Width="Auto" VisualizationAdded="putActionOn" VisualizationRemoved="putActionOff"  >
+                        <s:TagVisualizer.Definitions>
+                            <s:TagVisualizationDefinition
+                				Source="empty.xaml"
+                				OrientationOffsetFromTag="0" 
+                				PhysicalCenterOffsetFromTag="0,0"
+                				UsesTagOrientation="True"
+                                              />
+                        </s:TagVisualizer.Definitions>
+                    </s:TagVisualizer>
+                </Border>
             </Grid>
         </Grid>
     </Grid>
