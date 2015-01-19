@@ -5,6 +5,7 @@
     xmlns:MyNameSpace="clr-namespace:PaintSurface;assembly=MyAssembly"
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:constants="clr-namespace:PaintSurface;assembly=PaintSurface"
+    s:TagVisualizer.IsTagVisualizationHost="False"
     Title="PaintSurface"
     Width="1920" Height="1080"
     >
@@ -16,7 +17,7 @@
 
         <!--Vue présentation roue-->
         <!--Visible Hidden -->
-        <Grid  x:Name="myGrid" Visibility="Hidden">
+        <Grid  x:Name="myGrid" Visibility="Visible">
             <Image Source="/Resources/rond.png"  Width="360" Height="360">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="180" CenterY="180" />
@@ -90,6 +91,7 @@
             <s:TagVisualizer.Definitions>
                 <s:TagVisualizationDefinition   x:Name="firstItemPut"
                                                 Source="empty.xaml"
+                                                TagRemovedBehavior="Disappear"
                                                 OrientationOffsetFromTag="0" 
                                                 PhysicalCenterOffsetFromTag="0,0"
                                                 UsesTagOrientation="True"
@@ -147,20 +149,23 @@
                                     <s:TagVisualizationDefinition x:Name="tagObj1"
                                               Value="0x01"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0" 
-                                              PhysicalCenterOffsetFromTag="0,0"
+                                              PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagObj2"
                                               Value="0x20"
                                               Source="empty.xaml"
-                                              OrientationOffsetFromTag="0"
-                                              PhysicalCenterOffsetFromTag="0,0" 
+                                              TagRemovedBehavior="Disappear"
+                                              OrientationOffsetFromTag="0" 
+                                              PhysicalCenterOffsetFromTag="0,0"                    
                                               UsesTagOrientation="True"
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagObj3"
                                               Value="0xB5"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -168,6 +173,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct1"
                                               Value="0xA6"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -175,6 +181,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct2"
                                               Value="0xC2"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -182,6 +189,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct3"
                                               Value="0xC5"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -189,6 +197,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct4"
                                               Value="0xD"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -196,6 +205,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct5"
                                               Value="0xE"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -203,6 +213,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct6"
                                               Value="0xF"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -210,6 +221,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct1b"
                                               Value="0xA6"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -217,6 +229,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct2b"
                                               Value="0xC2"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -224,6 +237,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct3b"
                                               Value="0xC5"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -231,6 +245,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct4b"
                                               Value="0xD"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -238,6 +253,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct5b"
                                               Value="0xE"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -245,6 +261,7 @@
                                     <s:TagVisualizationDefinition x:Name="tagAct6b"
                                               Value="0xF"
                                               Source="empty.xaml"
+                                              TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
                                               UsesTagOrientation="True"
@@ -310,6 +327,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition
                     		Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                     		OrientationOffsetFromTag="0" 
                     		PhysicalCenterOffsetFromTag="0,0"
                     		UsesTagOrientation="True"
@@ -320,6 +338,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -330,6 +349,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -340,6 +360,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -350,6 +371,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -360,6 +382,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -395,6 +418,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                     		OrientationOffsetFromTag="0" 
                     		PhysicalCenterOffsetFromTag="0,0"
                     		UsesTagOrientation="True"
@@ -405,6 +429,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -415,6 +440,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -425,6 +451,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -435,6 +462,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -445,6 +473,7 @@
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="empty.xaml"
+                            TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
                             UsesTagOrientation="True"
@@ -457,7 +486,7 @@
         
 <!--Vidéo -->
         <!--Visible Hidden -->
-        <Grid Name="video" Visibility="Visible">
+        <Grid Name="video" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -491,6 +520,7 @@
                         <s:TagVisualizer.Definitions>
                             <s:TagVisualizationDefinition
                 				    Source="empty.xaml"
+                                    TagRemovedBehavior="Disappear"
                 				    OrientationOffsetFromTag="0" 
                 				    PhysicalCenterOffsetFromTag="0,0"
                 				    UsesTagOrientation="True"
@@ -533,6 +563,7 @@
                         <s:TagVisualizer.Definitions>
                             <s:TagVisualizationDefinition
                 				Source="empty.xaml"
+                                TagRemovedBehavior="Disappear"
                 				OrientationOffsetFromTag="0" 
                 				PhysicalCenterOffsetFromTag="0,0"
                 				UsesTagOrientation="True"
