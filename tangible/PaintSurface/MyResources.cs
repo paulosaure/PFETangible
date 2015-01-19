@@ -11,23 +11,23 @@ namespace PaintSurface
         public const int nbTag = 9;
         public const int nbActions = 12;
         /*
-                public const long valueBrosse = 0x01;
-                public const long valueDenti = 0x20;
-                public const long valueVerre = 0xB5;
+        public const long valueBrosse = 0x01;
+        public const long valueDenti = 0x20;
+        public const long valueVerre = 0xB5;
           
-                public const long valueAction1 = 0xA6;
-                public const long valueAction2 = 0xC2;
-                public const long valueAction3 = 0xC5;
-                public const long valueAction4 = 0x8;
-                public const long valueAction5 = 0x9;
-                public const long valueAction6 = 0x17;
+        public const long valueAction1 = 0xA6;
+        public const long valueAction2 = 0xC2;
+        public const long valueAction3 = 0xC5;
+        public const long valueAction4 = 0xA8;
+        public const long valueAction5 = 0x08;
+        public const long valueAction6 = 0x40;
           
-        public const long valueAction1b = 0x18;
-        public const long valueAction2b = 0x19;
-        public const long valueAction3b = 0x27;
-        public const long valueAction4b = 0x28;
-        public const long valueAction5b = 0x29;
-        public const long valueAction6b = 0x37; 
+        public const long valueAction1b = 0xE0;
+        public const long valueAction2b = 0xE1;
+        public const long valueAction3b = 0xE2;
+        public const long valueAction4b = 0xE3;
+        public const long valueAction5b = 0xE4;
+        public const long valueAction6b = 0xE5; 
         */
         public const long valueBrosse = 0x1;
         public const long valueDenti = 0x2;
