@@ -590,7 +590,12 @@ namespace PaintSurface
 
         private void tagAddedFrieze(object sender, TagVisualizerEventArgs e)
         {
-            long value =e.TagVisualization.VisualizedTag.Value;
+            long value = e.TagVisualization.VisualizedTag.Value;
+
+            if(!tagList.ContainsKey(value))
+            {
+                tagList.Add(value, new Action(value, calculPoint(e)));
+            }
 
             if(tagList[value].GetType() == typeof(Action))
             {
