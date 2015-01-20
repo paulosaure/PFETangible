@@ -594,7 +594,7 @@ namespace PaintSurface
 
             if(tagList[value].GetType() == typeof(Action))
             {
-                Action action = (Action)tagList[];//On choppe l'action 
+                Action action = (Action)tagList[value];//On choppe l'action 
                 string tagChoose = ((TagVisualizer)sender).Name; //Choper le name de la frieze
 
                 if (linksFrieze[action.getValue()].Item1 == tagChoose || linksFrieze[action.getValue()].Item2 == tagChoose)
