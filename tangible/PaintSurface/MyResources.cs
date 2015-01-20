@@ -10,26 +10,26 @@ namespace PaintSurface
     {
         public const int nbTag = 9;
         public const int nbActions = 12;
+        /*
+               public const long valueBrosse = 0x1;
+               public const long valueDenti = 0x2;
+               public const long valueVerre = 0x3;
 
-        public const long valueBrosse = 0x1;
-        public const long valueDenti = 0x2;
-        public const long valueVerre = 0x3;
+               public const long valueAction1 = 0x4;
+               public const long valueAction2 = 0x5;
+               public const long valueAction3 = 0x6;
+               public const long valueAction4 = 0x7;
+               public const long valueAction5 = 0x8;
+               public const long valueAction6 = 0x9;
 
-        public const long valueAction1 = 0x4;
-        public const long valueAction2 = 0x5;
-        public const long valueAction3 = 0x6;
-        public const long valueAction4 = 0x7;
-        public const long valueAction5 = 0x8;
-        public const long valueAction6 = 0x9;
+               public const long valueAction1b = 0xA1;
+               public const long valueAction2b = 0xA2;
+               public const long valueAction3b = 0xA3;
+               public const long valueAction4b = 0xA4;
+               public const long valueAction5b = 0xA5;
+               public const long valueAction6b = 0xA7;
 
-        public const long valueAction1b = 0xA1;
-        public const long valueAction2b = 0xA2;
-        public const long valueAction3b = 0xA3;
-        public const long valueAction4b = 0xA4;
-        public const long valueAction5b = 0xA5;
-        public const long valueAction6b = 0xA7;
-
-/*
+              */
         public const long valueBrosse = 0x01;
         public const long valueDenti = 0x20;
         public const long valueVerre = 0xB5;
@@ -47,7 +47,7 @@ namespace PaintSurface
         public const long valueAction4b = 0xE3;
         public const long valueAction5b = 0xE4;
         public const long valueAction6b = 0xE5;
-*/
+
 
 
         public const string friseTag1 = "tagActFrieze1";
