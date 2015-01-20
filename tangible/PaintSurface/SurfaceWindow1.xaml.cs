@@ -189,7 +189,6 @@ namespace PaintSurface
         private async void foundObject()
         {
             //Objet en Texte
-            await Task.Delay(3000);
             brosseDent.Source = new BitmapImage(new Uri("/Resources/brosseadents.png", UriKind.Relative));
             dentifrice.Source = new BitmapImage(new Uri("/Resources/dentifrice.png", UriKind.Relative));
             verre.Source = new BitmapImage(new Uri("/Resources/verre.png", UriKind.Relative));
