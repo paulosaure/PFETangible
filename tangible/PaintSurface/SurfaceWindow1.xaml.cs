@@ -591,27 +591,37 @@ namespace PaintSurface
 
         private void tagAddedFrieze(object sender, TagVisualizerEventArgs e)
         {
-            string tagChoose = ((TagVisualizer)sender).Name; //Choper le name de la frieze
-            Action action = (Action)tagList[e.TagVisualization.VisualizedTag.Value];//On choppe l'action 
+            long value =e.TagVisualization.VisualizedTag.Value;
 
-            if (linksFrieze[action.getValue()].Item1 == tagChoose || linksFrieze[action.getValue()].Item2 == tagChoose)
+            if(tagList[value].GetType() == typeof(Action))
             {
-                action.setPutInRightCase(true);
-                linksBorder[tagChoose].BorderBrush = colorValidationObjects;
-            }
-            else
-            {
-                action.setPutInRightCase(false);
-                linksBorder[tagChoose].BorderBrush = colorInValidationObjects;
-            }
-            friezesCompletes();
+                Action action = (Action)tagList[];//On choppe l'action 
+                string tagChoose = ((TagVisualizer)sender).Name; //Choper le name de la frieze
+
+                if (linksFrieze[action.getValue()].Item1 == tagChoose || linksFrieze[action.getValue()].Item2 == tagChoose)
+                {
+                    action.setPutInRightCase(true);
+                    linksBorder[tagChoose].BorderBrush = colorValidationObjects;
+                }
+                else
+                {
+                    action.setPutInRightCase(false);
+                    linksBorder[tagChoose].BorderBrush = colorInValidationObjects;
+                }
+                friezesCompletes();
+                }
         }
 
         private void tagRemovedFrieze(object sender, TagVisualizerEventArgs e)
         {
-            Action action = (Action)tagList[e.TagVisualization.VisualizedTag.Value];//On choppe l'action
-            action.setPutInRightCase(false);
-            linksBorder[((TagVisualizer)sender).Name].BorderBrush = Brushes.Transparent;
+            long value =e.TagVisualization.VisualizedTag.Value;
+
+            if (tagList[value].GetType() == typeof(Action))
+            {
+                Action action = (Action)tagList[value];//On choppe l'action
+                action.setPutInRightCase(false);
+                linksBorder[((TagVisualizer)sender).Name].BorderBrush = Brushes.Transparent;
+            }
         }
 
         private void friezesCompletes()
