@@ -635,7 +635,7 @@ namespace PaintSurface
 
             foreach (KeyValuePair<long, Tag> tag in tagList)
             {
-                if (tag.GetType() == typeof(Action))// Si on a une action
+                if (tag.Value.GetType() == typeof(Action))// Si on a une action
                 {
                     Action action = (Action)tag.Value;
                     allActions++;
@@ -648,6 +648,9 @@ namespace PaintSurface
             }
             if (complete && allActions == MyResources.nbActions)
             {
+                consigneBot.Visibility = Visibility.Hidden;
+                consigneTop.Visibility = Visibility.Hidden;
+                BorderTagActions.BorderBrush = Brushes.Transparent;
                 ordonnancement.Visibility = Visibility.Hidden;
                 video.Visibility = Visibility.Visible;
             }

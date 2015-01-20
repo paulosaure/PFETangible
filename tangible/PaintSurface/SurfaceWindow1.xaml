@@ -132,7 +132,7 @@
                         </TextBlock.RenderTransform></TextBlock>
                 </WrapPanel>
                 <!-- Carré noir + texte-->
-                <Border BorderBrush="Black" BorderThickness="5">
+                <Border BorderBrush="Black" BorderThickness="5" Name="BorderTagActions">
                     <Grid Height="650" Width="1920">
                         <TextBlock Name="consigneTop" Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Text="Placer les objets" Margin="24,23,0,560" >
                         </TextBlock>
@@ -515,7 +515,7 @@
                         Height="350" 
                         BorderBrush="White" 
                         BorderThickness="5" 
-                        Margin="1244,10,-830,161">
+                        Margin="1235,10,-818,161">
                     <s:TagVisualizer  x:Name="tagVideoTop" Margin="1256,-670,-1246,680" Height="Auto" Width="Auto" VisualizationAdded="putActionOn" VisualizationRemoved="putActionOff"  >
                         <s:TagVisualizer.Definitions>
                             <s:TagVisualizationDefinition
@@ -530,10 +530,10 @@
                 </Border>
                 
                 <!-- Texte -->
-                <TextBlock  Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Margin="1247,378,-817,9" >
+                <TextBlock  Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Margin="1241,377,-810,10" >
                     <TextBlock.RenderTransform>
                         <RotateTransform  Angle="-180"/>
-                    </TextBlock.RenderTransform><Run Text="Placer une action "/><Run Language="fr-fr"/><LineBreak/><Run Language="fr-fr" Text="p"/><Run Text="our lancer la vidéo associée"/></TextBlock>
+                    </TextBlock.RenderTransform><Run Text="Placer une action "/><Run/><LineBreak/><Run Text="pour lancer la vidéo associée"/></TextBlock>
             </Grid>
             
 <!-- Ligne Bot -->
@@ -559,7 +559,7 @@
                     BorderThickness="5" 
                     Margin="10,162,397,78" 
                     Grid.Row="1">
-                    <s:TagVisualizer  x:Name="tagVideoBot" Margin="1244,-676,-1234,686" Height="Auto" Width="Auto" VisualizationAdded="putActionOn" VisualizationRemoved="putActionOff"  >
+                    <s:TagVisualizer  x:Name="tagVideoBot" Margin="1223,-673,-1220,673" Height="Auto" Width="Auto" VisualizationAdded="putActionOn" VisualizationRemoved="putActionOff"  >
                         <s:TagVisualizer.Definitions>
                             <s:TagVisualizationDefinition
                 				Source="empty.xaml"
