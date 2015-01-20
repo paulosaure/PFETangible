@@ -64,6 +64,15 @@ namespace PaintSurface
         public const string friseTag5b = "tagActFrieze5bot";
         public const string friseTag6b = "tagActFrieze6bot";
 
+        public const string videoAction1 = "videoAction1.mp4";
+        public const string videoAction2 = "videoAction2.mp4";
+        public const string videoAction3 = "videoAction3.mp4";
+        public const string videoAction4 = "videoAction4.mp4";
+        public const string videoAction5 = "videoAction5.mp4";
+        public const string videoAction6 = "videoAction6.mp4";
+
+        public const string consigne = "Placer les actions associés aux objets";
+        public const int largueurTrait = 3;
 
     }
 }

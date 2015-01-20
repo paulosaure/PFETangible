@@ -22,7 +22,6 @@ using System.IO;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-
 namespace PaintSurface
 {
     /// <summary>
@@ -31,8 +30,8 @@ namespace PaintSurface
     public partial class SurfaceWindow1 : SurfaceWindow
     {
 
-        private string consigne = "Placer les actions associés aux objets";
-        private const int largueurTrait = 3;
+        private int nbMinTagToSwitch = 0; //permet de vérifier que les objets sont tous bien placés à partir de 9 objets posés. Ca évite des calcules supplémentaire.
+
         private Color colorLink = Colors.LightGreen;
         private SolidColorBrush colorValidationObjects = Brushes.LightGreen;
         private SolidColorBrush colorInValidationObjects = Brushes.Red;
@@ -42,6 +41,7 @@ namespace PaintSurface
         Dictionary<long, Tuple<string, string>> linksFrieze = new Dictionary<long, Tuple<string, string>>();
         Dictionary<string, Border> linksBorder = new Dictionary<string, Border>();
         Dictionary<long, string> linksActionsVideos = new Dictionary<long, string>();
+        List<Tuple<long, long>> listeActionsAssociees = new List<Tuple<long, long>>();
 
         private MediaPlayer son = new MediaPlayer();
 
@@ -110,18 +110,21 @@ namespace PaintSurface
             linksBorder.Add(MyResources.friseTag6b, borderbloc6Bot);
 
             //Lier les actions avec les vidéo
-            linksActionsVideos.Add(MyResources.valueAction1, "videoAction1.mp4");
-            linksActionsVideos.Add(MyResources.valueAction2, "videoAction2.mp4");
-            linksActionsVideos.Add(MyResources.valueAction3, "videoAction3.mp4");
-            linksActionsVideos.Add(MyResources.valueAction4, "videoAction4.mp4");
-            linksActionsVideos.Add(MyResources.valueAction5, "videoAction5.mp4");
-            linksActionsVideos.Add(MyResources.valueAction6, "videoAction6.mp4");
-            linksActionsVideos.Add(MyResources.valueAction1b, "videoAction1.mp4");
-            linksActionsVideos.Add(MyResources.valueAction2b, "videoAction2.mp4");
-            linksActionsVideos.Add(MyResources.valueAction3b, "videoAction3.mp4");
-            linksActionsVideos.Add(MyResources.valueAction4b, "videoAction4.mp4");
-            linksActionsVideos.Add(MyResources.valueAction5b, "videoAction5.mp4");
-            linksActionsVideos.Add(MyResources.valueAction6b, "videoAction6.mp4");
+            linksActionsVideos.Add(MyResources.valueAction1, MyResources.videoAction1);
+            linksActionsVideos.Add(MyResources.valueAction2, MyResources.videoAction2);
+            linksActionsVideos.Add(MyResources.valueAction3, MyResources.videoAction3);
+            linksActionsVideos.Add(MyResources.valueAction4, MyResources.videoAction4);
+            linksActionsVideos.Add(MyResources.valueAction5, MyResources.videoAction5);
+            linksActionsVideos.Add(MyResources.valueAction6, MyResources.videoAction6);
+            linksActionsVideos.Add(MyResources.valueAction1b, MyResources.videoAction1);
+            linksActionsVideos.Add(MyResources.valueAction2b, MyResources.videoAction2);
+            linksActionsVideos.Add(MyResources.valueAction3b, MyResources.videoAction3);
+            linksActionsVideos.Add(MyResources.valueAction4b, MyResources.videoAction4);
+            linksActionsVideos.Add(MyResources.valueAction5b, MyResources.videoAction5);
+            linksActionsVideos.Add(MyResources.valueAction6b, MyResources.videoAction6);
+
+            //Associer les actions
+            listeActionsAssociees.Add(new Tuple<long, long>(MyResources.valueAction1, MyResources.valueAction1b));
         }
 
         protected override void OnClosed(EventArgs e)
@@ -220,6 +223,8 @@ namespace PaintSurface
 
         private void OnVisualizationAdded(object sender, TagVisualizerEventArgs e)
         {
+            nbMinTagToSwitch++;
+
             long value = e.TagVisualization.VisualizedTag.Value;
             Point pt = calculPoint(e);
 
@@ -238,7 +243,6 @@ namespace PaintSurface
 
             tagList[value].setPosition(pt);
             tagList[value].setPut(true);
-            Console.WriteLine("Res : " + tagList[value].getId());
 
             switch (value)
             {
@@ -261,11 +265,13 @@ namespace PaintSurface
                     addLineWithActions(value);
                     break;
             }
+            if (nbMinTagToSwitch == MyResources.nbTag)
             switchViewOrdonnancement();
         }
 
         public void OnVisualizationRemoved(object sender, TagVisualizerEventArgs e)
         {
+            nbMinTagToSwitch--;
             long value = e.TagVisualization.VisualizedTag.Value;
             tagList[value].setPut(false);
             tagList[value].setPosition(new Point());
@@ -410,7 +416,7 @@ namespace PaintSurface
             greenBrush.Color = colorLink;
 
             // Set Line's width and color
-            myLine.StrokeThickness = largueurTrait;
+            myLine.StrokeThickness = MyResources.largueurTrait;
             myLine.Stroke = greenBrush;
             return myLine;
         }
@@ -451,32 +457,54 @@ namespace PaintSurface
 
         public void switchViewOrdonnancement()//Allez à la prochaine vue
         {
-            bool passage = false;
+            bool allPut = true;
 
-            if (tagList.ContainsKey(MyResources.valueAction2))
+            foreach (Tuple<long,long> pair in listeActionsAssociees)
             {
-                if (tagList[MyResources.valueAction2].getPut())
+                if(!checkAnAction(pair.Item1, pair.Item2))
                 {
-                    passage = true;
-                }
-                else
-                {
-                    passage = false;
+                    allPut = false;
+                    break;
                 }
             }
-        
 
-            if(passage)
+            if(allPut)
             {
                 switchToOrdonnancement();
             }
         }
 
+        public bool checkAnAction(long action, long actionb)
+        {
+            if (tagList.ContainsKey(action))
+            {
+                if (tagList[action].getPut())
+                {
+                    return true;
+                }
+                else if (tagList.ContainsKey(actionb))
+                {
+                    if (tagList[actionb].getPut())
+                    {
+                        return true;
+                    }
+                }
+            }
+            else if (tagList.ContainsKey(actionb))
+            {
+                if (tagList[actionb].getPut())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void switchToOrdonnancement()
         {
             ordonnancement.Visibility = Visibility.Visible;
-            consigneTop.Text = consigne;
-            consigneBot.Text = consigne;
+            consigneTop.Text = MyResources.consigne;
+            consigneBot.Text = MyResources.consigne;
         }
 
         public void association(long value)
