@@ -121,7 +121,9 @@
     <Resource Include="Resources\pause.png" />
     <Resource Include="Resources\play.png" />
     <Resource Include="Resources\stop.png" />
-    <Content Include="Resources\videoBrossage.mp4" />
+    <Content Include="Resources\videoBrossage.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\textPosez.png" />
     <Resource Include="Resources\elt.png" />
     <Resource Include="Resources\brosser.jpg" />

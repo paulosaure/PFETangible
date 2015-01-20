@@ -17,7 +17,7 @@
 
         <!--Vue présentation roue-->
         <!--Visible Hidden -->
-        <Grid  x:Name="myGrid" Visibility="Visible">
+        <Grid  x:Name="myGrid" Visibility="Hidden">
             <Image Source="/Resources/rond.png"  Width="360" Height="360">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="180" CenterY="180" />
@@ -486,7 +486,7 @@
         
 <!--Vidéo -->
         <!--Visible Hidden -->
-        <Grid Name="video" Visibility="Hidden">
+        <Grid Name="video" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -499,7 +499,7 @@
             <Grid Grid.Column="0" Grid.Row="0">
                 <!-- Video -->
                 
-                <MediaElement Source="/Resources/videoBrossage.mp4" Name="videoTop" Width="380" 
+                <MediaElement Source="Resources/videoBrossage.mp4" Name="videoTop" Width="380" 
                               Margin="767,7,-85,3" 
                               RenderTransformOrigin="0.5,0.5" 
                               LoadedBehavior="Manual" 
@@ -539,7 +539,7 @@
 <!-- Ligne Bot -->
             <Grid Grid.Column="0" Grid.Row="1">
                 <!-- Vidéo -->
-                <MediaElement Source="/Resources/videoBrossage.mp4" Name="videoBot" Width="380" 
+                <MediaElement Source="Resources/videoBrossage.mp4" Name="videoBot" Width="380" 
                               Margin="769,10,-86,64" 
                               RenderTransformOrigin="0.5,0.5" 
                               LoadedBehavior="Manual" 
