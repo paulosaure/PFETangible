@@ -12,14 +12,13 @@ namespace PaintSurface
     {
         long item;
         private bool putOnRightCase;
-        private bool putInFrise;
+
 
         public Action(long v, Point p)
         {
             this.value = v;
             this.position = p;
             this.putOnRightCase = false;
-            this.putInFrise = false;
             Tag.id++;
         }
 
@@ -33,20 +32,13 @@ namespace PaintSurface
             item = i;
         }
 
-        public bool getPutInFrise()
-        {
-            return putInFrise;
-        }
+       
 
         public bool getPutInRightCase()
         {
             return putOnRightCase;
         }
-
-        public void setPutInFrise(bool b)
-        {
-            putInFrise = b;
-        }
+       
 
         public void setPutInRightCase(bool p)
         {

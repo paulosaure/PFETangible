@@ -222,6 +222,7 @@ namespace PaintSurface
 
         private void OnVisualizationAdded(object sender, TagVisualizerEventArgs e)
         {
+
             nbMinTagToSwitch++;
 
             long value = e.TagVisualization.VisualizedTag.Value;
@@ -240,6 +241,7 @@ namespace PaintSurface
                 association(value);
             }
 
+            tagList[value].setPutInFrise(false);
             tagList[value].setPosition(pt);
             tagList[value].setPut(true);
 
@@ -265,7 +267,7 @@ namespace PaintSurface
                     break;
             }
             if (nbMinTagToSwitch == MyResources.nbTag)
-            switchViewOrdonnancement();
+                switchViewOrdonnancement();
         }
 
         public void OnVisualizationRemoved(object sender, TagVisualizerEventArgs e)
@@ -303,7 +305,6 @@ namespace PaintSurface
             long value = e.TagVisualization.VisualizedTag.Value;
             Point p = calculPoint(e);
             Tag tag = tagList[value];
-
             tag.setPosition(p);
 
             if (tag.GetType() == typeof(Item))
@@ -314,33 +315,47 @@ namespace PaintSurface
                 {
                     if (tagList.ContainsKey(action)) //Si l'action existe
                     {
-                        if (tagList[action].getPut() && !((Action)tagList[action]).getPutInFrise()) //Si l'action est posé
+                        if (tagList[action].getPut() && !((Action)tagList[action]).getPutInFrise()) //Si l'action est posé et pas dans la frise
                         {
                             Tuple<Action, Item> tmp = new Tuple<Action, Item>((Action)tagList[action], item);
-                            Line line = links[tmp];
-                            line.X1 = tagList[action].getPosition().X;
-                            line.Y1 = tagList[action].getPosition().Y;
-                            line.X2 = item.getPosition().X;
-                            line.Y2 = item.getPosition().Y;
+                            try
+                            {
+                                Line line = links[tmp];
+                                line.X1 = tagList[action].getPosition().X;
+                                line.Y1 = tagList[action].getPosition().Y;
+                                line.X2 = item.getPosition().X;
+                                line.Y2 = item.getPosition().Y;
+                            }
+                            catch (System.Collections.Generic.KeyNotFoundException err)
+                            {
+                                Console.WriteLine("Erreur : " + err);
+                            }
                         }
                     }
                 }
             }
-            else
+            else // SI CEST l'action QUI BOUGE
             {
                 Action action = (Action)tagList[value];//on choppe l'action
 
                 if (tagList.ContainsKey(action.getItem()))
                 {
-                    if (tagList[action.getItem()].getPut())
+                    if (tagList[action.getItem()].getPut() && !tagList[action.getItem()].getPutInFrise())
                     {
-                        Item item = (Item)tagList[action.getItem()]; //on récupère l'objet dans la liste
-                        Tuple<Action, Item> tmp = new Tuple<Action, Item>(action, item);
-                        Line line = links[tmp];
-                        line.X1 = action.getPosition().X;
-                        line.Y1 = action.getPosition().Y;
-                        line.X2 = item.getPosition().X;
-                        line.Y2 = item.getPosition().Y;
+                        try
+                        {
+                            Item item = (Item)tagList[action.getItem()]; //on récupère l'objet dans la liste
+                            Tuple<Action, Item> tmp = new Tuple<Action, Item>(action, item);
+                            Line line = links[tmp];
+                            line.X1 = action.getPosition().X;
+                            line.Y1 = action.getPosition().Y;
+                            line.X2 = item.getPosition().X;
+                            line.Y2 = item.getPosition().Y;
+                        }
+                        catch (System.Collections.Generic.KeyNotFoundException err)
+                        {
+                            Console.WriteLine("Erreur : " + err);
+                        }
                     }
                 }
             }
@@ -355,6 +370,8 @@ namespace PaintSurface
                 {
                     aideTop.Visibility = Visibility.Hidden;
                     aideBot.Visibility = Visibility.Hidden;
+                    consigneTop.Text = MyResources.consigne;
+                    consigneBot.Text = MyResources.consigne;
                 }
             }
         }
@@ -388,7 +405,7 @@ namespace PaintSurface
             {
                 if (tagList.ContainsKey(action))// Si l'action existe
                 {
-                    if (tagList[action].getPut())//Si l'action est posée
+                    if (tagList[action].getPut() && !((Action)tagList[action]).getPutInFrise())//Si l'action est posée
                     {
                         Tuple<Action, Item> pair = new Tuple<Action, Item>((Action)tagList[action], item);
                         if (!links.ContainsKey(pair))
@@ -451,11 +468,11 @@ namespace PaintSurface
                 {
                     Item item = (Item)tagList[action.getItem()]; //on récupère l'objet dans la liste
                     Tuple<Action, Item> tmp = new Tuple<Action, Item>(action, item);
-                    if(links.ContainsKey(tmp))
+                    if (links.ContainsKey(tmp))
                     {
                         objet.Children.Remove(links[tmp]);
                         links.Remove(tmp);
-                    } 
+                    }
                 }
             }
         }
@@ -464,16 +481,16 @@ namespace PaintSurface
         {
             bool allPut = true;
 
-            foreach (Tuple<long,long> pair in listeActionsAssociees)
+            foreach (Tuple<long, long> pair in listeActionsAssociees)
             {
-                if(!checkAnAction(pair.Item1, pair.Item2))
+                if (!checkAnAction(pair.Item1, pair.Item2))
                 {
                     allPut = false;
                     break;
                 }
             }
 
-            if(allPut)
+            if (allPut)
             {
                 switchToOrdonnancement();
             }
@@ -508,8 +525,8 @@ namespace PaintSurface
         public void switchToOrdonnancement()
         {
             ordonnancement.Visibility = Visibility.Visible;
-            consigneTop.Text = MyResources.consigne;
-            consigneBot.Text = MyResources.consigne;
+            consigneTop.Text = MyResources.consigne2;
+            consigneBot.Text = MyResources.consigne2;
         }
 
         public void association(long value)
@@ -597,87 +614,130 @@ namespace PaintSurface
         private void tagAddedFrieze(object sender, TagVisualizerEventArgs e)
         {
             long value = e.TagVisualization.VisualizedTag.Value;
-            nbMinTagToSwitch++;
 
-            if(!tagList.ContainsKey(value))
+            if (!tagList.ContainsKey(value))
             {
-                tagList.Add(value, new Action(value, new Point()));
+                Action action = new Action(value, new Point());
+                tagList.Add(value, action);
+                action.setPutInFrise(true);
                 association(value);
             }
 
-            
+
             tagList[value].setPut(true);
 
-            if(tagList[value].GetType() == typeof(Action))
+            if (tagList[value].GetType() == typeof(Action))
             {
-                Action action = (Action)tagList[value];//On choppe l'action 
+                nbMinTagToSwitch++;
+                Action action = (Action)tagList[value];
                 string tagChoose = ((TagVisualizer)sender).Name; //Choper le name de la frieze
                 action.setPutInFrise(true);
-
-                if (linksFrieze[action.getValue()].Item1 == tagChoose || linksFrieze[action.getValue()].Item2 == tagChoose)
+                Console.WriteLine("TRUE");
+                try
                 {
-                    action.setPutInRightCase(true);
-                    linksBorder[tagChoose].BorderBrush = colorValidationObjects;
+                    if (linksFrieze[action.getValue()].Item1 == tagChoose || linksFrieze[action.getValue()].Item2 == tagChoose)
+                    {
+                        action.setPutInRightCase(true);
+                        linksBorder[tagChoose].BorderBrush = colorValidationObjects;
+                    }
+                    else
+                    {
+                        action.setPutInRightCase(false);
+                        linksBorder[tagChoose].BorderBrush = colorInValidationObjects;
+                    }
+                    friezesCompletes();
                 }
-                else
+                catch (System.Collections.Generic.KeyNotFoundException err)
                 {
-                    action.setPutInRightCase(false);
-                    linksBorder[tagChoose].BorderBrush = colorInValidationObjects;
+                    Console.WriteLine("Erreur : " + err);
                 }
-                removeAction(value);
-                friezesCompletes();
-                }
+            }
+            else
+            {
+                ((Item)tagList[value]).setPutInFrise(true);
+            }
         }
 
         private void tagRemovedFrieze(object sender, TagVisualizerEventArgs e)
         {
-            long value =e.TagVisualization.VisualizedTag.Value;
+            long value = e.TagVisualization.VisualizedTag.Value;
+
 
             if (tagList[value].GetType() == typeof(Action))
             {
+                nbMinTagToSwitch--;
                 Action action = (Action)tagList[value];//On choppe l'action
                 action.setPutInFrise(false);
+                action.setPut(false);
+                Console.WriteLine("FALSE");
                 action.setPutInRightCase(false);
                 linksBorder[((TagVisualizer)sender).Name].BorderBrush = Brushes.Transparent;
             }
         }
 
+        private void tagMovedFrieze(object sender, TagVisualizerEventArgs e)
+        {
+
+        }
+
         private void friezesCompletes()
         {
-            bool complete = true;
-            int allActions = 0;
+            /*  bool complete = true;
+              int allActions = 0;
 
-            foreach (KeyValuePair<long, Tag> tag in tagList)
+              foreach (KeyValuePair<long, Tag> tag in tagList)
+              {
+                  if (tag.Value.GetType() == typeof(Action))// Si on a une action
+                  {
+                      Action action = (Action)tag.Value;
+                      allActions++;
+                      if (!action.getPutInRightCase())
+                      {
+                          complete = false;
+                          break;
+                      }
+                  }
+              }*/
+            // if (complete && allActions == MyResources.nbActions)
+            try
             {
-                if (tag.Value.GetType() == typeof(Action))// Si on a une action
+
+                if (((Action)tagList[MyResources.valueAction1]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction1]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction2]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction3]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction4]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction5]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction6]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction1b]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction2b]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction3b]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction4b]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction5b]).getPutInRightCase()
+                    && ((Action)tagList[MyResources.valueAction6b]).getPutInRightCase()
+                    )
                 {
-                    Action action = (Action)tag.Value;
-                    allActions++;
-                    if (!action.getPutInRightCase())
-                    {
-                        complete = false;
-                        break;
-                    }
+                    consigneBot.Visibility = Visibility.Hidden;
+                    consigneTop.Visibility = Visibility.Hidden;
+                    BorderTagActions.BorderBrush = Brushes.Transparent;
+                    ordonnancement.Visibility = Visibility.Hidden;
+                    video.Visibility = Visibility.Visible;
                 }
             }
-            if (complete && allActions == MyResources.nbActions)
+            catch (System.Collections.Generic.KeyNotFoundException err)
             {
-                consigneBot.Visibility = Visibility.Hidden;
-                consigneTop.Visibility = Visibility.Hidden;
-                BorderTagActions.BorderBrush = Brushes.Transparent;
-                ordonnancement.Visibility = Visibility.Hidden;
-                video.Visibility = Visibility.Visible;
+                Console.WriteLine("Erreur : " + err);
             }
         }
 
         public void putActionOn(object sender, TagVisualizerEventArgs e)
         {
-             long action = e.TagVisualization.VisualizedTag.Value;
-           //      videoBot.Source = new Uri (linksActionsVideos[action]);
-           //     videoTop.Source = new Uri (linksActionsVideos[action]);
-           videoBot.Source = new Uri("Resources/videoBrossage.mp4", UriKind.Relative);
-           videoTop.Source = new Uri("Resources/videoBrossage.mp4", UriKind.Relative);
-           
+            long action = e.TagVisualization.VisualizedTag.Value;
+            //      videoBot.Source = new Uri (linksActionsVideos[action]);
+            //     videoTop.Source = new Uri (linksActionsVideos[action]);
+            videoBot.Source = new Uri("Resources/videoBrossage.mp4", UriKind.Relative);
+            videoTop.Source = new Uri("Resources/videoBrossage.mp4", UriKind.Relative);
+
             videoBot.Play();
             videoTop.Play();
 
@@ -688,8 +748,6 @@ namespace PaintSurface
             videoBot.Stop();
             videoTop.Stop();
         }
-
-
     }
 }
 

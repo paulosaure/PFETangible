@@ -14,6 +14,7 @@ namespace PaintSurface
         protected Point position;
         protected long value;
         protected static int id = 0;
+        private bool putInFrise;
 
         public Tag()
         {
@@ -25,6 +26,7 @@ namespace PaintSurface
             this.put = true;
             this.position = p;
             this.value = v;
+            this.putInFrise = false;
         }
 
 
@@ -44,6 +46,14 @@ namespace PaintSurface
         public int getId()
         {
             return id;
+        }
+        public bool getPutInFrise()
+        {
+            return putInFrise;
+        }
+        public void setPutInFrise(bool b)
+        {
+            putInFrise = b;
         }
 
         public void setPosition(Point p)
