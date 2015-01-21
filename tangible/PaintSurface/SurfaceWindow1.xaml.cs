@@ -443,13 +443,17 @@ namespace PaintSurface
 
             foreach (long action in item.getActions()) // Pour chaque actions associées à l'objet
             {
+                Console.WriteLine("foreach");
                 if (tagList.ContainsKey(action)) //Si l'action existe
                 {
+                    Console.WriteLine("IF 1");
                     if (tagList[action].getPut()) //Si l'action est posé
                     {
+                        Console.WriteLine("IF 2");
                         Tuple<Action, Item> tmp = new Tuple<Action, Item>((Action)tagList[action], item);
                         if (links.ContainsKey(tmp))
                         {
+                            Console.WriteLine("IF 3");
                             objet.Children.Remove(links[tmp]);//Clé pas disponible ... A check
                             links.Remove(tmp);
                         }
