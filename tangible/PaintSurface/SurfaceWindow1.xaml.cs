@@ -231,11 +231,11 @@ namespace PaintSurface
             {
                 if (value == MyResources.valueBrosse || value == MyResources.valueDenti || value == MyResources.valueVerre)
                 {
-                    tagList.Add(value, new Item(value, calculPoint(e)));
+                    tagList.Add(value, new Item(value, pt));
                 }
                 else
                 {
-                    tagList.Add(value, new Action(value, calculPoint(e)));
+                    tagList.Add(value, new Action(value, pt));
                 }
                 association(value);
             }
@@ -314,7 +314,7 @@ namespace PaintSurface
                 {
                     if (tagList.ContainsKey(action)) //Si l'action existe
                     {
-                        if (tagList[action].getPut()) //Si l'action est posé
+                        if (tagList[action].getPut() && !((Action)tagList[action]).getPutInFrise()) //Si l'action est posé
                         {
                             Tuple<Action, Item> tmp = new Tuple<Action, Item>((Action)tagList[action], item);
                             Line line = links[tmp];
@@ -431,8 +431,11 @@ namespace PaintSurface
                     if (tagList[action].getPut()) //Si l'action est posé
                     {
                         Tuple<Action, Item> tmp = new Tuple<Action, Item>((Action)tagList[action], item);
-                        objet.Children.Remove(links[tmp]);
-                        links.Remove(tmp);
+                        if (links.ContainsKey(tmp))
+                        {
+                            objet.Children.Remove(links[tmp]);//Clé pas disponible ... A check
+                            links.Remove(tmp);
+                        }
                     }
                 }
             }
@@ -448,8 +451,11 @@ namespace PaintSurface
                 {
                     Item item = (Item)tagList[action.getItem()]; //on récupère l'objet dans la liste
                     Tuple<Action, Item> tmp = new Tuple<Action, Item>(action, item);
-                    objet.Children.Remove(links[tmp]);
-                    links.Remove(tmp);
+                    if(links.ContainsKey(tmp))
+                    {
+                        objet.Children.Remove(links[tmp]);
+                        links.Remove(tmp);
+                    } 
                 }
             }
         }
@@ -591,16 +597,22 @@ namespace PaintSurface
         private void tagAddedFrieze(object sender, TagVisualizerEventArgs e)
         {
             long value = e.TagVisualization.VisualizedTag.Value;
+            nbMinTagToSwitch++;
 
             if(!tagList.ContainsKey(value))
             {
-                tagList.Add(value, new Action(value, calculPoint(e)));
+                tagList.Add(value, new Action(value, new Point()));
+                association(value);
             }
+
+            
+            tagList[value].setPut(true);
 
             if(tagList[value].GetType() == typeof(Action))
             {
                 Action action = (Action)tagList[value];//On choppe l'action 
                 string tagChoose = ((TagVisualizer)sender).Name; //Choper le name de la frieze
+                action.setPutInFrise(true);
 
                 if (linksFrieze[action.getValue()].Item1 == tagChoose || linksFrieze[action.getValue()].Item2 == tagChoose)
                 {
@@ -612,6 +624,7 @@ namespace PaintSurface
                     action.setPutInRightCase(false);
                     linksBorder[tagChoose].BorderBrush = colorInValidationObjects;
                 }
+                removeAction(value);
                 friezesCompletes();
                 }
         }
@@ -623,6 +636,7 @@ namespace PaintSurface
             if (tagList[value].GetType() == typeof(Action))
             {
                 Action action = (Action)tagList[value];//On choppe l'action
+                action.setPutInFrise(false);
                 action.setPutInRightCase(false);
                 linksBorder[((TagVisualizer)sender).Name].BorderBrush = Brushes.Transparent;
             }
