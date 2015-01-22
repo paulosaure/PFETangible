@@ -17,7 +17,7 @@
 
         <!--Vue présentation roue-->
         <!--Visible Hidden -->
-        <Grid  x:Name="myGrid" Visibility="Hidden">
+        <Grid  x:Name="myGrid" Visibility="Visible">
             <Image Source="/Resources/rond.png"  Width="360" Height="360">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="180" CenterY="180" />
@@ -132,8 +132,8 @@
                         </TextBlock.RenderTransform></TextBlock>
                 </WrapPanel>
                 <!-- Carré noir + texte-->
-                <Border BorderBrush="Black" BorderThickness="5" Name="BorderTagActions">
-                    <Grid Height="650" Width="1920">
+                <Border Margin="0,5,0,0" BorderBrush="Black" BorderThickness="5" Name="BorderTagActions">
+                    <Grid Height="628" Width="1920">
                         <TextBlock Name="consigneTop" Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Text="Placer les objets" Margin="24,23,0,560" >
                         </TextBlock>
 
@@ -288,7 +288,7 @@
         </Grid>
 
         <!--Visible Hidden -->
-        <Grid Name="ordonnancement" Visibility="Visible">
+        <Grid Name="ordonnancement" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -299,7 +299,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <WrapPanel Name="friseHaut" Grid.Column="0"  Grid.Row="0" Margin="-90,0,0,0" >
+            <WrapPanel Name="friseHaut" Grid.Column="0"  Grid.Row="0" Margin="-90,-4,0,0" >
                 <Image x:Name="fleche" Margin="10,0" Height="200" Width="202"  Source="/Resources/flecheTop.png"/>
                 <Border x:Name="borderbloc6" BorderBrush="Transparent" BorderThickness="5" Margin="77,0,50,0">
                     <Image x:Name="bloc1" Margin="0,0,0,0" Height="200" Width="200"  Source="/Resources/cubeTop.png" HorizontalAlignment="Left" />
@@ -390,7 +390,7 @@
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>            </WrapPanel>
 
-            <WrapPanel Name="friseBas" Grid.Column="0" Grid.Row="2" Margin="-10,646,10,-845" >
+            <WrapPanel Name="friseBas" Grid.Column="0" Grid.Row="2" Margin="-10,635,10,-845" >
                 <Border x:Name="borderbloc1Bot"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
                     <Image Name="bloc1Bas" Margin="10,0" Height="200" Width="200"  Source="/Resources/cubeBotCoin.png"/>
                 </Border>

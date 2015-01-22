@@ -297,13 +297,6 @@ C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Reso
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\sonBrosseDent.wav
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\sonDentifrice.wav
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\sonVerre.wav
-C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\brossezlesdents.wav
-C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\coiffez.wav
-C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\cuisine.wav
-C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\douchez.wav
-C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\rasez.wav
-C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\salledebain.wav
-C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\salon.wav
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\PaintSurface.exe
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\PaintSurface.pdb
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Newtonsoft.Json.dll
