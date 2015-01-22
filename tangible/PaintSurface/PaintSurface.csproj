@@ -67,7 +67,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="empty.xaml">
+    <Page Include="Empty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,20 +118,21 @@
     <Content Include="PaintSurface.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\pause.png" />
-    <Resource Include="Resources\play.png" />
-    <Resource Include="Resources\stop.png" />
+    <Resource Include="Resources\brosse_grandT.png" />
+    <Content Include="Resources\consigne0.wav" />
+    <Content Include="Resources\consigne1.wav" />
+    <Content Include="Resources\consigne2.wav" />
+    <Content Include="Resources\consigne3.wav" />
+    <Resource Include="Resources\cubeBotCoin.png" />
+    <Resource Include="Resources\cubeTop.png" />
+    <Resource Include="Resources\cubeTopCoin.png" />
+    <Resource Include="Resources\flechebot.png" />
+    <Resource Include="Resources\flecheTop.png" />
+    <Resource Include="Resources\cubeBot.png" />
     <Content Include="Resources\videoBrossage.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\textPosez.png" />
-    <Resource Include="Resources\elt.png" />
-    <Resource Include="Resources\brosser.jpg" />
-    <Resource Include="Resources\cracher.png" />
-    <Resource Include="Resources\mettre_dentifrice.png" />
-    <Resource Include="Resources\mouiller_brosse.png" />
-    <Resource Include="Resources\prendre_brossedent.png" />
-    <Resource Include="Resources\rincer_bouche.png" />
     <Resource Include="Resources\friseD.png" />
     <Resource Include="Resources\friseG.png" />
     <Content Include="Resources\sonBrosseDent.wav">
@@ -146,41 +147,12 @@
     <Resource Include="Resources\verre_grand.png" />
     <Resource Include="Resources\verre.png" />
     <Resource Include="Resources\brosse_grand.png" />
-    <Resource Include="Resources\brosse_cheveux.png" />
     <Resource Include="Resources\brosseadents.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Content Include="Resources\brossezlesdents.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="Resources\brosse_grandT.png" />
-    <Content Include="Resources\coiffez.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\cuisine.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="Resources\rasoir.png" />
-    <Resource Include="Resources\douche.png" />
     <Resource Include="Resources\dentifrice.png" />
     <Resource Include="Resources\dentifrice_grand.png" />
-    <Content Include="Resources\douchez.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\rasez.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\salledebain.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\salon.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="Resources\salon.jpg" />
-    <Resource Include="Resources\salledebain.jpg" />
     <Resource Include="Resources\backgroud.jpg" />
-    <Resource Include="Resources\cuisine.jpg" />
-    <Resource Include="Resources\text.png" />
     <Resource Include="Resources\roue.png" />
     <Resource Include="Resources\rond.png" />
   </ItemGroup>

@@ -17,7 +17,7 @@
 
         <!--Vue présentation roue-->
         <!--Visible Hidden -->
-        <Grid  x:Name="myGrid" Visibility="Visible">
+        <Grid  x:Name="myGrid" Visibility="Hidden">
             <Image Source="/Resources/rond.png"  Width="360" Height="360">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="180" CenterY="180" />
@@ -90,7 +90,7 @@
         <s:TagVisualizer  Height="650" Width="1920" Name="tagItem"   VisualizationAdded="itemPutOnTable" VisualizationRemoved="OnVisualizationRemoved" VisualizationMoved="OnVisualizationMoved" >
             <s:TagVisualizer.Definitions>
                 <s:TagVisualizationDefinition   x:Name="firstItemPut"
-                                                Source="empty.xaml"
+                                                Source="Empty.xaml"
                                                 TagRemovedBehavior="Disappear"
                                                 OrientationOffsetFromTag="0" 
                                                 PhysicalCenterOffsetFromTag="0,0"
@@ -148,7 +148,7 @@
                                 <s:TagVisualizer.Definitions>
                                     <s:TagVisualizationDefinition x:Name="tagObj1"
                                               Value="0x01"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0" 
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -156,7 +156,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagObj2"
                                               Value="0x20"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0" 
                                               PhysicalCenterOffsetFromTag="0,0"                    
@@ -164,7 +164,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagObj3"
                                               Value="0xB5"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -172,7 +172,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct1"
                                               Value="0xA6"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -180,7 +180,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct2"
                                               Value="0xC2"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -188,7 +188,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct3"
                                               Value="0xC5"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -196,7 +196,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct4"
                                               Value="0xD"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -204,7 +204,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct5"
                                               Value="0xE"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -212,7 +212,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct6"
                                               Value="0xF"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -220,7 +220,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct1b"
                                               Value="0xA6"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -228,7 +228,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct2b"
                                               Value="0xC2"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -236,7 +236,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct3b"
                                               Value="0xC5"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -244,7 +244,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct4b"
                                               Value="0xD"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -252,7 +252,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct5b"
                                               Value="0xE"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -260,7 +260,7 @@
                                               />
                                     <s:TagVisualizationDefinition x:Name="tagAct6b"
                                               Value="0xF"
-                                              Source="empty.xaml"
+                                              Source="Empty.xaml"
                                               TagRemovedBehavior="Disappear"
                                               OrientationOffsetFromTag="0"
                                               PhysicalCenterOffsetFromTag="0,0" 
@@ -288,7 +288,7 @@
         </Grid>
 
         <!--Visible Hidden -->
-        <Grid Name="ordonnancement" Visibility="Hidden">
+        <Grid Name="ordonnancement" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -299,34 +299,34 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <WrapPanel Name="friseHaut" Grid.Column="0"  Grid.Row="0" >
-                <Image Name="fleche" Margin="1,0" Height="200" Width="100"  Source="/Resources/friseG.png"/>
+            <WrapPanel Name="friseHaut" Grid.Column="0"  Grid.Row="0" Margin="-90,0,0,0" >
+                <Image x:Name="fleche" Margin="10,0" Height="200" Width="202"  Source="/Resources/flecheTop.png"/>
                 <Border x:Name="borderbloc6" BorderBrush="Transparent" BorderThickness="5" Margin="77,0,50,0">
-                    <Image x:Name="bloc1" Margin="0,0,0,0" Height="200" Width="200"  Source="/Resources/elt.png" HorizontalAlignment="Left" />
+                    <Image x:Name="bloc1" Margin="0,0,0,0" Height="200" Width="200"  Source="/Resources/cubeTop.png" HorizontalAlignment="Left" />
                 </Border>
                 <Border x:Name="borderbloc5"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc2" Margin="10,0" Height="200" Width="200"  Source="/Resources/elt.png" HorizontalAlignment="Left"/>
+                    <Image x:Name="bloc2" Margin="10,0" Height="200" Width="200"  Source="/Resources/cubeTop.png" HorizontalAlignment="Left"/>
                 </Border>
                 <Border x:Name="borderbloc4"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc3" Margin="10,0" Height="200" Width="200"  Source="/Resources/elt.png" HorizontalAlignment="Left"/>
+                    <Image x:Name="bloc3" Margin="10,0" Height="200" Width="200"  Source="/Resources/cubeTop.png" HorizontalAlignment="Left"/>
                 </Border>
                 <Border x:Name="borderbloc3"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc4" Margin="10,0" Height="200" Width="200" Source="/Resources/elt.png" HorizontalAlignment="Left"/>
+                    <Image x:Name="bloc4" Margin="10,0" Height="200" Width="200" Source="/Resources/cubeTop.png" HorizontalAlignment="Left"/>
                 </Border>
                 <Border x:Name="borderbloc2"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc5" Margin="10,0" Height="200" Width="200" Source="/Resources/elt.png" HorizontalAlignment="Left"/>
+                    <Image x:Name="bloc5" Margin="10,0" Height="200" Width="200" Source="/Resources/cubeTop.png" HorizontalAlignment="Left"/>
                 </Border>
                 <Border x:Name="borderbloc1"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc6" Margin="10,0" Height="200" Width="200" Source="/Resources/elt.png" HorizontalAlignment="Left"/>
+                    <Image x:Name="bloc6" Margin="10,0" Height="200" Width="200" Source="/Resources/cubeTopCoin.png" HorizontalAlignment="Left"/>
                 </Border>
             </WrapPanel>
 
             <WrapPanel Name="TagFrieze" Grid.Column="0" Grid.Row="0" >
                 <Image Name="flecheVerte" Margin="10,0" Height="200" Width="140"  Source="/Resources/friseG.png" Visibility="Hidden"/>
-                <s:TagVisualizer  x:Name="tagActFrieze6" Margin="24,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer  x:Name="tagActFrieze6" Margin="55,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition
-                    		Source="empty.xaml"
+                    		Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                     		OrientationOffsetFromTag="0" 
                     		PhysicalCenterOffsetFromTag="0,0"
@@ -334,10 +334,10 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze5" Margin="63,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze5" Margin="35,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
@@ -345,10 +345,10 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze4" Margin="37,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze4" Margin="63,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
@@ -356,10 +356,10 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze3" Margin="60,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze3" Margin="37,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
@@ -367,10 +367,10 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze2" Margin="39,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze2" Margin="65,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
@@ -378,46 +378,45 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze1" Margin="58,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze1" Margin="34,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
-                            Source="empty.xaml"
-                            TagRemovedBehavior="Disappear"
-                            OrientationOffsetFromTag="0" 
-                            PhysicalCenterOffsetFromTag="0,0"
-                            UsesTagOrientation="True"
+                    		Source="Empty.xaml"
+                    		TagRemovedBehavior="Disappear"
+                    		OrientationOffsetFromTag="0" 
+                    		PhysicalCenterOffsetFromTag="0,0"
+                    		UsesTagOrientation="True"
                                               />
                     </s:TagVisualizer.Definitions>
-                </s:TagVisualizer>
-            </WrapPanel>
+                </s:TagVisualizer>            </WrapPanel>
 
             <WrapPanel Name="friseBas" Grid.Column="0" Grid.Row="2" Margin="-10,646,10,-845" >
                 <Border x:Name="borderbloc1Bot"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc1Bas" Margin="10,0" Height="200" Width="200"  Source="/Resources/elt.png"/>
+                    <Image Name="bloc1Bas" Margin="10,0" Height="200" Width="200"  Source="/Resources/cubeBotCoin.png"/>
                 </Border>
                 <Border x:Name="borderbloc2Bot"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc2Bas" Margin="10,0" Height="200" Width="200"  Source="/Resources/elt.png"/>
+                    <Image Name="bloc2Bas" Margin="10,0" Height="200" Width="200"  Source="/Resources/cubeBot.png"/>
                 </Border>
                 <Border x:Name="borderbloc3Bot"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc3Bas" Margin="10,0" Height="200" Width="200"  Source="/Resources/elt.png"/>
+                    <Image Name="bloc3Bas" Margin="10,0" Height="200" Width="200"  Source="/Resources/cubeBot.png"/>
                 </Border>
                 <Border x:Name="borderbloc4Bot"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc4Bas" Margin="10,0"  Height="200" Width="200" Source="/Resources/elt.png"/>
+                    <Image Name="bloc4Bas" Margin="10,0"  Height="200" Width="200" Source="/Resources/cubeBot.png"/>
                 </Border>
                 <Border x:Name="borderbloc5Bot"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc5Bas" Margin="10,0"  Height="200" Width="200" Source="/Resources/elt.png"/>
+                    <Image Name="bloc5Bas" Margin="10,0"  Height="200" Width="200" Source="/Resources/cubeBot.png"/>
                 </Border>
                 <Border x:Name="borderbloc6Bot"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
-                    <Image Name="bloc6Bas" Margin="10,0" Height="200" Width="200" Source="/Resources/elt.png" HorizontalAlignment="Left"/>
+                    <Image Name="bloc6Bas" Margin="10,0" Height="200" Width="200" Source="/Resources/cubeBot.png" HorizontalAlignment="Left"/>
                 </Border>
-                <Image x:Name="flecheB" Margin="10,0" Height="200" Width="140"  Source="/Resources/friseD.png"/>
+                <Image x:Name="flecheB" Margin="10,0" Height="200" Width="200"  Source="/Resources/flecheBot.png"/>
             </WrapPanel>
 
             <WrapPanel Name="TagFriezeBas" Grid.Column="0" Grid.Row="2" Margin="-10,646,10,-845" >
                 <s:TagVisualizer x:Name="tagActFrieze1bot" Margin="33,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                     		OrientationOffsetFromTag="0" 
                     		PhysicalCenterOffsetFromTag="0,0"
@@ -425,10 +424,10 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze2bot" Margin="66,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze2bot" Margin="69,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
@@ -439,7 +438,7 @@
                 <s:TagVisualizer x:Name="tagActFrieze3bot" Margin="30,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
@@ -450,7 +449,7 @@
                 <s:TagVisualizer x:Name="tagActFrieze4bot" Margin="69,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
@@ -458,10 +457,10 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze5bot" Margin="30,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze5bot" Margin="32,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
@@ -472,7 +471,7 @@
                 <s:TagVisualizer x:Name="tagActFrieze6bot" Margin="70,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
-                            Source="empty.xaml"
+                            Source="Empty.xaml"
                             TagRemovedBehavior="Disappear"
                             OrientationOffsetFromTag="0" 
                             PhysicalCenterOffsetFromTag="0,0"
@@ -480,7 +479,7 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <Image x:Name="flecheVerteBas" Margin="10,0" Height="200" Width="130"  Source="/Resources/friseD.png" Visibility="Visible"/>
+
             </WrapPanel>
         </Grid>
 
@@ -519,7 +518,7 @@
                     <s:TagVisualizer  x:Name="tagVideoTop" Margin="1256,-670,-1246,680" Height="Auto" Width="Auto" VisualizationAdded="putActionOn" VisualizationRemoved="putActionOff"  >
                         <s:TagVisualizer.Definitions>
                             <s:TagVisualizationDefinition
-                				    Source="empty.xaml"
+                				    Source="Empty.xaml"
                                     TagRemovedBehavior="Disappear"
                 				    OrientationOffsetFromTag="0" 
                 				    PhysicalCenterOffsetFromTag="0,0"
@@ -562,7 +561,7 @@
                     <s:TagVisualizer  x:Name="tagVideoBot" Margin="1219,-281,-1216,281" Height="Auto" Width="Auto" VisualizationAdded="putActionOn" VisualizationRemoved="putActionOff"  >
                         <s:TagVisualizer.Definitions>
                             <s:TagVisualizationDefinition
-                				Source="empty.xaml"
+                				Source="Empty.xaml"
                                 TagRemovedBehavior="Disappear"
                 				OrientationOffsetFromTag="0" 
                 				PhysicalCenterOffsetFromTag="0,0"

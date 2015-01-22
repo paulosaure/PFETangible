@@ -261,13 +261,6 @@ C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\PaintSurface.xml
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\sonBrosseDent.wav
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\sonDentifrice.wav
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\sonVerre.wav
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\brossezlesdents.wav
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\coiffez.wav
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\cuisine.wav
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\douchez.wav
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\rasez.wav
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\salledebain.wav
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\salon.wav
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\PaintSurface.exe
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\PaintSurface.pdb
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Newtonsoft.Json.dll
