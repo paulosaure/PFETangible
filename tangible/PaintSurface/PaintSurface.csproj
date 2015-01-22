@@ -122,13 +122,13 @@
     <Content Include="Resources\consigne0.wav" />
     <Content Include="Resources\consigne1.wav" />
     <Content Include="Resources\consigne2.wav" />
-    <Content Include="Resources\consigne3.wav" />
     <Resource Include="Resources\cubeBotCoin.png" />
     <Resource Include="Resources\cubeTop.png" />
     <Resource Include="Resources\cubeTopCoin.png" />
     <Resource Include="Resources\flechebot.png" />
     <Resource Include="Resources\flecheTop.png" />
     <Resource Include="Resources\cubeBot.png" />
+    <Content Include="Resources\consigne3.wav" />
     <Content Include="Resources\videoBrossage.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

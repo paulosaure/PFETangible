@@ -769,14 +769,10 @@ namespace PaintSurface
         public void putActionOn(object sender, TagVisualizerEventArgs e)
         {
             long action = e.TagVisualization.VisualizedTag.Value;
-            //      videoBot.Source = new Uri (linksActionsVideos[action]);
-            //     videoTop.Source = new Uri (linksActionsVideos[action]);
-            videoBot.Source = new Uri("Resources/videoBrossage.mp4", UriKind.Relative);
-            videoTop.Source = new Uri("Resources/videoBrossage.mp4", UriKind.Relative);
-
+            videoBot.Source = new Uri (linksActionsVideos[action]);
+            videoTop.Source = new Uri (linksActionsVideos[action]);          
             videoBot.Play();
             videoTop.Play();
-
         }
 
         public void putActionOff(object sender, TagVisualizerEventArgs e)
