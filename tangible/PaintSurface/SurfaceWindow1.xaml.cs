@@ -29,13 +29,17 @@ namespace PaintSurface
     /// </summary>
     public partial class SurfaceWindow1 : SurfaceWindow
     {
-
+        //Cosntante
+        public const int nbTag = 9;
+        public const int nbActions = 12;
+        private int timeBeforeConsigne = 2000;
         private int nbMinTagToSwitch = 0; //permet de vérifier que les objets sont tous bien placés à partir de 9 objets posés. Ca évite des calcules supplémentaire.
-
+        public const int largueurTrait = 3;
         private Color colorLink = Colors.LightGreen;
         private SolidColorBrush colorValidationObjects = Brushes.LightGreen;
         private SolidColorBrush colorInValidationObjects = Brushes.Red;
 
+        //dictionnaire pour associer tous les élements
         Dictionary<long, Tag> tagList = new Dictionary<long, Tag>(); //Objet + action
         Dictionary<Tuple<Action, Item>, Line> links = new Dictionary<Tuple<Action, Item>, Line>();
         Dictionary<long, Tuple<string, string>> linksFrieze = new Dictionary<long, Tuple<string, string>>();
@@ -43,6 +47,7 @@ namespace PaintSurface
         Dictionary<long, string> linksActionsVideos = new Dictionary<long, string>();
         List<Tuple<long, long>> listeActionsAssociees = new List<Tuple<long, long>>();
 
+        //MediaPlayer pour le son
         private MediaPlayer son = new MediaPlayer();
 
         public SurfaceWindow1()
@@ -176,14 +181,22 @@ namespace PaintSurface
 
         private void itemPutOnTable(object sender, TagVisualizerEventArgs e)
         {
-            myGrid.Visibility = Visibility.Hidden;
-            objet.Visibility = Visibility.Visible;
-
-            OnVisualizationAdded(sender, e);
+            hideWheel();
 
             //Ajout de l'item dans la list
             foundObject();
 
+            OnVisualizationAdded(sender, e);
+        }
+
+        private async void hideWheel()
+        {
+            myGrid.Visibility = Visibility.Hidden;
+            objet.Visibility = Visibility.Visible;
+
+            await Task.Delay(timeBeforeConsigne);
+            son.Open(new Uri(@"Resources\consigne0.wav", UriKind.Relative));
+            son.Play();
         }
 
         private async void foundObject()
@@ -197,7 +210,7 @@ namespace PaintSurface
             verre2.Source = new BitmapImage(new Uri("/Resources/verre.png", UriKind.Relative));
 
             //Objet en Image
-            await Task.Delay(3000);
+            await Task.Delay(3000 + timeBeforeConsigne);
             brosseDent.Source = new BitmapImage(new Uri("/Resources/brosse_grandT.png", UriKind.Relative));
             dentifrice.Source = new BitmapImage(new Uri("/Resources/dentifrice_grand.png", UriKind.Relative));
             verre.Source = new BitmapImage(new Uri("/Resources/verre_grand.png", UriKind.Relative));
@@ -266,7 +279,7 @@ namespace PaintSurface
                     addLineWithActions(value);
                     break;
             }
-            if (nbMinTagToSwitch == MyResources.nbTag)
+            if (nbMinTagToSwitch == nbTag)
                 switchViewOrdonnancement();
         }
 
@@ -362,7 +375,7 @@ namespace PaintSurface
 
         }
 
-        private void hideHelp()
+        private async void hideHelp()
         {
             if (tagList.ContainsKey(MyResources.valueBrosse) && tagList.ContainsKey(MyResources.valueDenti) && tagList.ContainsKey(MyResources.valueVerre))
             {
@@ -370,8 +383,12 @@ namespace PaintSurface
                 {
                     aideTop.Visibility = Visibility.Hidden;
                     aideBot.Visibility = Visibility.Hidden;
-                    consigneTop.Text = MyResources.consigne;
-                    consigneBot.Text = MyResources.consigne;
+                    consigneTop.Text = MyResources.consigne1;
+                    consigneBot.Text = MyResources.consigne1;
+
+                    await Task.Delay(timeBeforeConsigne);
+                    son.Open(new Uri(@"Resources\consigne1.wav", UriKind.Relative));
+                    son.Play();
                 }
             }
         }
@@ -432,7 +449,7 @@ namespace PaintSurface
             greenBrush.Color = colorLink;
 
             // Set Line's width and color
-            myLine.StrokeThickness = MyResources.largueurTrait;
+            myLine.StrokeThickness = largueurTrait;
             myLine.Stroke = greenBrush;
             return myLine;
         }
@@ -526,11 +543,15 @@ namespace PaintSurface
             return false;
         }
 
-        public void switchToOrdonnancement()
+        public async void switchToOrdonnancement()
         {
             ordonnancement.Visibility = Visibility.Visible;
             consigneTop.Text = MyResources.consigne2;
             consigneBot.Text = MyResources.consigne2;
+
+            await Task.Delay(timeBeforeConsigne);
+            son.Open(new Uri(@"Resources\consigne2.wav", UriKind.Relative));
+            son.Play();
         }
 
         public void association(long value)
@@ -721,17 +742,28 @@ namespace PaintSurface
                     && ((Action)tagList[MyResources.valueAction6b]).getPutInRightCase()
                     )
                 {
-                    consigneBot.Visibility = Visibility.Hidden;
-                    consigneTop.Visibility = Visibility.Hidden;
-                    BorderTagActions.BorderBrush = Brushes.Transparent;
-                    ordonnancement.Visibility = Visibility.Hidden;
-                    video.Visibility = Visibility.Visible;
+                    switchToVideo();
                 }
             }
             catch (System.Collections.Generic.KeyNotFoundException err)
             {
                 Console.WriteLine("Erreur : " + err);
             }
+        }
+
+        public async void switchToVideo()
+        {
+            consigneBot.Visibility = Visibility.Hidden;
+            consigneTop.Visibility = Visibility.Hidden;
+            consigneTop.Text = MyResources.consigne3;
+            consigneTop.Text = MyResources.consigne3;
+            BorderTagActions.BorderBrush = Brushes.Transparent;
+            ordonnancement.Visibility = Visibility.Hidden;
+            video.Visibility = Visibility.Visible;
+
+            await Task.Delay(timeBeforeConsigne);
+            son.Open(new Uri(@"Resources\consigne3.wav", UriKind.Relative));
+            son.Play();
         }
 
         public void putActionOn(object sender, TagVisualizerEventArgs e)
