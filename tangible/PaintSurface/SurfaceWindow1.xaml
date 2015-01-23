@@ -17,7 +17,7 @@
 
         <!--Vue présentation roue-->
         <!--Visible Hidden -->
-        <Grid  x:Name="myGrid" Visibility="Visible">
+        <Grid  x:Name="myGrid" Visibility="Hidden">
             <Image Source="/Resources/rond.png"  Width="360" Height="360">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="180" CenterY="180" />
@@ -485,7 +485,7 @@
 
         <!--Vidéo -->
         <!--Visible Hidden -->
-        <Grid Name="video" Visibility="Hidden">
+        <Grid Name="video" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -503,7 +503,8 @@
                               RenderTransformOrigin="0.5,0.5" 
                               LoadedBehavior="Manual" 
                               UnloadedBehavior="Stop"
-                              Volume="0">
+                              Volume="0"
+                              MediaEnded="putActionOnTop">
                     <MediaElement.RenderTransform>
                         <RotateTransform Angle="180"/>
                     </MediaElement.RenderTransform>
@@ -511,12 +512,12 @@
 
                 <!-- Bordure -->
                 <Border x:Name="borderVideoTop" 
-                        Width="650"
-                        Height="350" 
+                        Width="250"
+                        Height="250" 
                         BorderBrush="White" 
                         BorderThickness="5" 
-                        Margin="1240,222,-810,-51">
-                    <s:TagVisualizer  x:Name="tagVideoBot" Margin="-1220,278,1223,-280" Height="Auto" Width="Auto" VisualizationAdded="putActionOnBot" VisualizationRemoved="putActionOffBot" RenderTransformOrigin="0.413,0.727"  >
+                        Margin="1622,304,-789,-34">
+                    <s:TagVisualizer  x:Name="tagVideoBot" Height="250" Width="250" VisualizationAdded="putActionOnBot" VisualizationRemoved="putActionOffBot" RenderTransformOrigin="0.413,0.727"  >
                         <s:TagVisualizer.Definitions>
                             <s:TagVisualizationDefinition
                 				    Source="Empty.xaml"
@@ -544,7 +545,8 @@
                               RenderTransformOrigin="0.5,0.5" 
                               LoadedBehavior="Manual" 
                               UnloadedBehavior="Stop"
-                              Volume="0"/>
+                              Volume="0"
+                              MediaEnded="putActionOnBot"/>
 
                 <!-- Texte -->
                 <TextBlock  Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Margin="16,-155,0,595" Height="150" >
@@ -554,11 +556,11 @@
 
                 <!-- Bordure -->
                 <Border x:Name="borderVideoBot" 
-                    Width="650" 
-                    Height="350" 
+                    Width="250" 
+                    Height="250" 
                     BorderBrush="White" 
                     BorderThickness="5" 
-                    Margin="16,-22,410,262" 
+                    Margin="16,-5,816,345" 
                     Grid.Row="0">
                     <s:TagVisualizer  x:Name="tagVideoTop" Margin="1219,-281,-1216,281" Height="Auto" Width="Auto" VisualizationAdded="putActionOnTop" VisualizationRemoved="putActionOffTop"  >
                         <s:TagVisualizer.Definitions>

@@ -196,12 +196,16 @@ namespace PaintSurface
 
         private async void hideWheel()
         {
-            myGrid.Visibility = Visibility.Hidden;
-            objet.Visibility = Visibility.Visible;
+            
+            if(objet.IsVisible == false)
+            {
+                myGrid.Visibility = Visibility.Hidden;
+                objet.Visibility = Visibility.Visible;
 
-            await Task.Delay(timeBeforeConsigne);
-            son.Open(new Uri(@"Resources\consigne0.wav", UriKind.Relative));
-            son.Play();
+                await Task.Delay(timeBeforeConsigne);
+                son.Open(new Uri(@"Resources\consigne0.wav", UriKind.Relative));
+                son.Play();
+            }
         }
 
         private async void foundObject()
@@ -385,18 +389,21 @@ namespace PaintSurface
 
         private async void hideHelp()
         {
-            if (tagList.ContainsKey(MyResources.valueBrosse) && tagList.ContainsKey(MyResources.valueDenti) && tagList.ContainsKey(MyResources.valueVerre))
+            if (aideTop.IsVisible == true)
             {
-                if (tagList[MyResources.valueBrosse].getPut() && tagList[MyResources.valueDenti].getPut() && tagList[MyResources.valueVerre].getPut())
+                if (tagList.ContainsKey(MyResources.valueBrosse) && tagList.ContainsKey(MyResources.valueDenti) && tagList.ContainsKey(MyResources.valueVerre))
                 {
-                    aideTop.Visibility = Visibility.Hidden;
-                    aideBot.Visibility = Visibility.Hidden;
-                    consigneTop.Text = MyResources.consigne1;
-                    consigneBot.Text = MyResources.consigne1;
+                    if (tagList[MyResources.valueBrosse].getPut() && tagList[MyResources.valueDenti].getPut() && tagList[MyResources.valueVerre].getPut())
+                    {
+                        aideTop.Visibility = Visibility.Hidden;
+                        aideBot.Visibility = Visibility.Hidden;
+                        consigneTop.Text = MyResources.consigne1;
+                        consigneBot.Text = MyResources.consigne1;
 
-                    await Task.Delay(timeBeforeConsigne);
-                    son.Open(new Uri(@"Resources\consigne1.wav", UriKind.Relative));
-                    son.Play();
+                        await Task.Delay(timeBeforeConsigne);
+                        son.Open(new Uri(@"Resources\consigne1.wav", UriKind.Relative));
+                        son.Play();
+                    }
                 }
             }
         }
@@ -555,13 +562,16 @@ namespace PaintSurface
 
         public async void switchToOrdonnancement()
         {
-            ordonnancement.Visibility = Visibility.Visible;
-            consigneTop.Text = MyResources.consigne2;
-            consigneBot.Text = MyResources.consigne2;
+            if (ordonnancement.IsVisible == false)
+            {
+                ordonnancement.Visibility = Visibility.Visible;
+                consigneTop.Text = MyResources.consigne2;
+                consigneBot.Text = MyResources.consigne2;
 
-            await Task.Delay(timeBeforeConsigne);
-            son.Open(new Uri(@"Resources\consigne2.wav", UriKind.Relative));
-            son.Play();
+                await Task.Delay(timeBeforeConsigne);
+                son.Open(new Uri(@"Resources\consigne2.wav", UriKind.Relative));
+                son.Play();
+            }
         }
 
         public void association(long value)
@@ -719,26 +729,8 @@ namespace PaintSurface
 
         private void friezesCompletes()
         {
-            /*  bool complete = true;
-              int allActions = 0;
-
-              foreach (KeyValuePair<long, Tag> tag in tagList)
-              {
-                  if (tag.Value.GetType() == typeof(Action))// Si on a une action
-                  {
-                      Action action = (Action)tag.Value;
-                      allActions++;
-                      if (!action.getPutInRightCase())
-                      {
-                          complete = false;
-                          break;
-                      }
-                  }
-              }*/
-            // if (complete && allActions == MyResources.nbActions)
             try
             {
-
                 if (((Action)tagList[MyResources.valueAction1]).getPutInRightCase()
                     && ((Action)tagList[MyResources.valueAction1]).getPutInRightCase()
                     && ((Action)tagList[MyResources.valueAction2]).getPutInRightCase()
@@ -765,31 +757,43 @@ namespace PaintSurface
 
         public async void switchToVideo()
         {
-            consigneBot.Visibility = Visibility.Hidden;
-            consigneTop.Visibility = Visibility.Hidden;
-            consigneTop.Text = MyResources.consigne3;
-            consigneTop.Text = MyResources.consigne3;
-            BorderTagActions.BorderBrush = Brushes.Transparent;
-            ordonnancement.Visibility = Visibility.Hidden;
-            video.Visibility = Visibility.Visible;
+            if (video.IsVisible == false)
+            {
+                consigneBot.Visibility = Visibility.Hidden;
+                consigneTop.Visibility = Visibility.Hidden;
+                consigneTop.Text = MyResources.consigne3;
+                consigneTop.Text = MyResources.consigne3;
+                BorderTagActions.BorderBrush = Brushes.Transparent;
+                ordonnancement.Visibility = Visibility.Hidden;
+                video.Visibility = Visibility.Visible;
 
-            await Task.Delay(timeBeforeConsigne);
-            son.Open(new Uri(@"Resources\consigne3.wav", UriKind.Relative));
-            son.Play();
+                await Task.Delay(timeBeforeConsigne);
+                son.Open(new Uri(@"Resources\consigne3.wav", UriKind.Relative));
+                son.Play();
+            }
         }
 
 
         public void putActionOnTop(object sender, TagVisualizerEventArgs e)
         {
             long value = e.TagVisualization.VisualizedTag.Value;
-            videoTop.Source = new Uri(linksActionsVideos[value], UriKind.Relative);
-            videoTop.Play();
+
+            if (tagList[value].GetType() == typeof(Action))
+            {
+                videoTop.Source = new Uri(linksActionsVideos[value], UriKind.Relative);
+                videoTop.Play();
+            }
         }
+
         public void putActionOnBot(object sender, TagVisualizerEventArgs e)
         {
             long value = e.TagVisualization.VisualizedTag.Value;
-            videoBot.Source = new Uri(linksActionsVideos[value], UriKind.Relative);
-            videoBot.Play();
+
+            if(tagList[value].GetType() == typeof(Action))
+            {
+                videoBot.Source = new Uri(linksActionsVideos[value], UriKind.Relative);
+                videoBot.Play();
+            }
         }
 
         public void putActionOffBot(object sender, TagVisualizerEventArgs e)
@@ -801,6 +805,9 @@ namespace PaintSurface
         {
             videoTop.Stop();
         }
+
+
+
     }
 }
 

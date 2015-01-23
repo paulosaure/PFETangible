@@ -48,7 +48,7 @@ namespace PaintSurface
         public const string videoAction6 = @"Resources\videoAction6.wmv";
 
         public const string consigne0 = "Posez sur la table, les objets pour se brosser les dents";
-        public const string consigne1 = "Placer les actions associés aux objets pour se brosser les dents";
+        public const string consigne1 = "Comment vous brossez vous les dents";
         public const string consigne2 = "Placer les actions sur la frise dans le bon ordre";
         public const string consigne3 = "Placer les actions dans le cadre pour lancer une vidéo";
 
