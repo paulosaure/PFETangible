@@ -322,7 +322,6 @@
             </WrapPanel>
 
             <WrapPanel Name="TagFrieze" Grid.Column="0" Grid.Row="0" >
-                <Image Name="flecheVerte" Margin="10,0" Height="200" Width="140"  Source="/Resources/friseG.png" Visibility="Hidden"/>
                 <s:TagVisualizer  x:Name="tagActFrieze6" Margin="55,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition
@@ -502,7 +501,8 @@
                               Margin="767,7,-85,3" 
                               RenderTransformOrigin="0.5,0.5" 
                               LoadedBehavior="Manual" 
-                              UnloadedBehavior="Stop">
+                              UnloadedBehavior="Stop"
+                              Volume="0">
                     <MediaElement.RenderTransform>
                         <RotateTransform Angle="180"/>
                     </MediaElement.RenderTransform>
@@ -515,7 +515,7 @@
                         BorderBrush="White" 
                         BorderThickness="5" 
                         Margin="1240,222,-810,-51">
-                    <s:TagVisualizer  x:Name="tagVideoTop" Margin="1256,-670,-1246,680" Height="Auto" Width="Auto" VisualizationAdded="putActionOn" VisualizationRemoved="putActionOff"  >
+                    <s:TagVisualizer  x:Name="tagVideoBot" Margin="-1220,278,1223,-280" Height="Auto" Width="Auto" VisualizationAdded="putActionOnBot" VisualizationRemoved="putActionOffBot" RenderTransformOrigin="0.413,0.727"  >
                         <s:TagVisualizer.Definitions>
                             <s:TagVisualizationDefinition
                 				    Source="Empty.xaml"
@@ -542,7 +542,8 @@
                               Margin="769,10,-86,64" 
                               RenderTransformOrigin="0.5,0.5" 
                               LoadedBehavior="Manual" 
-                              UnloadedBehavior="Stop"/>
+                              UnloadedBehavior="Stop"
+                              Volume="0"/>
 
                 <!-- Texte -->
                 <TextBlock  Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Margin="16,-155,0,595" Height="150" >
@@ -558,7 +559,7 @@
                     BorderThickness="5" 
                     Margin="16,-22,410,262" 
                     Grid.Row="0">
-                    <s:TagVisualizer  x:Name="tagVideoBot" Margin="1219,-281,-1216,281" Height="Auto" Width="Auto" VisualizationAdded="putActionOn" VisualizationRemoved="putActionOff"  >
+                    <s:TagVisualizer  x:Name="tagVideoTop" Margin="1219,-281,-1216,281" Height="Auto" Width="Auto" VisualizationAdded="putActionOnTop" VisualizationRemoved="putActionOffTop"  >
                         <s:TagVisualizer.Definitions>
                             <s:TagVisualizationDefinition
                 				Source="Empty.xaml"

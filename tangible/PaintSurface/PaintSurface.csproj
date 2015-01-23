@@ -118,23 +118,44 @@
     <Content Include="PaintSurface.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\videoAction1.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\videoAction2.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\videoAction3.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\videoAction4.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\videoAction5.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\videoAction6.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\brosse_grandT.png" />
-    <Content Include="Resources\consigne0.wav" />
-    <Content Include="Resources\consigne1.wav" />
-    <Content Include="Resources\consigne2.wav" />
+    <Content Include="Resources\consigne0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\consigne1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\consigne2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\cubeBotCoin.png" />
     <Resource Include="Resources\cubeTop.png" />
     <Resource Include="Resources\cubeTopCoin.png" />
     <Resource Include="Resources\flechebot.png" />
     <Resource Include="Resources\flecheTop.png" />
     <Resource Include="Resources\cubeBot.png" />
-    <Content Include="Resources\consigne3.wav" />
-    <Content Include="Resources\videoBrossage.mp4">
+    <Content Include="Resources\consigne3.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\textPosez.png" />
-    <Resource Include="Resources\friseD.png" />
-    <Resource Include="Resources\friseG.png" />
     <Content Include="Resources\sonBrosseDent.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

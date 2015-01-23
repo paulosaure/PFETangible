@@ -130,6 +130,11 @@ namespace PaintSurface
 
             //Associer les actions
             listeActionsAssociees.Add(new Tuple<long, long>(MyResources.valueAction1, MyResources.valueAction1b));
+            listeActionsAssociees.Add(new Tuple<long, long>(MyResources.valueAction2, MyResources.valueAction2b));
+            listeActionsAssociees.Add(new Tuple<long, long>(MyResources.valueAction3, MyResources.valueAction3b));
+            listeActionsAssociees.Add(new Tuple<long, long>(MyResources.valueAction4, MyResources.valueAction4b));
+            listeActionsAssociees.Add(new Tuple<long, long>(MyResources.valueAction5, MyResources.valueAction5b));
+            listeActionsAssociees.Add(new Tuple<long, long>(MyResources.valueAction6, MyResources.valueAction6b));
         }
 
         protected override void OnClosed(EventArgs e)
@@ -566,16 +571,16 @@ namespace PaintSurface
                 case MyResources.valueBrosse:
                     Item brosse = (Item)tagList[value];
                     brosse.addAction(MyResources.valueAction1);
-                    brosse.addAction(MyResources.valueAction3);
+                    brosse.addAction(MyResources.valueAction2);
                     brosse.addAction(MyResources.valueAction4);
                     brosse.addAction(MyResources.valueAction1b);
-                    brosse.addAction(MyResources.valueAction3b);
+                    brosse.addAction(MyResources.valueAction2b);
                     brosse.addAction(MyResources.valueAction4b);
                     break;
                 case MyResources.valueDenti:
                     Item denti = (Item)tagList[value];
-                    denti.addAction(MyResources.valueAction2);
-                    denti.addAction(MyResources.valueAction2b);
+                    denti.addAction(MyResources.valueAction3);
+                    denti.addAction(MyResources.valueAction3b);
                     break;
                 case MyResources.valueVerre:
                     Item verre = (Item)tagList[value];
@@ -590,11 +595,11 @@ namespace PaintSurface
                     break;
                 case MyResources.valueAction2:
                     Action action2 = (Action)tagList[value];
-                    action2.setItem(MyResources.valueDenti);
+                    action2.setItem(MyResources.valueBrosse);
                     break;
                 case MyResources.valueAction3:
                     Action action3 = (Action)tagList[value];
-                    action3.setItem(MyResources.valueBrosse);
+                    action3.setItem(MyResources.valueDenti);
                     break;
                 case MyResources.valueAction4:
                     Action action4 = (Action)tagList[value];
@@ -614,11 +619,11 @@ namespace PaintSurface
                     break;
                 case MyResources.valueAction2b:
                     Action action8 = (Action)tagList[value];
-                    action8.setItem(MyResources.valueDenti);
+                    action8.setItem(MyResources.valueBrosse);
                     break;
                 case MyResources.valueAction3b:
                     Action action9 = (Action)tagList[value];
-                    action9.setItem(MyResources.valueBrosse);
+                    action9.setItem(MyResources.valueDenti);
                     break;
                 case MyResources.valueAction4b:
                     Action action10 = (Action)tagList[value];
@@ -773,18 +778,27 @@ namespace PaintSurface
             son.Play();
         }
 
-        public void putActionOn(object sender, TagVisualizerEventArgs e)
+
+        public void putActionOnTop(object sender, TagVisualizerEventArgs e)
         {
-            long action = e.TagVisualization.VisualizedTag.Value;
-            videoBot.Source = new Uri (linksActionsVideos[action]);
-            videoTop.Source = new Uri (linksActionsVideos[action]);          
-            videoBot.Play();
+            long value = e.TagVisualization.VisualizedTag.Value;
+            videoTop.Source = new Uri(linksActionsVideos[value], UriKind.Relative);
             videoTop.Play();
         }
+        public void putActionOnBot(object sender, TagVisualizerEventArgs e)
+        {
+            long value = e.TagVisualization.VisualizedTag.Value;
+            videoBot.Source = new Uri(linksActionsVideos[value], UriKind.Relative);
+            videoBot.Play();
+        }
 
-        public void putActionOff(object sender, TagVisualizerEventArgs e)
+        public void putActionOffBot(object sender, TagVisualizerEventArgs e)
         {
             videoBot.Stop();
+        }
+
+        public void putActionOffTop(object sender, TagVisualizerEventArgs e)
+        {
             videoTop.Stop();
         }
     }
