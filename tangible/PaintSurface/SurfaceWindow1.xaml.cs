@@ -317,25 +317,54 @@ namespace PaintSurface
         {
             long value = e.TagVisualization.VisualizedTag.Value;
             Point p = calculPoint(e);
-            Tag tag = tagList[value];
-            tag.setPosition(p);
 
-            if (tag.GetType() == typeof(Item))
+            if (tagList.ContainsKey(value))
             {
-                Item item = (Item)tagList[value];//on choppe l'action
-
-                foreach (long action in item.getActions())
+                Tag tag = tagList[value];
+                tag.setPosition(p);
+            
+                if (tag.GetType() == typeof(Item))
                 {
-                    if (tagList.ContainsKey(action)) //Si l'action existe
+                    Item item = (Item)tagList[value];//on choppe l'action
+
+                    foreach (long action in item.getActions())
                     {
-                        if (tagList[action].getPut() && !((Action)tagList[action]).getPutInFrise()) //Si l'action est posé et pas dans la frise
+                        if (tagList.ContainsKey(action)) //Si l'action existe
                         {
-                            Tuple<Action, Item> tmp = new Tuple<Action, Item>((Action)tagList[action], item);
+                            if (tagList[action].getPut() && !((Action)tagList[action]).getPutInFrise()) //Si l'action est posé et pas dans la frise
+                            {
+                                Tuple<Action, Item> tmp = new Tuple<Action, Item>((Action)tagList[action], item);
+                                try
+                                {
+                                    Line line = links[tmp];
+                                    line.X1 = tagList[action].getPosition().X;
+                                    line.Y1 = tagList[action].getPosition().Y;
+                                    line.X2 = item.getPosition().X;
+                                    line.Y2 = item.getPosition().Y;
+                                }
+                                catch (System.Collections.Generic.KeyNotFoundException err)
+                                {
+                                    Console.WriteLine("Erreur : " + err);
+                                }
+                            }
+                        }
+                    }
+                }
+                else // SI CEST l'action QUI BOUGE
+                {
+                    Action action = (Action)tagList[value];//on choppe l'action
+
+                    if (tagList.ContainsKey(action.getItem()))
+                    {
+                        if (tagList[action.getItem()].getPut() && !tagList[action.getItem()].getPutInFrise())
+                        {
                             try
                             {
+                                Item item = (Item)tagList[action.getItem()]; //on récupère l'objet dans la liste
+                                Tuple<Action, Item> tmp = new Tuple<Action, Item>(action, item);
                                 Line line = links[tmp];
-                                line.X1 = tagList[action].getPosition().X;
-                                line.Y1 = tagList[action].getPosition().Y;
+                                line.X1 = action.getPosition().X;
+                                line.Y1 = action.getPosition().Y;
                                 line.X2 = item.getPosition().X;
                                 line.Y2 = item.getPosition().Y;
                             }
@@ -347,32 +376,6 @@ namespace PaintSurface
                     }
                 }
             }
-            else // SI CEST l'action QUI BOUGE
-            {
-                Action action = (Action)tagList[value];//on choppe l'action
-
-                if (tagList.ContainsKey(action.getItem()))
-                {
-                    if (tagList[action.getItem()].getPut() && !tagList[action.getItem()].getPutInFrise())
-                    {
-                        try
-                        {
-                            Item item = (Item)tagList[action.getItem()]; //on récupère l'objet dans la liste
-                            Tuple<Action, Item> tmp = new Tuple<Action, Item>(action, item);
-                            Line line = links[tmp];
-                            line.X1 = action.getPosition().X;
-                            line.Y1 = action.getPosition().Y;
-                            line.X2 = item.getPosition().X;
-                            line.Y2 = item.getPosition().Y;
-                        }
-                        catch (System.Collections.Generic.KeyNotFoundException err)
-                        {
-                            Console.WriteLine("Erreur : " + err);
-                        }
-                    }
-                }
-            }
-
         }
 
         private async void hideHelp()
@@ -411,25 +414,27 @@ namespace PaintSurface
                     }
                 }
             }
-
         }
 
         public void addLineWithObjects(long value)
         {
-            Item item = (Item)tagList[value]; //on choppe l'objet
-
-            foreach (long action in item.getActions())// Pour chaque actions associées à l'objet
+            if (tagList.ContainsKey(value))// Si l'action existe
             {
-                if (tagList.ContainsKey(action))// Si l'action existe
+                Item item = (Item)tagList[value]; //on choppe l'objet
+
+                foreach (long action in item.getActions())// Pour chaque actions associées à l'objet
                 {
-                    if (tagList[action].getPut() && !((Action)tagList[action]).getPutInFrise())//Si l'action est posée
+                    if (tagList.ContainsKey(action))// Si l'action existe
                     {
-                        Tuple<Action, Item> pair = new Tuple<Action, Item>((Action)tagList[action], item);
-                        if (!links.ContainsKey(pair))
+                        if (tagList[action].getPut() && !((Action)tagList[action]).getPutInFrise())//Si l'action est posée
                         {
-                            Line myLine = createLine(tagList[action].getPosition(), item.getPosition());
-                            links.Add(pair, myLine);
-                            objet.Children.Add(myLine);
+                            Tuple<Action, Item> pair = new Tuple<Action, Item>((Action)tagList[action], item);
+                            if (!links.ContainsKey(pair))
+                            {
+                                Line myLine = createLine(tagList[action].getPosition(), item.getPosition());
+                                links.Add(pair, myLine);
+                                objet.Children.Add(myLine);
+                            }
                         }
                     }
                 }
@@ -687,16 +692,18 @@ namespace PaintSurface
         {
             long value = e.TagVisualization.VisualizedTag.Value;
 
-
-            if (tagList[value].GetType() == typeof(Action))
+            if (tagList.ContainsKey(value))
             {
-                nbMinTagToSwitch--;
-                Action action = (Action)tagList[value];//On choppe l'action
-                action.setPutInFrise(false);
-                action.setPut(false);
-                Console.WriteLine("FALSE");
-                action.setPutInRightCase(false);
-                linksBorder[((TagVisualizer)sender).Name].BorderBrush = Brushes.Transparent;
+                if (tagList[value].GetType() == typeof(Action))
+                {
+                    nbMinTagToSwitch--;
+                    Action action = (Action)tagList[value];//On choppe l'action
+                    action.setPutInFrise(false);
+                    action.setPut(false);
+                    Console.WriteLine("FALSE");
+                    action.setPutInRightCase(false);
+                    linksBorder[((TagVisualizer)sender).Name].BorderBrush = Brushes.Transparent;
+                }
             }
         }
 
