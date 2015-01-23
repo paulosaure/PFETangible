@@ -10,7 +10,7 @@
     Width="1920" Height="1080"
     >
 
-    <Grid x:Name="main" Width="1920" Height="1080" >
+    <Grid x:Name="main" Width="1920" Height="Auto"  >
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/backgroud.jpg" />
         </Grid.Background>
@@ -105,22 +105,22 @@
             <StackPanel >
                 <!-- Icones d'aide-->
                 <WrapPanel Name="aideTop" Height="200"  Orientation="Horizontal" Margin="0,0,0,0">
-                    <Border Name="borderVerre"  BorderThickness="4" Margin="200,0,100,0">
-                        <Image Name="verre" Height="200" Width="200" RenderTransformOrigin="0.5, 0.5" >
+                    <Border Name="borderVerre"  BorderThickness="4" Margin="200,0,100,-5">
+                        <Image Name="verre" Height="200" Width="200" Margin="0,-3,0,0" RenderTransformOrigin="0.5, 0.5" >
                             <Image.RenderTransform>
                                 <RotateTransform Angle="180"/>
                             </Image.RenderTransform>
                         </Image>
                     </Border>
-                    <Border Name="borderDentifrice"  BorderThickness="4" Margin="100,0,100,0" >
-                        <Image Name="dentifrice" Height="200" Width="200" RenderTransformOrigin="0.5, 0.5" >
+                    <Border Name="borderDentifrice"  BorderThickness="4" Margin="100,0,100,-5" >
+                        <Image Name="dentifrice" Height="200" Width="200" Margin="0,-3,0,0" RenderTransformOrigin="0.5, 0.5" >
                             <Image.RenderTransform>
                                 <RotateTransform  Angle="180"/>
                             </Image.RenderTransform>
                         </Image>
                     </Border>
-                    <Border Name="borderAideBrosseDent"  BorderThickness="4" Margin="100,0,100,0" >
-                        <Image Name="brosseDent" Height="200" Width="200" RenderTransformOrigin="0.5, 0.5">
+                    <Border Name="borderAideBrosseDent"  BorderThickness="4" Margin="100,0,100,-5" >
+                        <Image Name="brosseDent" Height="200" Width="200" Margin="0,-3,0,0" RenderTransformOrigin="0.5, 0.5">
                             <Image.RenderTransform>
                                 <RotateTransform  Angle="180"/>
                             </Image.RenderTransform>
@@ -134,10 +134,10 @@
                 <!-- Carré noir + texte-->
                 <Border Margin="0,5,0,0" BorderBrush="Black" BorderThickness="5" Name="BorderTagActions">
                     <Grid Height="628" Width="1920">
-                        <TextBlock Name="consigneTop" Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Text="Placer les objets" Margin="24,23,0,560" >
+                        <TextBlock Name="consigneTop" Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="50" Text="Posez sur la table, les objets pour se brosser les dents" Margin="24,10,0,537" Height="79" >
                         </TextBlock>
 
-                        <TextBlock Name="consigneBot" Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="50" Text="Placer les objets" Margin="0,546,150,37" >
+                        <TextBlock Name="consigneBot" Foreground="LightPink" RenderTransformOrigin="0.5, 0.5" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="50" Text="Posez sur la table, les objets pour se brosser les dents" Margin="0,532,150,20" Height="76" >
                             <TextBlock.RenderTransform>
                                 <RotateTransform  Angle="180"/>
                             </TextBlock.RenderTransform>

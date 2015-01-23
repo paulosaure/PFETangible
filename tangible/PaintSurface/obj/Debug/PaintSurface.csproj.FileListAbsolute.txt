@@ -276,7 +276,6 @@ C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\PaintSurface.Prope
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\PaintSurface.csproj.GenerateResource.Cache
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\empty.baml
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\obj\Debug\empty.g.cs
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoBrossage.mp4
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\PaintSurface.exe.config
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\obj\Debug\PaintSurface.exe
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\obj\Debug\PaintSurface.pdb
@@ -309,3 +308,13 @@ C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Reso
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\videoAction4.wmv
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\videoAction5.wmv
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\videoAction6.wmv
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction1.wmv
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction2.wmv
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction3.wmv
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction4.wmv
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction5.wmv
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction6.wmv
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\consigne0.wav
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\consigne1.wav
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\consigne2.wav
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\consigne3.wav
