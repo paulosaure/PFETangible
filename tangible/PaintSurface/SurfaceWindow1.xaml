@@ -321,19 +321,30 @@
                 </Border>
             </WrapPanel>
 
-            <WrapPanel Name="TagFrieze" Grid.Column="0" Grid.Row="0" >
-                <s:TagVisualizer  x:Name="tagActFrieze6" Margin="55,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+            <WrapPanel Name="TagFrieze" Grid.Column="0" Grid.Row="0" Margin="0,0,100,0" >
+                <s:TagVisualizer  x:Name="tagActFrieze6" Margin="213,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition
                     		Source="Empty.xaml"
-                            TagRemovedBehavior="Disappear"
+                    		TagRemovedBehavior="Disappear"
                     		OrientationOffsetFromTag="0" 
                     		PhysicalCenterOffsetFromTag="0,0"
                     		UsesTagOrientation="True"
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze5" Margin="35,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze5" Margin="-122,0,0,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                    <s:TagVisualizer.Definitions>
+                        <s:TagVisualizationDefinition 
+                			Source="Empty.xaml"
+                			TagRemovedBehavior="Disappear"
+                			OrientationOffsetFromTag="0" 
+                			PhysicalCenterOffsetFromTag="0,0"
+                			UsesTagOrientation="True"
+                                              />
+                    </s:TagVisualizer.Definitions>
+                </s:TagVisualizer>
+                <s:TagVisualizer x:Name="tagActFrieze4" Margin="100,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="Empty.xaml"
@@ -344,7 +355,7 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze4" Margin="63,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze3" Margin="0,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="Empty.xaml"
@@ -355,7 +366,7 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze3" Margin="37,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze2" Margin="100,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                             Source="Empty.xaml"
@@ -366,18 +377,7 @@
                                               />
                     </s:TagVisualizer.Definitions>
                 </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze2" Margin="65,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
-                    <s:TagVisualizer.Definitions>
-                        <s:TagVisualizationDefinition 
-                            Source="Empty.xaml"
-                            TagRemovedBehavior="Disappear"
-                            OrientationOffsetFromTag="0" 
-                            PhysicalCenterOffsetFromTag="0,0"
-                            UsesTagOrientation="True"
-                                              />
-                    </s:TagVisualizer.Definitions>
-                </s:TagVisualizer>
-                <s:TagVisualizer x:Name="tagActFrieze1" Margin="34,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
+                <s:TagVisualizer x:Name="tagActFrieze1" Margin="0,0" Height="200" Width="200" VisualizationAdded="tagAddedFrieze" VisualizationRemoved="tagRemovedFrieze" VisualizationMoved="tagMovedFrieze"  >
                     <s:TagVisualizer.Definitions>
                         <s:TagVisualizationDefinition 
                     		Source="Empty.xaml"
@@ -387,7 +387,8 @@
                     		UsesTagOrientation="True"
                                               />
                     </s:TagVisualizer.Definitions>
-                </s:TagVisualizer>            </WrapPanel>
+                </s:TagVisualizer>
+            </WrapPanel>
 
             <WrapPanel Name="friseBas" Grid.Column="0" Grid.Row="2" Margin="-10,635,10,-845" >
                 <Border x:Name="borderbloc1Bot"  BorderBrush="Transparent" BorderThickness="5" Margin="20,0,50,0">
