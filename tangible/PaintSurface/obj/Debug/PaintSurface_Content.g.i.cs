@@ -13,6 +13,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/consigne1.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/consigne2.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/consigne3.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/videobrossage.mp4")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/sonbrossedent.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/sondentifrice.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/sonverre.wav")]

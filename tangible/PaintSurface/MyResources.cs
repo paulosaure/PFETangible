@@ -8,23 +8,23 @@ namespace PaintSurface
 {
     public static class MyResources
     {
-        public const long valueBrosse = 0x01;
-        public const long valueDenti = 0x20;
-        public const long valueVerre = 0xB5;
+        public const long valueBrosse = 0x31;
+        public const long valueDenti = 0x05;
+        public const long valueVerre = 0x24;
 
-        public const long valueAction1 = 0xA6;
-        public const long valueAction2 = 0xC4;
-        public const long valueAction3 = 0xC5;
-        public const long valueAction4 = 0xA8;
-        public const long valueAction5 = 0x08;
-        public const long valueAction6 = 0x40;
+        public const long valueAction1 = 0x44;
+        public const long valueAction2 = 0x36;
+        public const long valueAction3 = 0x42;
+        public const long valueAction4 = 0x35;
+        public const long valueAction5 = 0x46;
+        public const long valueAction6 = 0x43;
 
-        public const long valueAction1b = 0xE0;
-        public const long valueAction2b = 0xE1;
-        public const long valueAction3b = 0xE2;
-        public const long valueAction4b = 0xE3;
-        public const long valueAction5b = 0xE4;
-        public const long valueAction6b = 0xE5;
+        public const long valueAction1b = 0x45;
+        public const long valueAction2b = 0x32;
+        public const long valueAction3b = 0x33;
+        public const long valueAction4b = 0x34;
+        public const long valueAction5b = 0x40;
+        public const long valueAction6b = 0x41;
 
         public const string friseTag1 = "tagActFrieze1";
         public const string friseTag2 = "tagActFrieze2";
