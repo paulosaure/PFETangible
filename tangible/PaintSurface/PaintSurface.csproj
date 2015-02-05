@@ -118,19 +118,43 @@
     <Content Include="PaintSurface.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\brosseadents.png" />
+    <Resource Include="Resources\dentifrice.png" />
+    <Resource Include="Resources\verre.png" />
+    <Resource Include="Resources\rotateImg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Resources\videoAction1.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\videoAction1.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\videoAction2.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\videoAction2.wmv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\videoAction3.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\videoAction3.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\videoAction4.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\videoAction4.wmv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\videoAction5.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\videoAction5.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\videoAction6.mp4">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\videoAction6.wmv">
@@ -166,15 +190,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\verre_grand.png" />
-    <Resource Include="Resources\verre.png" />
     <Resource Include="Resources\brosse_grand.png" />
-    <Resource Include="Resources\brosseadents.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\dentifrice.png" />
     <Resource Include="Resources\dentifrice_grand.png" />
     <Resource Include="Resources\backgroud.jpg" />
-    <Resource Include="Resources\roue.png" />
+    <Resource Include="Resources\roue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\rond.png" />
   </ItemGroup>
   <ItemGroup />

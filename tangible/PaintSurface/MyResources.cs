@@ -40,12 +40,12 @@ namespace PaintSurface
         public const string friseTag5b = "tagActFrieze5bot";
         public const string friseTag6b = "tagActFrieze6bot";
 
-        public const string videoAction1 = @"Resources\videoAction1.wmv";
-        public const string videoAction2 = @"Resources\videoAction2.wmv";
-        public const string videoAction3 = @"Resources\videoAction3.wmv";
-        public const string videoAction4 = @"Resources\videoAction4.wmv";
-        public const string videoAction5 = @"Resources\videoAction5.wmv";
-        public const string videoAction6 = @"Resources\videoAction6.wmv";
+        public const string videoAction1 = @"Resources\videoAction1.mp4";
+        public const string videoAction2 = @"Resources\videoAction2.mp4";
+        public const string videoAction3 = @"Resources\videoAction3.mp4";
+        public const string videoAction4 = @"Resources\videoAction4.mp4";
+        public const string videoAction5 = @"Resources\videoAction5.mp4";
+        public const string videoAction6 = @"Resources\videoAction6.mp4";
 
         public const string consigne0 = "Posez sur la table, les objets pour se brosser les dents";
         public const string consigne1 = "Comment vous brossez vous les dents";

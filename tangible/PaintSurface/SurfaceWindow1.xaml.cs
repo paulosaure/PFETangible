@@ -38,6 +38,10 @@ namespace PaintSurface
         private Color colorLink = Colors.LightGreen;
         private SolidColorBrush colorValidationObjects = Brushes.LightGreen;
         private SolidColorBrush colorInValidationObjects = Brushes.Red;
+        private long lastVideoBot;
+        private long lastVideoTop;
+        private bool versLeBas = true;
+        private bool friseComplete = false;
 
         //dictionnaire pour associer tous les élements
         Dictionary<long, Tag> tagList = new Dictionary<long, Tag>(); //Objet + action
@@ -746,7 +750,11 @@ namespace PaintSurface
                     && ((Action)tagList[MyResources.valueAction6b]).getPutInRightCase()
                     )
                 {
-                    switchToVideo();
+                    friseComplete = true;
+                }
+                else
+                {
+                    friseComplete = false;
                 }
             }
             catch (System.Collections.Generic.KeyNotFoundException err)
@@ -776,24 +784,35 @@ namespace PaintSurface
 
         public void putActionOnTop(object sender, TagVisualizerEventArgs e)
         {
-            long value = e.TagVisualization.VisualizedTag.Value;
+            lastVideoTop = e.TagVisualization.VisualizedTag.Value;
 
-            if (tagList[value].GetType() == typeof(Action))
+            if (tagList[lastVideoTop].GetType() == typeof(Action))
             {
-                videoTop.Source = new Uri(linksActionsVideos[value], UriKind.Relative);
-                videoTop.Play();
+                startVideoTop(sender, e);
             }
+        }
+
+        public void startVideoTop(object sender, RoutedEventArgs e)
+        {
+            videoTop.Source = new Uri(linksActionsVideos[lastVideoTop], UriKind.Relative);
+            videoTop.Play();
         }
 
         public void putActionOnBot(object sender, TagVisualizerEventArgs e)
         {
-            long value = e.TagVisualization.VisualizedTag.Value;
+            lastVideoBot = e.TagVisualization.VisualizedTag.Value;
 
-            if(tagList[value].GetType() == typeof(Action))
+            if (tagList[lastVideoBot].GetType() == typeof(Action))
             {
-                videoBot.Source = new Uri(linksActionsVideos[value], UriKind.Relative);
-                videoBot.Play();
+                startVideoBot(sender , e);
             }
+        }
+
+        private void startVideoBot(object sender, RoutedEventArgs e)
+        {
+            videoBot.Source = new Uri(linksActionsVideos[lastVideoBot], UriKind.Relative);
+            videoBot.Play();
+
         }
 
         public void putActionOffBot(object sender, TagVisualizerEventArgs e)
@@ -806,7 +825,13 @@ namespace PaintSurface
             videoTop.Stop();
         }
 
-
+        private void switchView(object sender, TouchEventArgs e)
+        {
+            if(friseComplete)
+            {
+                switchToVideo();
+            }  
+        }
 
     }
 }
