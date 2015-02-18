@@ -292,8 +292,8 @@ namespace PaintSurface
                     addLineWithActions(value);
                     break;
             }
-            if (nbMinTagToSwitch == nbTag)
-                switchViewOrdonnancement();
+           // if (nbMinTagToSwitch == nbTag)
+               // switchViewOrdonnancement();
         }
 
         public void OnVisualizationRemoved(object sender, TagVisualizerEventArgs e)
@@ -407,6 +407,13 @@ namespace PaintSurface
                         await Task.Delay(timeBeforeConsigne);
                         son.Open(new Uri(@"Resources\consigne1.wav", UriKind.Relative));
                         son.Play();
+
+                        switchToOrdonnancement();
+
+                        await Task.Delay(timeBeforeConsigne);
+                        son.Open(new Uri(@"Resources\consigne2.wav", UriKind.Relative));
+                        son.Play();
+ 
                     }
                 }
             }

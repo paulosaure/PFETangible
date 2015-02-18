@@ -17,7 +17,7 @@
 
         <!--Vue présentation roue-->
         <!--Visible Hidden -->
-        <Grid  x:Name="myGrid" Visibility="Hidden">
+        <Grid  x:Name="myGrid" Visibility="Visible">
             <Image Source="/Resources/rond.png"  Width="360" Height="360">
                 <Image.RenderTransform>
                     <RotateTransform CenterX="180" CenterY="180" />
@@ -144,7 +144,7 @@
                         </TextBlock>
                         <!-- Tag à poser -->
                         <Grid>
-                            <s:TagVisualizer Height="650" Width="1920"  Name="tagAction" VisualizationMoved="OnVisualizationMoved" VisualizationAdded="OnVisualizationAdded" VisualizationRemoved="OnVisualizationRemoved">
+                            <s:TagVisualizer Height="1080" Width="1920"  Name="tagAction" VisualizationMoved="OnVisualizationMoved" VisualizationAdded="OnVisualizationAdded" VisualizationRemoved="OnVisualizationRemoved" Margin="-12,-240,12,-212">
                                 <s:TagVisualizer.Definitions>
                                     <s:TagVisualizationDefinition x:Name="tagObj1"
                                               Value="0x01"
@@ -288,7 +288,7 @@
         </Grid>
 
         <!--Visible Hidden -->
-        <Grid Name="ordonnancement" Visibility="Visible">
+        <Grid Name="ordonnancement" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />

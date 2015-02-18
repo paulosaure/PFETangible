@@ -308,12 +308,6 @@ C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Reso
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\videoAction4.wmv
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\videoAction5.wmv
 C:\Users\AtelierIHM\Desktop\Git\pfetangible\tangible\PaintSurface\bin\Debug\Resources\videoAction6.wmv
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction1.wmv
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction2.wmv
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction3.wmv
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction4.wmv
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction5.wmv
-C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction6.wmv
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\consigne0.wav
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\consigne1.wav
 C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\consigne2.wav
@@ -350,3 +344,9 @@ C:\Users\Paul\Desktop\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\sonV
 C:\Users\Paul\Desktop\PFEtangible\tangible\PaintSurface\bin\Debug\PaintSurface.exe
 C:\Users\Paul\Desktop\PFEtangible\tangible\PaintSurface\bin\Debug\PaintSurface.pdb
 C:\Users\Paul\Desktop\PFEtangible\tangible\PaintSurface\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction1.mp4
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction2.mp4
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction3.mp4
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction4.mp4
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction5.mp4
+C:\Users\Paul\Git\PFEtangible\tangible\PaintSurface\bin\Debug\Resources\videoAction6.mp4
